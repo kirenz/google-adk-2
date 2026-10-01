@@ -23,3 +23,7 @@ The initial Gradio request used a worker thread that received a separate in-memo
 Live Gemini inference, model-backed ADK evaluation, and a real Global Bike SQL Server connection have not been executed. They require locally supplied credentials, account/model access, and an actual permitted schema. The SQL Server extra and evaluation extra are resolved in the lockfile but are not prerequisites of the offline path. Windows/macOS installer instructions are linked to vendor documentation; they were not executed on a second machine.
 
 Passing offline checks does not prove that a model extracts every question correctly, that an explanation is factual, or that a database login is read-only. Those behaviors have explicit exercises and evaluation criteria in the book.
+
+## GitHub publication
+
+The public repository is https://github.com/kirenz/google-adk-2 and the course is published at https://kirenz.github.io/google-adk-2/. GitHub Actions run 36849322248 completed successfully and the resulting Pages build reported `built` for publication commit `8fc3c072928ffe9df987189c3f5fd65fbe60f494`. The published tree contains no virtual environment, test cache, Python bytecode cache, or local artifacts. The live syllabus, cover image, chapter navigation, and workflow chapter were checked in the browser. Source updates on `main` trigger the publication workflow.
