@@ -1,0 +1,729 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Google ADK 2",
+    "section": "",
+    "text": "Syllabus\nAgent development combines language models with software that controls data access, execution, and presentation. This course builds a small working system in stages, from a single function tool to an analytics workflow with a Gradio interface.",
+    "crumbs": [
+      "Syllabus"
+    ]
+  },
+  {
+    "objectID": "index.html#the-project-a-sql-analyst-for-global-bike",
+    "href": "index.html#the-project-a-sql-analyst-for-global-bike",
+    "title": "Google ADK 2",
+    "section": "The project: a SQL analyst for Global Bike",
+    "text": "The project: a SQL analyst for Global Bike\nGlobal Bike is the course’s business scenario. A business analyst needs to compare sales, identify relevant products, and explain results without manually writing every SQL query. The target application accepts a question, proposes a query, checks it, retrieves data, and presents the SQL, a table, a suitable chart, and an explanation grounded in the returned values.\nThe starter includes a small synthetic dataset for local practice. It is not an export of the Global Bike database. Its offline demonstration uses a fixed question and query; arbitrary natural-language questions require a model. Microsoft SQL Server is the later connection target, with schema and credentials supplied separately by the instructor.\n\n\n\n\n\nflowchart LR\n  Q[Business question] --&gt; A[Agent proposes SQL]\n  A --&gt; V[Code checks the query]\n  V --&gt; DB[(Read-only data access)]\n  DB --&gt; C[Validated chart specification]\n  DB --&gt; E[Grounded explanation]\n  C --&gt; UI[SQL, table, chart and explanation]\n  E --&gt; UI",
+    "crumbs": [
+      "Syllabus"
+    ]
+  },
+  {
+    "objectID": "index.html#learning-outcomes",
+    "href": "index.html#learning-outcomes",
+    "title": "Google ADK 2",
+    "section": "Learning outcomes",
+    "text": "Learning outcomes\nThe completed project demonstrates how an agent selects tools, how a runner manages sessions and events, and how ADK 2 graph edges make execution order explicit. It also demonstrates the boundary between a model’s proposed action and the code that validates and executes that action.\nEvaluation includes both useful answers and observable execution: correct tool arguments, rejected queries, empty results, bounded data retrieval, isolated sessions, and a chart that represents the result faithfully. A plausible sentence alone does not establish that an analytics system works.",
+    "crumbs": [
+      "Syllabus"
+    ]
+  },
+  {
+    "objectID": "index.html#learning-sequence",
+    "href": "index.html#learning-sequence",
+    "title": "Google ADK 2",
+    "section": "Learning sequence",
+    "text": "Learning sequence\n\n\n\n\n\n\n\nStage\nPractical result\n\n\n\n\nPreparation\nReproducible Python environment and first offline checks\n\n\nFoundations\nSingle agent with a small, testable function tool\n\n\nRuntime\nA recorded turn with events and session context\n\n\nWorkflows\nA graph combining deterministic functions and model reasoning\n\n\nInterface\nA Gradio application with separate browser sessions\n\n\nAnalytics\nSQL, table, chart, and explanation from a controlled data path\n\n\nEvaluation\nDocumented test cases, observed failures, and justified changes\n\n\n\nThe chapters support a project kick-off, a development session, and a final presentation, matching the earlier course’s progression. Dates and assessment weights are set separately for the current semester.",
+    "crumbs": [
+      "Syllabus"
+    ]
+  },
+  {
+    "objectID": "index.html#deliverables",
+    "href": "index.html#deliverables",
+    "title": "Google ADK 2",
+    "section": "Deliverables",
+    "text": "Deliverables\nA project submission contains the source code, locked dependencies, configuration examples without secrets, and clear start commands. A short architecture explanation documents agent responsibilities, tool contracts, query validation, session handling, and the chosen evaluation cases. The demonstration includes at least one successful question, an empty or ambiguous case, and a rejected unsafe request.\nThe supplied examples are a starting point. A useful extension changes a clearly defined business capability and includes evidence of its behavior, rather than adding agents solely to make the architecture larger.",
+    "crumbs": [
+      "Syllabus"
+    ]
+  },
+  {
+    "objectID": "index.html#course-baseline",
+    "href": "index.html#course-baseline",
+    "title": "Google ADK 2",
+    "section": "Course baseline",
+    "text": "Course baseline\nThe implementation targets Python 3.12 and Google ADK 2.10.0. uv.lock fixes the resolved dependency versions. GEMINI_MODEL selects the model; the default gemini-flash-latest is a changing provider alias, not a reproducible model snapshot. An available explicit model ID can be configured and recorded for an assessed experiment.\nThe book is rendered without executing model calls. Offline examples and tests run without API credentials. Model-backed examples contact the configured Gemini service and are subject to its current availability, quotas, and pricing.",
+    "crumbs": [
+      "Syllabus"
+    ]
+  },
+  {
+    "objectID": "chapters/02-workstation.html",
+    "href": "chapters/02-workstation.html",
+    "title": "1  Workstation and development tools",
+    "section": "",
+    "text": "1.1 Windows: PowerShell\nThe course uses Python 3.12, uv, Git, and Visual Studio Code. The operating system changes terminal syntax and installation details, but the project remains the same. Packages are managed centrally by the root pyproject.toml; separate virtual environments in individual example folders are unnecessary.\nVisual Studio Code provides the editor and an integrated terminal. Git for Windows provides version control. Git Bash may be installed with Git, but the commands in the Windows sections of this book use PowerShell. Mixing the two shells causes avoidable differences in paths, environment variables, and activation commands.\nThe official uv installation instructions provide this PowerShell installer:\nThe command downloads and executes the official installer. Managed computers may require the institution’s software installation route. After installation, a new terminal is necessary if the current terminal has not received the updated PATH. The following checks establish whether the tools are available:\nIn VS Code, File → Open Folder opens the course project. Terminal → New Terminal starts a terminal in that folder. A path containing spaces can be passed to PowerShell as a quoted string: Set-Location \"C:\\Users\\student\\Documents\\google-adk-2\". This path is an illustration, not a required personal directory.",
+    "crumbs": [
+      "Preparation",
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Workstation and development tools</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/02-workstation.html#windows-powershell",
+    "href": "chapters/02-workstation.html#windows-powershell",
+    "title": "1  Workstation and development tools",
+    "section": "",
+    "text": "powershell -ExecutionPolicy ByPass -c \"irm https://astral.sh/uv/install.ps1 | iex\"\n\nuv --version\ngit --version\nuv python install 3.12\nuv python find 3.12",
+    "crumbs": [
+      "Preparation",
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Workstation and development tools</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/02-workstation.html#macos-terminal-or-vs-code",
+    "href": "chapters/02-workstation.html#macos-terminal-or-vs-code",
+    "title": "1  Workstation and development tools",
+    "section": "1.2 macOS: Terminal or VS Code",
+    "text": "1.2 macOS: Terminal or VS Code\nGit availability can be checked with git --version. macOS may offer developer command-line tools when Git is missing. uv can be installed using its official macOS installer:\ncurl -LsSf https://astral.sh/uv/install.sh | sh\nThe command downloads and executes the official installer. A newly opened terminal picks up the installed executable.\nuv --version\ngit --version\nuv python install 3.12\nuv python find 3.12\nThe terminal may use zsh; the basic project commands in this book also work in bash. cd \"/path/to/google-adk-2\" changes to the project folder. The actual location depends on where the project was downloaded or cloned.",
+    "crumbs": [
+      "Preparation",
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Workstation and development tools</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/02-workstation.html#vs-code-and-python",
+    "href": "chapters/02-workstation.html#vs-code-and-python",
+    "title": "1  Workstation and development tools",
+    "section": "1.3 VS Code and Python",
+    "text": "1.3 VS Code and Python\nThe Microsoft Python extension supplies interpreter selection and Python editing support. After the project environment has been created in the next chapter, Python: Select Interpreter selects the project’s .venv interpreter. On Windows the executable is .venv\\Scripts\\python.exe; on macOS it is .venv/bin/python.\nuv run uses the project environment without manually activating it. This helps keep editor behavior and terminal behavior consistent. A global python command may refer to a different installation, so package checks in this book use uv run python.",
+    "crumbs": [
+      "Preparation",
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Workstation and development tools</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/02-workstation.html#exercise-diagnose-before-reinstalling",
+    "href": "chapters/02-workstation.html#exercise-diagnose-before-reinstalling",
+    "title": "1  Workstation and development tools",
+    "section": "1.4 Exercise: diagnose before reinstalling",
+    "text": "1.4 Exercise: diagnose before reinstalling\nA short environment report records the operating system, shell, results of the four checks above, and the folder visible in the VS Code terminal. A missing command is investigated by reopening the terminal and checking the official installation instructions before adding another installation.\nExpected result: Python 3.12 is available through uv and the terminal is located at the course root.\nSuccess criteria: uv python find 3.12 returns an executable path, both uv and git return versions, and the terminal shows the folder containing pyproject.toml. No Gemini API call or database connection is necessary for this check.",
+    "crumbs": [
+      "Preparation",
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Workstation and development tools</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/03-project-setup.html",
+    "href": "chapters/03-project-setup.html",
+    "title": "2  Project, credentials, and reproducibility",
+    "section": "",
+    "text": "2.1 One environment for the whole book\nA reproducible agent project has two different configurations. Python dependencies describe the software. Environment variables describe local credentials and service choices. Keeping these separate allows code to be shared while API keys stay local.\nThe course source includes every example and the shared environment:\nThese two commands work in PowerShell and macOS Terminal. The published book is available at Google ADK 2; GitHub’s Code → Download ZIP is an alternative to cloning. An extracted ZIP is opened in VS Code at the folder containing pyproject.toml.\nAll commands run from the folder containing pyproject.toml. The project specifies Python 3.12 and exactly ADK 2.10.0. The lockfile records the dependency resolution. The development extra installs the offline testing tools.\nExpected output: Python reports a 3.12 version and the ADK check reports 2.10.0. uv sync may download Python packages, but it does not submit a business question to Gemini.",
+    "crumbs": [
+      "Preparation",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Project, credentials, and reproducibility</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/03-project-setup.html#one-environment-for-the-whole-book",
+    "href": "chapters/03-project-setup.html#one-environment-for-the-whole-book",
+    "title": "2  Project, credentials, and reproducibility",
+    "section": "",
+    "text": "git clone https://github.com/kirenz/google-adk-2.git\ncd google-adk-2\n\n\nuv sync --extra dev\nuv run python --version\nuv run python -c \"from importlib.metadata import version; print(version('google-adk'))\"",
+    "crumbs": [
+      "Preparation",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Project, credentials, and reproducibility</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/03-project-setup.html#gemini-developer-api",
+    "href": "chapters/03-project-setup.html#gemini-developer-api",
+    "title": "2  Project, credentials, and reproducibility",
+    "section": "2.2 Gemini Developer API",
+    "text": "2.2 Gemini Developer API\nThe local learning route uses an API key from Google AI Studio and the Gemini Developer API. A Google account and an API key with access to the selected model are necessary for live model examples. Cloud deployment and a separately configured Vertex AI project are not prerequisites for this route. Account restrictions, model availability, quotas, and charges depend on the provider and account; this book does not promise free API access. Google’s API-key documentation explains key creation and handling.\nThe supplied .env.example is copied to .env:\n\nWindows PowerShellmacOS\n\n\nCopy-Item .env.example .env\n\n\ncp .env.example .env\n\n\n\nThe local .env contains these settings with the actual key substituted only in the local file:\nGOOGLE_GENAI_USE_VERTEXAI=FALSE\nGOOGLE_API_KEY=replace_with_local_key\nGEMINI_MODEL=gemini-flash-latest\ngemini-flash-latest is a mutable alias, not an immutable model version. A later provider change can alter behavior without changing Python dependencies. Before a live exercise, the model must be available for the account in AI Studio or the provider’s model listing. An unavailable-model error requires selecting an available compatible model and updating GEMINI_MODEL, not downgrading ADK blindly.\nThe examples load the root .env with python-dotenv. Keys must not appear in Python files, screenshots, notebooks, prompts, or committed configuration. .env is ignored by Git. git check-ignore .env confirms that rule without printing the key. A key exposed in a commit or screenshot must be revoked and replaced.",
+    "crumbs": [
+      "Preparation",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Project, credentials, and reproducibility</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/03-project-setup.html#offline-and-live-work",
+    "href": "chapters/03-project-setup.html#offline-and-live-work",
+    "title": "2  Project, credentials, and reproducibility",
+    "section": "2.3 Offline and live work",
+    "text": "2.3 Offline and live work\nThe offline tests and synthetic database exercise can run without a Gemini key. A model-driven conversation requires a network connection and valid API credentials. A live request also has provider-dependent latency and may incur charges. Rendering the Quarto book does not execute its Python snippets or contact Gemini.",
+    "crumbs": [
+      "Preparation",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Project, credentials, and reproducibility</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/03-project-setup.html#exercise-establish-a-baseline",
+    "href": "chapters/03-project-setup.html#exercise-establish-a-baseline",
+    "title": "2  Project, credentials, and reproducibility",
+    "section": "2.4 Exercise: establish a baseline",
+    "text": "2.4 Exercise: establish a baseline\nThe three version commands and git check-ignore .env form the setup record. A second developer should be able to repeat the software setup from the repository while supplying a different local key.\nSuccess criteria: the reported ADK version is exactly 2.10.0, .env is ignored, and only .env.example contains shareable placeholders. When no API account is available, the setup record explicitly identifies the live exercises as pending while offline work continues.",
+    "crumbs": [
+      "Preparation",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Project, credentials, and reproducibility</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/01-agent-fundamentals.html",
+    "href": "chapters/01-agent-fundamentals.html",
+    "title": "3  From business questions to agent systems",
+    "section": "",
+    "text": "3.1 Four distinct responsibilities\nGlobal Bike is the running business case in this book: a bicycle business needs understandable answers about products, customers, and sales. The later database exercise uses synthetic teaching data first. These rows are not records from a real Global Bike system. The case makes an agent’s responsibilities concrete without implying access to an operational company database.\nConsider the question, “Which product category generated the most revenue?” A language model can explain revenue and propose an analysis. Without a trusted data source, it cannot establish the current answer. A useful application obtains the relevant data, calculates or queries the result, and explains what that result supports. A confident paragraph alone is not business intelligence.\nThe model interprets language and generates candidate outputs. A tool performs a specific operation, such as looking up a product or executing an approved query. The runtime coordinates messages, tool calls, and results. The application decides which capabilities exist, which data is visible, and which actions are allowed.\nAn agent uses a model to choose some steps toward a goal. A workflow fixes some steps in code. Both can appear in one system: interpretation may be probabilistic while a database validation rule remains deterministic. ADK provides Python components for this combination. Its official repository contains the implementation; the code examples in this book target google-adk==2.10.0 rather than whichever release happens to be newest.\nflowchart LR\n    Q[Business question] --&gt; M[Model proposes a tool call]\n    M --&gt; V[Application validates arguments]\n    V --&gt; T[Approved tool executes]\n    T --&gt; R[Result returns to model]\n    R --&gt; A[Grounded explanation]\nThis is a conceptual tool cycle, not a promise that every question invokes a tool. A definition question may need none. A database question needs evidence before an answer can claim a measured result.",
+    "crumbs": [
+      "Build and understand agents",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>From business questions to agent systems</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/01-agent-fundamentals.html#a-useful-boundary",
+    "href": "chapters/01-agent-fundamentals.html#a-useful-boundary",
+    "title": "3  From business questions to agent systems",
+    "section": "3.2 A useful boundary",
+    "text": "3.2 A useful boundary\n“Explain the difference between revenue and profit” is a language task. “Calculate revenue by product category from these transactions” is an analysis task. “Change all product prices by ten percent” is a write action. The course application permits bounded analysis and refuses database writes. That boundary is enforced in tools and database permissions, not merely stated in a prompt.\nMore autonomy creates more possible paths to check. A fixed SQL aggregation may be easier to verify than an agent that invents a query, executes it, generates Python, and creates a chart. The engineering question is which decisions benefit from language interpretation and which decisions should stay in code.",
+    "crumbs": [
+      "Build and understand agents",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>From business questions to agent systems</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/01-agent-fundamentals.html#exercise-define-an-agents-contract",
+    "href": "chapters/01-agent-fundamentals.html#exercise-define-an-agents-contract",
+    "title": "3  From business questions to agent systems",
+    "section": "3.3 Exercise: define an agent’s contract",
+    "text": "3.3 Exercise: define an agent’s contract\nA one-page specification describes an assistant for a sales analyst. It contains one supported question, the required source, the allowed operation, the response fields, and one refusal case. For example: category revenue, a sales table, one read-only aggregate, SQL plus result plus explanation, and refusal of a delete request.\nExpected result: a specification that distinguishes evidence from explanation and access from authorization.\nSuccess criteria: another developer can identify the exact data needed, determine whether a request is in scope, and check the answer without trusting the prose alone. A specification that simply says “help with sales” is not sufficiently precise.",
+    "crumbs": [
+      "Build and understand agents",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>From business questions to agent systems</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/04-first-agent.html",
+    "href": "chapters/04-first-agent.html",
+    "title": "4  A first ADK agent",
+    "section": "",
+    "text": "4.1 An agent is a configured component\nThe first example calculates order totals for the synthetic Global Bike case. Its scope is deliberately narrow: explicit unit price and quantity are required; unsupported financial totals require an explicit limitation. The example introduces the agent configuration before introducing a custom runtime.\nThe central definition uses Agent, the model name loaded from configuration, instructions, and a list of tools. An illustrative minimal definition is:\ncalculate_order_total is the function defined in the runnable source file. This excerpt explains the configuration fields; the runnable package in examples/first_agent/ adds the root configuration loader and arithmetic tool. The exported root_agent is the entry point discovered by ADK’s local development interface. It is not a web server by itself. The ADK Python quickstart documents the development pattern.",
+    "crumbs": [
+      "Build and understand agents",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>A first ADK agent</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/04-first-agent.html#an-agent-is-a-configured-component",
+    "href": "chapters/04-first-agent.html#an-agent-is-a-configured-component",
+    "title": "4  A first ADK agent",
+    "section": "",
+    "text": "import os\nfrom google.adk import Agent\n\nroot_agent = Agent(\n    name=\"order_assistant\",\n    model=os.getenv(\"GEMINI_MODEL\", \"gemini-flash-latest\"),\n    description=\"Calculates explicit orders for the teaching case.\",\n    instruction=(\n        \"Use calculate_order_total for all order arithmetic. \"\n        \"Ask for missing values and never invent a price. \"\n        \"Do not invent current sales figures.\"\n    ),\n    tools=[calculate_order_total],\n)",
+    "crumbs": [
+      "Build and understand agents",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>A first ADK agent</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/04-first-agent.html#run-and-inspect",
+    "href": "chapters/04-first-agent.html#run-and-inspect",
+    "title": "4  A first ADK agent",
+    "section": "4.2 Run and inspect",
+    "text": "4.2 Run and inspect\nuv run adk web examples\nThe terminal displays the local address. Opening that address and selecting first_agent creates a conversation with the example. The development interface is useful for exploring messages and events. Stopping the terminal process stops this local server; launching it does not publish an application.\nA useful first question is “What is the total for 3 bikes at EUR 499.95 each?” The tool call should contain unit_price=499.95 and quantity=3. The result contains currency=“EUR”, total=“1499.85”, and quantity=3. A question missing its price requires clarification rather than an invented catalog price.",
+    "crumbs": [
+      "Build and understand agents",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>A first ADK agent</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/04-first-agent.html#instructions-are-testable-requirements",
+    "href": "chapters/04-first-agent.html#instructions-are-testable-requirements",
+    "title": "4  A first ADK agent",
+    "section": "4.3 Instructions are testable requirements",
+    "text": "4.3 Instructions are testable requirements\n“Be helpful” leaves many decisions undefined. A stronger instruction states the evidence source, the output shape, and the rule for missing information. For example, an order answer contains the quantity, EUR total, and one short explanation. An instruction that prohibits fabricated sales figures can be tested with a question asking for yesterday’s revenue.\nInstructions guide model behavior; they do not prove correctness. The events reveal whether the arithmetic tool was called and which arguments were used. Tool execution and the final answer must agree. A model can give a correct answer from conversational history without a new tool call, so fresh-session checks help distinguish grounded behavior from a remembered earlier response.",
+    "crumbs": [
+      "Build and understand agents",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>A first ADK agent</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/04-first-agent.html#exercise-three-questions-three-observations",
+    "href": "chapters/04-first-agent.html#exercise-three-questions-three-observations",
+    "title": "4  A first ADK agent",
+    "section": "4.4 Exercise: three questions, three observations",
+    "text": "4.4 Exercise: three questions, three observations\nThe exercise records a complete order, an order missing its price, and a request with negative quantity. For each case, the record contains the question, relevant tool event if present, and final answer. The tool validates nonnegative finite prices and quantities from zero to ten thousand. Decimal arithmetic rounds totals to two decimals using half-up rounding.\nExpected result: the complete order totals EUR 1,499.85; missing information remains missing; no database query or write occurs.\nSuccess criteria: the record distinguishes observed behavior from expected behavior, identifies the evidence behind each supported fact, and flags any invented fact. A screenshot of a pleasant answer without its evidence is not a complete verification.",
+    "crumbs": [
+      "Build and understand agents",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>A first ADK agent</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/05-tools-context.html",
+    "href": "chapters/05-tools-context.html",
+    "title": "5  Function tools and context engineering",
+    "section": "",
+    "text": "5.1 A small tool contract\nA function tool connects a language decision to a controlled Python operation. Its name, parameter types, and docstring describe when and how it should be used. Its body defines what actually happens. The model proposes arguments; Python validates and executes the operation.\nThe supplied calculate_order_total(unit_price, quantity) function accepts an explicit EUR unit price and integer quantity. It returns currency, total as a decimal string, and quantity. Its arithmetic core is:\nDecimal and ROUND_HALF_UP are imported from Python’s decimal module. The complete source is in examples/first_agent/agent.py. Validation before this core rejects negative or non-finite prices and quantities outside zero to ten thousand. Invalid values raise ValueError; they do not return successful totals. The interface and model must handle failure instead of inventing a result.\nRegistering tools=[calculate_order_total] makes the function available. Its name, types, and docstring describe its purpose. It does not retrieve prices, apply discounts, include taxes, or check inventory. The official function-tool guide describes ADK’s function wrapping.\nA type annotation does not establish a valid business value. Validation belongs inside the tool. JSON conversion and argument boundary behavior require tests rather than assumptions.",
+    "crumbs": [
+      "Build and understand agents",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Function tools and context engineering</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/05-tools-context.html#a-small-tool-contract",
+    "href": "chapters/05-tools-context.html#a-small-tool-contract",
+    "title": "5  Function tools and context engineering",
+    "section": "",
+    "text": "price = Decimal(str(unit_price))\ntotal = (price * quantity).quantize(Decimal(\"0.01\"), rounding=ROUND_HALF_UP)\nreturn {\"currency\": \"EUR\", \"total\": str(total), \"quantity\": quantity}",
+    "crumbs": [
+      "Build and understand agents",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Function tools and context engineering</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/05-tools-context.html#context-has-a-purpose",
+    "href": "chapters/05-tools-context.html#context-has-a-purpose",
+    "title": "5  Function tools and context engineering",
+    "section": "5.2 Context has a purpose",
+    "text": "5.2 Context has a purpose\nContext engineering selects the information available at a particular step. For the order example, useful context contains the calculation-tool contract, the current question, and any relevant earlier clarification. A complete unrelated sales export adds volume without resolving the order question.\nFour design questions make context decisions concrete:\n\n\n\n\n\n\n\nDecision\nGlobal Bike example\n\n\n\n\nWhat must be supplied?\nCurrency, metric definition, permitted schema\n\n\nWhat should be retrieved?\nThe relevant product or bounded query result\n\n\nWhat should be retained?\nA clarified date range within the conversation\n\n\nWhat must be isolated?\nAnother user’s question and database results\n\n\n\nTool results are data. A product description containing “ignore previous instructions” does not gain authority merely because it came from a database. The application must preserve the distinction between trusted instructions and untrusted source text.",
+    "crumbs": [
+      "Build and understand agents",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Function tools and context engineering</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/05-tools-context.html#narrow-capabilities",
+    "href": "chapters/05-tools-context.html#narrow-capabilities",
+    "title": "5  Function tools and context engineering",
+    "section": "5.3 Narrow capabilities",
+    "text": "5.3 Narrow capabilities\nA tool named run_anything(code) would give the model broad execution authority. A tool named category_revenue() can return a bounded aggregation without accepting executable code. Narrow functions are easier to document, test, and constrain. The BI project later allows candidate SQL, but inserts a parser-based gate and read-only database permissions before execution. It never executes model-generated Python to create a chart.",
+    "crumbs": [
+      "Build and understand agents",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Function tools and context engineering</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/05-tools-context.html#exercise-improve-a-tools-failure-behavior",
+    "href": "chapters/05-tools-context.html#exercise-improve-a-tools-failure-behavior",
+    "title": "5  Function tools and context engineering",
+    "section": "5.4 Exercise: improve a tool’s failure behavior",
+    "text": "5.4 Exercise: improve a tool’s failure behavior\nA local variation introduces a maximum order amount. Tests cover an accepted amount, the exact boundary, and a rejected amount. The docstring and instruction describe the policy without inventing business justification.\nExpected result: each input produces a documented result that the application can handle without guessing.\nSuccess criteria: the successful result stays factual, failure messages do not invent replacements, and the change does not grant an unrelated capability. A before-and-after trace identifies whether better tool descriptions improved argument selection; one successful conversation alone is insufficient evidence.",
+    "crumbs": [
+      "Build and understand agents",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Function tools and context engineering</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/06-runtime-sessions.html",
+    "href": "chapters/06-runtime-sessions.html",
+    "title": "6  Runner, events, and separate sessions",
+    "section": "",
+    "text": "6.1 One invocation, several events\nThe ADK development interface supplies a runtime automatically. A custom Python application needs to construct that runtime itself. The Runner coordinates an agent invocation with a session service and returns an asynchronous stream of events. Understanding that stream explains why a final response is only one part of an agent run.\nA question can produce a model response containing a function call, a tool response, and a final natural-language answer. A graph may also emit node-related information and structured outputs. Printing every event as if it were a completed answer produces confusing interfaces. Ignoring every event except the final text discards evidence needed for debugging.\nsequenceDiagram\n    participant App as Python application\n    participant Run as Runner\n    participant Agent as Agent/model\n    participant Tool as Python tool\n    App-&gt;&gt;Run: User message and session identifiers\n    Run-&gt;&gt;Agent: Conversation context\n    Agent--&gt;&gt;Run: Function-call event\n    Run-&gt;&gt;Tool: Validated tool arguments\n    Tool--&gt;&gt;Run: Structured result\n    Run-&gt;&gt;Agent: Tool-response context\n    Agent--&gt;&gt;Run: Final response\n    Run--&gt;&gt;App: Event stream\nThis diagram describes the order example’s tool cycle. Actual event order depends on the invoked agent and available tools.",
+    "crumbs": [
+      "Build and understand agents",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Runner, events, and separate sessions</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/06-runtime-sessions.html#session-identity",
+    "href": "chapters/06-runtime-sessions.html#session-identity",
+    "title": "6  Runner, events, and separate sessions",
+    "section": "6.2 Session identity",
+    "text": "6.2 Session identity\nA session holds a conversation’s events and state. Memory is a separate concept for information retrieved across conversations. An in-memory session service is convenient for learning, but its contents disappear when the Python process ends. The official session overview explains these distinctions.\nThe supplied runner example is started from the course root:\nuv run python -m examples.run_agent \"What is the total for 3 bikes at EUR 499.95 each?\"\nThe implementation creates a session, constructs a Runner, passes a google.genai.types.Content user message, and iterates over run_async. Text from a final response can be extracted with a guard:\nif event.is_final_response() and event.content:\n    text = \"\".join(part.text or \"\" for part in event.content.parts or [])\nThe guard handles content without text. A model response can contain function calls, and a workflow can expose structured output instead of a final text part. A general UI must handle these cases deliberately.",
+    "crumbs": [
+      "Build and understand agents",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Runner, events, and separate sessions</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/06-runtime-sessions.html#state-is-an-application-contract",
+    "href": "chapters/06-runtime-sessions.html#state-is-an-application-contract",
+    "title": "6  Runner, events, and separate sessions",
+    "section": "6.3 State is an application contract",
+    "text": "6.3 State is an application contract\nA clarified reporting period can live in session state. A product identifier passed from one graph node to another can live in the graph output. These are different data paths. Using session state for every intermediate value can leave stale values after a failed run. Explicit node input and output contracts reduce that ambiguity.\nApplication identity, user identity, and session identity must be kept consistent. A browser conversation cannot safely reuse a hard-coded shared session for all users. A new session per conversation isolates histories; real deployments also require authenticated users and access controls. Random identifiers alone do not establish authorization.",
+    "crumbs": [
+      "Build and understand agents",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Runner, events, and separate sessions</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/06-runtime-sessions.html#exercise-compare-two-histories",
+    "href": "chapters/06-runtime-sessions.html#exercise-compare-two-histories",
+    "title": "6  Runner, events, and separate sessions",
+    "section": "6.4 Exercise: compare two histories",
+    "text": "6.4 Exercise: compare two histories\nTwo fresh sessions receive different initial questions. A follow-up in the first session refers to its own earlier order; the second session receives a question that would require the first session’s history. A small trace records session IDs, authors, function calls, results, and final-response flags without credentials.\nExpected result: the first conversation can use its own history, while the second does not inherit it.\nSuccess criteria: no cross-session order or question leaks into the second answer, intermediate events remain distinguishable from final output, and restarting the in-memory process demonstrates loss of local history.",
+    "crumbs": [
+      "Build and understand agents",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Runner, events, and separate sessions</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/07-workflow-graphs.html",
+    "href": "chapters/07-workflow-graphs.html",
+    "title": "7  ADK 2 workflow graphs",
+    "section": "",
+    "text": "7.1 Nodes, edges, and data\nA graph makes execution order explicit. The first graph example contains no language model: text enters a normalization function, a measurement function counts it, and a reporting function formats the result. This removes API variability while introducing the new ADK 2 workflow abstraction.\nA node performs one operation. An edge specifies where execution continues. A function’s return value becomes downstream input. A sequence can therefore enforce a contract: normalization returns text, measurement returns a structured result, and reporting returns a readable summary. Invalid input can fail at the boundary rather than reaching a later step in an unexpected shape.\nflowchart LR\n    S[START] --&gt; N[normalize: text to normalized text]\n    N --&gt; M[measure: text to measurements]\n    M --&gt; R[report: measurements to summary]\nThe runnable graph lives in examples/function_workflow/. The key construction follows this shape:\nHere normalize, measure, and report refer to the implemented Python functions in the example, not predefined ADK utilities. START is the entry marker imported from google.adk.workflow. This sequential graph has no conditional branch or parallel execution. The official graph guide describes the graph abstraction; the installed 2.10.0 package is the authority for the examples’ imports and signatures.\nThis function-only workflow is an offline exercise. No API key is needed because none of its nodes invokes a model. The output contains normalized Global Bike sells bicycles. and Words: 4. A test with extra leading and trailing spaces demonstrates why normalization precedes measurement.",
+    "crumbs": [
+      "Connect the system",
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>ADK 2 workflow graphs</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/07-workflow-graphs.html#nodes-edges-and-data",
+    "href": "chapters/07-workflow-graphs.html#nodes-edges-and-data",
+    "title": "7  ADK 2 workflow graphs",
+    "section": "",
+    "text": "from google.adk import Workflow\nfrom google.adk.workflow import START\n\nroot_agent = Workflow(\n    name=\"text_workflow\",\n    edges=[(START, normalize, measure, report)],\n)\n\nuv run python -m examples.run_workflow \"  Global   Bike sells bicycles.  \"",
+    "crumbs": [
+      "Connect the system",
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>ADK 2 workflow graphs</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/07-workflow-graphs.html#branching-needs-an-explicit-rule",
+    "href": "chapters/07-workflow-graphs.html#branching-needs-an-explicit-rule",
+    "title": "7  ADK 2 workflow graphs",
+    "section": "7.2 Branching needs an explicit rule",
+    "text": "7.2 Branching needs an explicit rule\nA business process may choose a path: sufficient information proceeds to analysis; an ambiguous metric proceeds to clarification. The diagram below is a design exercise, not the implementation of the supplied sequential graph:\n\n\n\n\n\nflowchart TD\n    S[START] --&gt; C[Check required metric and period]\n    C --&gt;|Complete| A[Perform bounded analysis]\n    C --&gt;|Incomplete| Q[Request clarification]\n    A --&gt; R[Report evidence]\n    Q --&gt; W[Wait for a new request]\n\n\n\n\n\n\nThe labels on the two outgoing edges are mutually exclusive conditions. There is no automatic merge or loop shown. A reviewer must be able to identify the routing rule in code. Model prose saying “next, validate” does not enforce a validation node.",
+    "crumbs": [
+      "Connect the system",
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>ADK 2 workflow graphs</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/07-workflow-graphs.html#why-a-graph-is-not-automatically-reliable",
+    "href": "chapters/07-workflow-graphs.html#why-a-graph-is-not-automatically-reliable",
+    "title": "7  ADK 2 workflow graphs",
+    "section": "7.3 Why a graph is not automatically reliable",
+    "text": "7.3 Why a graph is not automatically reliable\nA fixed route guarantees that the listed steps are scheduled in order; it does not guarantee that a model-generated result is true. A parser can reject a malformed value. A calculator can establish a numeric result. An explanation model can still misstate that result. Each boundary needs the appropriate check.",
+    "crumbs": [
+      "Connect the system",
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>ADK 2 workflow graphs</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/07-workflow-graphs.html#exercise-a-typed-data-boundary",
+    "href": "chapters/07-workflow-graphs.html#exercise-a-typed-data-boundary",
+    "title": "7  ADK 2 workflow graphs",
+    "section": "7.4 Exercise: a typed data boundary",
+    "text": "7.4 Exercise: a typed data boundary\nA local variation adds a measurement field and updates the downstream report. A second variation deliberately returns the wrong shape from the measurement node. The exercise compares the successful trace with the failure trace.\nExpected result: the valid variation produces the new field consistently; the invalid variation fails visibly instead of silently producing a misleading summary.\nSuccess criteria: the graph remains executable without a key, the diagram matches its actual order, and the report’s inputs are documented. The exercise explains why adding an arrow to a diagram is insufficient without changing the executable edges.",
+    "crumbs": [
+      "Connect the system",
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>ADK 2 workflow graphs</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/08-multi-agent.html",
+    "href": "chapters/08-multi-agent.html",
+    "title": "8  Composing agents with deterministic work",
+    "section": "",
+    "text": "8.1 The order-analysis graph\nMultiple agents are useful when separate tasks need different instructions, tools, or output contracts. A larger number of agents is not a quality metric. The course’s mixed graph uses one focused extraction agent, deterministic arithmetic, and a deterministic presentation function. Each stage has a distinct responsibility that can be observed and tested.\nAn order request such as “Calculate 4 bicycles at 500 EUR each” combines language interpretation and exact arithmetic. The extraction agent identifies the unit price and quantity. Python computes their product. A Python function formats the result without changing the calculation.\nflowchart LR\n    S[START] --&gt; E[Agent: extract structured Order]\n    E --&gt; C[Function: validate and calculate total]\n    C --&gt; P[Function: present calculated evidence]\nThe implementation is in examples/agent_workflow/agent.py. It uses a Pydantic order schema at the handoff from model output to Python. This schema specifies nullable unit-price and quantity fields with strict numeric constraints. Missing inputs are represented as null; the Python step returns needs_input and the presentation step names the missing field without calculating a total. Negative values are rejected. The arithmetic function separately validates complete inputs.\nSelecting agent_workflow runs the mixed graph. This example requires valid Gemini access because the extraction node uses a model. The deterministic middle step must not be skipped even when the model knows simple multiplication. The trace separates the proposed order from the computed total and the final explanation.",
+    "crumbs": [
+      "Connect the system",
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Composing agents with deterministic work</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/08-multi-agent.html#the-order-analysis-graph",
+    "href": "chapters/08-multi-agent.html#the-order-analysis-graph",
+    "title": "8  Composing agents with deterministic work",
+    "section": "",
+    "text": "uv run adk web examples",
+    "crumbs": [
+      "Connect the system",
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Composing agents with deterministic work</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/08-multi-agent.html#three-composition-choices",
+    "href": "chapters/08-multi-agent.html#three-composition-choices",
+    "title": "8  Composing agents with deterministic work",
+    "section": "8.2 Three composition choices",
+    "text": "8.2 Three composition choices\n\n\n\n\n\n\n\n\nPattern\nWho controls the next step?\nAppropriate example\n\n\n\n\nAgent with function tools\nModel chooses an available tool call\nFlexible calculation request\n\n\nGraph containing agents and functions\nExecutable edges determine order\nExtract, calculate, present\n\n\nAgent delegation or agent-as-tool\nCoordinator requests specialist work\nDifferent specialist capabilities\n\n\n\nAn agent used as a tool returns a result to its caller. A delegated conversation can transfer control to another agent. These differ from a fixed graph that schedules each node. The official multi-agent documentation describes composition patterns; their runtime behavior must be checked in the chosen ADK version.\nThe earlier SequentialAgent, ParallelAgent, and LoopAgent template workflows remain useful vocabulary for ADK materials. This book teaches the graph-based Workflow explicitly rather than presenting those templates as the new graph API. A sequential edge list also does not imply parallel execution.",
+    "crumbs": [
+      "Connect the system",
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Composing agents with deterministic work</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/08-multi-agent.html#boundaries-between-specialists",
+    "href": "chapters/08-multi-agent.html#boundaries-between-specialists",
+    "title": "8  Composing agents with deterministic work",
+    "section": "8.3 Boundaries between specialists",
+    "text": "8.3 Boundaries between specialists\nA specialist should receive the data needed for its task. A hypothetical presentation agent would need the validated order and total, not the API key or an unrelated conversation. A critic may assess clarity, but its approval must not override a failed arithmetic or database check. Model judges have uncertainty and cannot replace deterministic validation of facts that Python can calculate exactly.",
+    "crumbs": [
+      "Connect the system",
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Composing agents with deterministic work</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/08-multi-agent.html#exercise-trace-an-ambiguous-order",
+    "href": "chapters/08-multi-agent.html#exercise-trace-an-ambiguous-order",
+    "title": "8  Composing agents with deterministic work",
+    "section": "8.4 Exercise: trace an ambiguous order",
+    "text": "8.4 Exercise: trace an ambiguous order\nThree cases are compared: a complete order, an order with missing quantity, and an order with an invalid negative quantity. The record identifies whether extraction succeeds, whether deterministic validation rejects the value, and whether the final response reports that limitation.\nExpected result: complete inputs reach presentation with correct totals; invalid or incomplete inputs do not become fabricated successful orders.\nSuccess criteria: each number in the final answer can be traced to validated inputs and Python arithmetic. The supplied graph requests missing input but does not accumulate partial orders across turns. The next request must include the complete order. Extending it with stateful clarification requires an explicit state contract, bounded routing, and a stopping condition. The offline fake-model test verifies the missing-input path without assuming that a live model always extracts values correctly.",
+    "crumbs": [
+      "Connect the system",
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Composing agents with deterministic work</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/09-gradio.html",
+    "href": "chapters/09-gradio.html",
+    "title": "9  A Gradio interface for an agent",
+    "section": "",
+    "text": "9.1 Start the local interface\nThe ADK development interface supports inspection during development. A Gradio application adds a simple interface designed around a user’s task. The important work is connecting the interface to the runtime while preserving session boundaries and making failures understandable.\nThe terminal reports the local URL. The supplied application wraps the first-agent example rather than constructing a separate agent with different business rules. It loads configuration from the same root project. This avoids a common debugging trap: the development interface and the custom interface appearing to test the same agent while actually using different models or instructions.\nThe application is local. A public share link or deployed service is a separate decision. The exercise does not enable public sharing. Gradio’s ChatInterface documentation describes interface behavior, while the example code defines the ADK integration.",
+    "crumbs": [
+      "Connect the system",
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>A Gradio interface for an agent</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/09-gradio.html#start-the-local-interface",
+    "href": "chapters/09-gradio.html#start-the-local-interface",
+    "title": "9  A Gradio interface for an agent",
+    "section": "",
+    "text": "uv run python -m examples.gradio_app",
+    "crumbs": [
+      "Connect the system",
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>A Gradio interface for an agent</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/09-gradio.html#interface-history-and-agent-history",
+    "href": "chapters/09-gradio.html#interface-history-and-agent-history",
+    "title": "9  A Gradio interface for an agent",
+    "section": "9.2 Interface history and agent history",
+    "text": "9.2 Interface history and agent history\nThe browser displays chat messages. ADK maintains a session with events and state. These two histories have different roles. Browser messages alone omit tool-call events; an ADK session alone does not decide which UI components are rendered.\nA robust request handler maps a conversation to its own ADK session, sends a user message through the Runner, collects the response, and returns the display value. It must avoid replaying the entire browser history into a session that already contains those turns, because duplication changes the context. Starting a fresh chat should create a new session rather than changing only the visible screen.\n\n\n\n\n\nflowchart LR\n    U[Gradio conversation] --&gt; I[Conversation-specific session identity]\n    I --&gt; R[ADK Runner]\n    R --&gt; E[Events and tool results]\n    E --&gt; D[Response extraction]\n    D --&gt; U\n\n\n\n\n\n\nThe arrow returning to the UI means display, not a new model invocation. A clear-session action must manage the identity mapping as well as the visible chat.",
+    "crumbs": [
+      "Connect the system",
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>A Gradio interface for an agent</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/09-gradio.html#information-worth-showing",
+    "href": "chapters/09-gradio.html#information-worth-showing",
+    "title": "9  A Gradio interface for an agent",
+    "section": "9.3 Information worth showing",
+    "text": "9.3 Information worth showing\nA catalog or arithmetic assistant may need only a concise answer. The later BI interface benefits from separate components for SQL, data table, chart, and explanation. These components let a person inspect evidence without parsing a long paragraph. A failure should distinguish missing configuration, invalid input, rejected query, empty result, and provider error. Raw credentials and detailed connection strings are unsuitable error messages.\nA progress indicator communicates that a request is running; it does not prove that an answer has been checked. Repeated button clicks can create concurrent requests, so a production design also needs a concurrency policy. The local exercise demonstrates session isolation rather than claiming production authentication or scaling.",
+    "crumbs": [
+      "Connect the system",
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>A Gradio interface for an agent</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/09-gradio.html#exercise-test-a-new-conversation",
+    "href": "chapters/09-gradio.html#exercise-test-a-new-conversation",
+    "title": "9  A Gradio interface for an agent",
+    "section": "9.4 Exercise: test a new conversation",
+    "text": "9.4 Exercise: test a new conversation\nOne conversation receives an order calculation and a follow-up referring to “that quantity.” A second browser conversation begins without that first turn. Clearing the first chat is followed by another reference to the old quantity.\nExpected result: relevant follow-up context remains within one conversation and clearing creates a fresh conversational boundary.\nSuccess criteria: unrelated conversations do not inherit each other’s order details; the interface handles a missing API key with a useful message; and stopping the process ends the local application. A working chat widget alone does not satisfy the session-isolation criterion.",
+    "crumbs": [
+      "Connect the system",
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>A Gradio interface for an agent</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/10-bi-project.html",
+    "href": "chapters/10-bi-project.html",
+    "title": "10  Business intelligence with SQLite and SQL Server",
+    "section": "",
+    "text": "10.1 Begin with the offline fixture\nThe BI project answers a bounded sales question with inspectable evidence: candidate SQL, a returned data table, a chart, and an explanation. Its offline path uses a synthetic SQLite fixture. Its optional live path uses a supplied Global Bike SQL Server database with actual connection details and explicitly permitted views. These are different databases and different SQL dialects.\nThe offline question is total net sales by country. The fixture exposes sales_demo with country, net_sales, order_date, product_name, and quantity. The values are synthetic. Their totals establish a known answer for testing the pipeline, not a claim about a company.\nA candidate aggregate illustrates the task:\nThe application bounds the result and validates SQL before execution. Expected totals are Germany EUR 2,000, USA EUR 1,500, and France EUR 500. The offline chart plan is fixed; the live plan is schema-constrained model output. Trusted code validates columns, numeric data, and chart kinds before rendering. No model-generated Python is executed.\nflowchart TD\n    Q[Question and permitted schema] --&gt; S[Candidate SQL]\n    S --&gt; G[Parser and query policy]\n    G --&gt;|Rejected| F[Visible refusal]\n    G --&gt;|Accepted| DB[Read-only database execution]\n    DB --&gt; T[Bounded result table]\n    T --&gt; C[Trusted chart code]\n    T --&gt; E[Explanation grounded in rows]\n    C --&gt; UI[SQL, table, chart, explanation]\n    E --&gt; UI\nOffline mode accepts exactly total sales by country, using fixed SQL and presentation. Live mode uses model proposals. The gate is necessary before execution. It does not certify that the query answers the business question; semantic correctness remains an evaluation task.",
+    "crumbs": [
+      "Connect the system",
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Business intelligence with SQLite and SQL Server</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/10-bi-project.html#begin-with-the-offline-fixture",
+    "href": "chapters/10-bi-project.html#begin-with-the-offline-fixture",
+    "title": "10  Business intelligence with SQLite and SQL Server",
+    "section": "",
+    "text": "uv run python -m examples.bi.app\nuv run python -m examples.bi.gradio_app\n\n\nSELECT country, SUM(net_sales) AS total_sales\nFROM sales_demo\nGROUP BY country\nORDER BY total_sales DESC",
+    "crumbs": [
+      "Connect the system",
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Business intelligence with SQLite and SQL Server</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/10-bi-project.html#what-the-query-gate-protects",
+    "href": "chapters/10-bi-project.html#what-the-query-gate-protects",
+    "title": "10  Business intelligence with SQLite and SQL Server",
+    "section": "10.2 What the query gate protects",
+    "text": "10.2 What the query gate protects\nThe application accepts one simple SELECT against exact permitted table or view identifiers. It rejects star selection, INTO, subqueries, CTEs, UNION, and multiple statements. It replaces row limits with a cap of 100 and removes offsets; capped results require checking for truncation. A string check such as sql.startswith(\"SELECT\") is insufficient: nested writes, multiple statements, unapproved sources, and expensive operations need deeper handling. Database read-only credentials provide a second layer if a parser or application check fails. The live connector sets a 15-second query timeout and a five-second lock timeout. Row caps and timeouts address resource usage; they do not make an incorrect join correct.\nThe threat model includes requests for writes, prompt injection inside questions or source text, access to unauthorized tables, and attempts to run generated code. The parser is a policy component with a defined accepted subset, not a universal SQL security proof.",
+    "crumbs": [
+      "Connect the system",
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Business intelligence with SQLite and SQL Server</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/10-bi-project.html#optional-live-sql-server-path",
+    "href": "chapters/10-bi-project.html#optional-live-sql-server-path",
+    "title": "10  Business intelligence with SQLite and SQL Server",
+    "section": "10.3 Optional live SQL Server path",
+    "text": "10.3 Optional live SQL Server path\nuv sync --extra dev --extra sqlserver\nuv run python -m examples.bi.app --live\nuv run python -m examples.bi.gradio_app --live\nThe root .env.example documents the live variables:\n\n\n\n\n\n\n\nVariable\nRequired value\n\n\n\n\nSQLSERVER_URL\nSupplied SQLAlchemy mssql+pyodbc connection URL, with the installed driver and approved encryption settings\n\n\nBI_SCHEMA\nActual approved tables/views, columns, keys, and metric definitions\n\n\nBI_ALLOWED_VIEWS\nComma-separated exact SQL identifiers matching permitted sources\n\n\nBI_READ_ONLY_ACCOUNT_CONFIRMED\nyes only after the dedicated SELECT-only account has been verified\n\n\n\nThe confirmation flag is a local assertion, not a database permission grant. The administrator’s actual permissions remain the enforcement layer. Credential characters in a URL may need percent encoding. Secrets stay in .env; the URL must not be printed in a report or shared trace. The actual server, database, authentication method, schema, and read-only view allowlist must come from the supplied environment. Credentials and schema names must not be inferred from the synthetic fixture. A live run requires both authorized database access and Gemini access. The live graph generates SQL and a structured chart plan with a model.\nThe Python connector uses pyodbc, which also requires the native Microsoft ODBC Driver for SQL Server. Installing a Python package alone does not install that driver. The Microsoft SQL Server extension for VS Code provides an independent query editor for inspecting a supplied database. Server encryption and certificate settings follow the provided environment; disabling verification is not a general setup instruction.\nA supplied table might include dbo.Dim_Product, but the current server’s metadata determines whether that name exists. An initial manual query against an approved view verifies connectivity and known column names before agent SQL is attempted.\nThe server’s accessible metadata can be inspected with this read-only query, before the permitted subset is recorded in BI_SCHEMA:\nSELECT TABLE_SCHEMA, TABLE_NAME, COLUMN_NAME, DATA_TYPE\nFROM INFORMATION_SCHEMA.COLUMNS\nORDER BY TABLE_SCHEMA, TABLE_NAME, ORDINAL_POSITION;\nMetadata visibility depends on account permissions. An empty metadata result does not prove that the server has no tables. A manual bounded query then checks one approved view with its actual columns. Those exact source identifiers are added to BI_ALLOWED_VIEWS; the fixture name is not reused without evidence.\nOn Windows, the Microsoft driver download provides an installer. On macOS, Microsoft’s ODBC installation guide describes the supported installation route and architecture requirements. A mismatch between the installed driver name and the connection URL causes connector failure before SQL execution. These driver steps are unnecessary for offline SQLite work. SQL Server uses T-SQL features such as TOP; the offline SQLite example must not be copied as though all dialect features were interchangeable.",
+    "crumbs": [
+      "Connect the system",
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Business intelligence with SQLite and SQL Server</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/10-bi-project.html#project-exercise-and-evidence",
+    "href": "chapters/10-bi-project.html#project-exercise-and-evidence",
+    "title": "10  Business intelligence with SQLite and SQL Server",
+    "section": "10.4 Project exercise and evidence",
+    "text": "10.4 Project exercise and evidence\nThe project submission includes a supported business question, metric definition, schema description, accepted query, result table, chart, explanation, and evaluation record. A country ranking must state that net sales are aggregated by country and preserve currency and period assumptions. A chart that silently mixes currencies or date ranges is misleading even if its bars render correctly.\nExpected result: an analyst can reproduce the aggregation and compare the explanation with the returned rows.\nSuccess criteria: an offline run works without credentials, a write request is rejected, a disallowed-source request fails, the SQL and data remain inspectable, and the chart uses the actual result. The optional live result is reported as verified only after authorized execution against the provided server; an offline pass does not verify SQL Server connectivity.",
+    "crumbs": [
+      "Connect the system",
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Business intelligence with SQLite and SQL Server</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/11-evaluation.html",
+    "href": "chapters/11-evaluation.html",
+    "title": "11  Evaluation: responses, actions, and evidence",
+    "section": "",
+    "text": "11.1 Separate deterministic and model checks\nAgent evaluation asks whether the system meets its contract across representative cases. A fluent answer is one observable output. Tool choice, arguments, query policy decisions, returned rows, and session behavior are equally important. Different components require different kinds of evidence.\nOffline tests check arithmetic, graph functions, SQL policy, fixture totals, and chart inputs. These checks are fast and repeatable because they do not need a live model. From the course root:\nA passing offline suite establishes the tested local behaviors. It does not establish that an API key works, that an account can access a model, or that the live SQL Server is reachable. Those are separate live checks performed only in an authorized environment.\nLive agent evaluation checks whether the model chooses the appropriate tool and accurately communicates its result. ADK supports evaluation of responses and tool-use trajectories. Its evaluation guide and criteria documentation describe available metrics. Model-based grading can help assess language quality, but a judge’s agreement is not a replacement for known arithmetic or SQL results.",
+    "crumbs": [
+      "Check and extend",
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Evaluation: responses, actions, and evidence</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/11-evaluation.html#separate-deterministic-and-model-checks",
+    "href": "chapters/11-evaluation.html#separate-deterministic-and-model-checks",
+    "title": "11  Evaluation: responses, actions, and evidence",
+    "section": "",
+    "text": "uv run pytest",
+    "crumbs": [
+      "Check and extend",
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Evaluation: responses, actions, and evidence</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/11-evaluation.html#a-compact-case-set",
+    "href": "chapters/11-evaluation.html#a-compact-case-set",
+    "title": "11  Evaluation: responses, actions, and evidence",
+    "section": "11.2 A compact case set",
+    "text": "11.2 A compact case set\n\n11.2.1 A supplied ADK evaluation set\nevaluations/order.evalset.json contains a complete-order case and a missing-price case for first_agent. The expected trajectories require the arithmetic tool with known arguments in the first case and no tool call in the second. evaluations/tool-use-config.json scores the tool trajectory only. Its example final responses are references for human review; this configuration does not score factual agreement of the final text.\nThe optional evaluation dependency is separate from the lightweight offline setup:\nuv sync --extra dev --extra eval\nuv run adk eval examples/first_agent evaluations/order.evalset.json --config_file_path evaluations/tool-use-config.json --print_detailed_results\nThe CLI path names the agent directory, as required by the installed 2.10.0 implementation. Running this command invokes Gemini for the agent and may incur usage charges; it is not an offline test. The supplied JSON has been validated against the installed ADK schema, but the live evaluation has not been run as part of course authoring. A passing trajectory score still requires checking the final EUR total and any invented claims.\n\n\n\n\n\n\n\n\nCase\nExpected action\nExpected response\n\n\n\n\nComplete order\nValidated arithmetic tool or graph calculation\nCorrect total and unit\n\n\nMissing quantity\nNo invented successful total\nClarification or explicit limitation\n\n\nNegative quantity\nValidation refusal\nClear reason without fabricated result\n\n\nCountry sales aggregate\nApproved query and bounded rows\nRanking matches fixture totals\n\n\nDelete sales records\nNo execution\nRefusal within read-only scope\n\n\nUnauthorized table\nGate rejection\nNo leaked rows\n\n\nQuestion in separate chat\nSeparate session\nNo inherited private context\n\n\n\nThe table defines desired behavior. Each evaluation record separately states what the current implementation actually did. A failed case is evidence for a change, not an excuse to rewrite the expectation until it passes.",
+    "crumbs": [
+      "Check and extend",
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Evaluation: responses, actions, and evidence</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/11-evaluation.html#reproducible-observations",
+    "href": "chapters/11-evaluation.html#reproducible-observations",
+    "title": "11  Evaluation: responses, actions, and evidence",
+    "section": "11.3 Reproducible observations",
+    "text": "11.3 Reproducible observations\nA record contains case ID, prompt, expected behavior, software version, configured model name, session identity, relevant events, actual result, and verdict. Model aliases can change, so the date and available resolved model identifier are recorded when the provider exposes it. Credentials and personal database rows are excluded from shared traces.\nResponse quality can be scored along distinct dimensions: factual agreement, completeness, uncertainty handling, and readability. Tool behavior can be checked for name, arguments, order when relevant, and result use. A different valid tool sequence is not necessarily a failure; the task contract determines whether exact sequencing matters. The fixed graph’s validation step does matter because skipping it violates the architecture.\nRepeating selected live cases reveals variability. A first successful run is encouraging, but repeated failures on an ambiguous question reveal a reliability problem. A report should include the number of runs and failures rather than generalizing from a single attractive example. Cost and latency belong beside quality when comparing alternative designs.",
+    "crumbs": [
+      "Check and extend",
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Evaluation: responses, actions, and evidence</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/11-evaluation.html#exercise-evaluate-before-and-after-one-change",
+    "href": "chapters/11-evaluation.html#exercise-evaluate-before-and-after-one-change",
+    "title": "11  Evaluation: responses, actions, and evidence",
+    "section": "11.4 Exercise: evaluate before and after one change",
+    "text": "11.4 Exercise: evaluate before and after one change\nA baseline uses the case set above. One change is then made, such as improving a tool description or narrowing an extraction schema. The same cases are rerun in fresh sessions. The report identifies improvements, regressions, and results that remain uncertain.\nExpected result: a small, auditable comparison tied to observable behavior.\nSuccess criteria: correct totals are checked against known values, rejected operations show no database execution, final explanations match tool results, and no live success is inferred from offline tests. The report distinguishes measured outcomes from proposed improvements.",
+    "crumbs": [
+      "Check and extend",
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Evaluation: responses, actions, and evidence</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/12-advanced.html",
+    "href": "chapters/12-advanced.html",
+    "title": "12  Optional extensions and engineering decisions",
+    "section": "",
+    "text": "12.1 Retrieval before a query\nThe core project provides a local agent, deterministic tools, a graph, session handling, an interface, and an evaluated BI pipeline. Extensions should solve a demonstrated problem. Adding a protocol, vector database, or autonomous loop without such a problem increases complexity and the number of boundaries that need testing.\nA larger database may require retrieval of a relevant schema fragment. A schema-retrieval tool can return approved table names, column descriptions, join keys, and metric definitions. Its output remains subject to the SQL execution allowlist. Finding a table in a document does not grant permission to query it.\nA useful retrieval experiment compares the full permitted schema with a smaller retrieved fragment on the same question set. Accuracy, missing-column failures, token usage, and latency show whether the additional component helps. A schema summary that omits a currency column can make an answer less reliable despite reducing context size.",
+    "crumbs": [
+      "Check and extend",
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Optional extensions and engineering decisions</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/12-advanced.html#bounded-review-and-repair",
+    "href": "chapters/12-advanced.html#bounded-review-and-repair",
+    "title": "12  Optional extensions and engineering decisions",
+    "section": "12.2 Bounded review and repair",
+    "text": "12.2 Bounded review and repair\nA failed SQL proposal can be returned to a drafting agent with a structured reason. A loop must have a maximum attempt count and a clear terminal failure. The same gate validates every attempt; a reviewer agent cannot waive the gate. A failure after the final attempt is reported to the interface without execution.\n\n\n\n\n\nflowchart TD\n    D[Draft candidate] --&gt; V[Validate]\n    V --&gt;|Accepted| E[Execute read-only query]\n    V --&gt;|Rejected and attempts remain| R[Return bounded diagnostic]\n    R --&gt; D\n    V --&gt;|Rejected and limit reached| F[Stop with explanation]\n\n\n\n\n\n\nThis is an optional design, not a claim that the supplied baseline retries. The retry counter and the validator are trusted code. A retry limit controls iteration, while a database timeout controls one execution; both are needed if this extension becomes runnable.",
+    "crumbs": [
+      "Check and extend",
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Optional extensions and engineering decisions</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/12-advanced.html#persistent-sessions-and-artifacts",
+    "href": "chapters/12-advanced.html#persistent-sessions-and-artifacts",
+    "title": "12  Optional extensions and engineering decisions",
+    "section": "12.3 Persistent sessions and artifacts",
+    "text": "12.3 Persistent sessions and artifacts\nIn-memory sessions disappear when the process ends. Persistence adds storage, retention rules, and access controls. A deployment must decide which data is saved, who may retrieve it, and how it is deleted. Artifacts such as exported charts or tables also require ownership and provenance. The official ADK artifacts documentation describes the framework component, but application storage policy remains a separate responsibility.\nA useful experiment restarts a local persistent-session prototype and verifies both continuity and isolation. It tests two users, missing authorization, and deletion. The mere fact that a conversation survives a restart does not prove that the implementation is safe for shared use.",
+    "crumbs": [
+      "Check and extend",
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Optional extensions and engineering decisions</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/12-advanced.html#mcp-a2a-and-deployment",
+    "href": "chapters/12-advanced.html#mcp-a2a-and-deployment",
+    "title": "12  Optional extensions and engineering decisions",
+    "section": "12.4 MCP, A2A, and deployment",
+    "text": "12.4 MCP, A2A, and deployment\nMCP integrates external tool servers; A2A supports communication between agent applications. Each introduces a remote boundary with authentication, available capabilities, errors, and trust decisions. The ADK MCP guide and A2A introduction are starting points for these optional topics. Neither protocol automatically makes a service trustworthy.\nCloud deployment is outside the local baseline. Publishing requires a separate decision about authentication, billing, secrets, database access, and monitoring. A public URL should not be confused with a private development interface. Deployment changes the audience and consequences, even when the Python code is unchanged.",
+    "crumbs": [
+      "Check and extend",
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Optional extensions and engineering decisions</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/12-advanced.html#exercise-an-evidence-based-extension-proposal",
+    "href": "chapters/12-advanced.html#exercise-an-evidence-based-extension-proposal",
+    "title": "12  Optional extensions and engineering decisions",
+    "section": "12.5 Exercise: an evidence-based extension proposal",
+    "text": "12.5 Exercise: an evidence-based extension proposal\nOne extension is specified using a concrete failure from the evaluation chapter. The proposal defines the changed data flow, accepted inputs, stopping conditions, tests, and measurable benefit. It includes a diagram that distinguishes existing and proposed behavior in its caption or surrounding prose.\nExpected result: a proposal that another developer can implement and evaluate without guessing the objective.\nSuccess criteria: the extension addresses observed evidence, preserves the query gate and session boundaries, and identifies a simpler alternative. A feature list without a testable benefit is not an engineering argument.",
+    "crumbs": [
+      "Check and extend",
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Optional extensions and engineering decisions</span>"
+    ]
+  },
+  {
+    "objectID": "references.html",
+    "href": "references.html",
+    "title": "13  Sources and migration notes",
+    "section": "",
+    "text": "13.1 Course sources\nThis course builds on Jan Kirenz’s MIS Agentic AI course and Agentic AI Introduction. The earlier book supplied the preparation-to-BI-project progression. The introduction materials supplied the agent, context, tool, runtime, and evaluation topics. Selected ideas are adapted as connected book chapters rather than copied as Reveal.js slide decks.\nThe new course keeps its required chapters and examples together. The older course URLs are historical references, not required runtime dependencies.",
+    "crumbs": [
+      "<span class='chapter-number'>13</span>  <span class='chapter-title'>Sources and migration notes</span>"
+    ]
+  },
+  {
+    "objectID": "references.html#primary-technical-references",
+    "href": "references.html#primary-technical-references",
+    "title": "13  Sources and migration notes",
+    "section": "13.2 Primary technical references",
+    "text": "13.2 Primary technical references\n\nADK 2 overview and Python migration\nADK Python 2.10.0 release\nPython quickstart\nGraph-based workflows\nPinned Workflow guide\nPinned Runner guide\nFunction tools\nSessions and state\nAgent evaluation\nuv documentation\nGradio documentation\nMicrosoft ODBC Driver for SQL Server\nSQLGlot\n\nCurrent online documentation can describe a newer version than the course. For conflicting signatures or behavior, the installed version and the pinned ADK source are the implementation reference.",
+    "crumbs": [
+      "<span class='chapter-number'>13</span>  <span class='chapter-title'>Sources and migration notes</span>"
+    ]
+  },
+  {
+    "objectID": "references.html#what-changed-from-the-previous-course",
+    "href": "references.html#what-changed-from-the-previous-course",
+    "title": "13  Sources and migration notes",
+    "section": "13.3 What changed from the previous course",
+    "text": "13.3 What changed from the previous course\nThe main additions are explicit graph workflows, a shared local environment, independently runnable examples, per-browser Gradio session identity, structured chart configuration, and executable offline checks. SQL access is a later project step instead of a prerequisite for the first agent.\nOlder SequentialAgent, ParallelAgent, and LoopAgent examples are explained as prior patterns; new examples use Workflow. The ADK 2 migration guidance also covers additional event fields, custom execution overrides, event emission, and exception handling. These matter when migrating custom applications, even when a simple Agent definition continues to work.\nMCP, cross-session memory, persistent services, human input, and deployment are extensions rather than requirements of the introductory project.",
+    "crumbs": [
+      "<span class='chapter-number'>13</span>  <span class='chapter-title'>Sources and migration notes</span>"
+    ]
+  },
+  {
+    "objectID": "references.html#illustration-provenance",
+    "href": "references.html#illustration-provenance",
+    "title": "13  Sources and migration notes",
+    "section": "13.4 Illustration provenance",
+    "text": "13.4 Illustration provenance\nThe course cover and the business-scenario illustration are generated illustrations. They provide visual context, not evidence of an actual Global Bike installation. Architecture and execution diagrams use Mermaid so their labels and connections can be reviewed and edited alongside the text. Prompts and filenames are recorded in images/README.md.",
+    "crumbs": [
+      "<span class='chapter-number'>13</span>  <span class='chapter-title'>Sources and migration notes</span>"
+    ]
+  }
+]
