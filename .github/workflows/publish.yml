@@ -1,0 +1,41 @@
+name: Publish course book
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths-ignore:
+      - VALIDATION.md
+
+permissions:
+  contents: write
+  pages: write
+
+concurrency:
+  group: course-publication
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out source and publication branch
+        uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+      - name: Install the verified Quarto version
+        uses: quarto-dev/quarto-actions/setup@v2
+        with:
+          version: '1.8.27'
+      - name: Set publication identity
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+      - name: Render and publish static course pages
+        run: quarto publish gh-pages --no-prompt --no-browser
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Request GitHub Pages build
+        run: gh api --method POST "repos/${GITHUB_REPOSITORY}/pages/builds"
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
