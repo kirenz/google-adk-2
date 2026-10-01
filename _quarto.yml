@@ -42,7 +42,12 @@ book:
     - part: "Preparation"
       chapters:
         - chapters/02-workstation.qmd
+        - chapters/accounts.qmd
+        - chapters/windows-setup.qmd
+        - chapters/mac-setup.qmd
+        - chapters/mssql-vscode.qmd
         - chapters/03-project-setup.qmd
+        - chapters/mssql-connection.qmd
     - part: "Build and understand agents"
       chapters:
         - chapters/01-agent-fundamentals.qmd

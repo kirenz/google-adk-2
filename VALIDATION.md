@@ -27,3 +27,7 @@ Passing offline checks does not prove that a model extracts every question corre
 ## GitHub publication
 
 The public repository is https://github.com/kirenz/google-adk-2 and the course is published at https://kirenz.github.io/google-adk-2/. GitHub Actions run 36849322248 completed successfully and the resulting Pages build reported `built` for publication commit `8fc3c072928ffe9df987189c3f5fd65fbe60f494`. The published tree contains no virtual environment, test cache, Python bytecode cache, or local artifacts. The live syllabus, cover image, chapter navigation, and workflow chapter were checked in the browser. Source updates on `main` trigger the publication workflow.
+
+## Preparation extension (2026-10-01)
+
+Five standalone Preparation chapters were added from the earlier course and updated for the shared ADK 2 environment. `quarto render` built all 19 pages. The rendered HTML audit checked 899 relative links and resources with zero missing targets. New chapter code fences, embedded Python syntax, and source links were checked. Of 32 external official/reference URLs, 31 returned HTTP 200; GitHub account registration returned HTTP 403 to automated curl, so that check did not establish browser reachability. Native driver installations and actual SQL Server connections were not executed. Python examples and dependencies are unchanged; the earlier 25-test result applies to that unchanged code.

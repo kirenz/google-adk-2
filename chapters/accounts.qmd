@@ -1,0 +1,29 @@
+---
+title: "Accounts"
+---
+
+The live agent examples use a Google account and a Gemini API key. A GitHub account supports collaboration and optional educational benefits. Account preparation is separate from installing Python: the offline exercises remain available while access to an external service is pending.
+
+## Google account and AI Studio
+
+An existing Google account can be used, or a new account can be created through [Google's account page](https://www.google.com/intl/en/account/about/). Signing in to [Google AI Studio](https://aistudio.google.com/) establishes whether the account can access the service. Institutional accounts may have administrative restrictions.
+
+The [AI Studio API Keys page](https://aistudio.google.com/app/apikey) manages Gemini credentials. After any required terms have been reviewed and accepted, an available project can be selected and a key created. AI Studio may already have created a default project and key for a new account. Existing Cloud projects may need importing before they appear. Google's [API-key documentation](https://ai.google.dev/gemini-api/docs/api-key) describes the current workflow and permission requirements.
+
+The course uses the Gemini Developer API. Separate Vertex AI configuration is unnecessary for this route. API availability, quotas, and possible charges depend on the account and selected model; a Google account alone does not establish usable API access.
+
+## Store the key locally
+
+The key belongs in the course root's local `.env` file as `GOOGLE_API_KEY`. The [project setup chapter](03-project-setup.qmd) explains copying `.env.example`, setting `GOOGLE_GENAI_USE_VERTEXAI=FALSE`, and checking that Git ignores `.env`. Shared files and screenshots must contain placeholders rather than credentials.
+
+## GitHub and student benefits
+
+A [GitHub account](https://github.com/join) supports repository work. An existing account can retain its current identity: the university email address can be added in account settings and verified through the confirmation email.
+
+The [GitHub Student Developer Pack](https://education.github.com/pack) is optional. GitHub checks student eligibility and may require evidence of current enrolment in addition to a verified academic email. Approval and the included benefits follow GitHub's current rules; the course does not depend on approval. The [official application guide](https://docs.github.com/en/education/about-github-education/github-education-for-students/apply-to-github-education-as-a-student) lists the requirements.
+
+## Exercise: record account readiness
+
+A short preparation record distinguishes Google sign-in, AI Studio access, API-key availability, and GitHub sign-in. It records only status, never the key itself. If AI Studio denies access, the record includes the error category and whether the account is institutionally managed.
+
+**Expected result:** the credentials route is clear before the first live example. Offline work can proceed when API access remains pending. Student Pack approval is optional and is recorded separately.

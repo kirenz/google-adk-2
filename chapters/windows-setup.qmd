@@ -1,0 +1,62 @@
+---
+title: "Windows"
+---
+
+Windows preparation provides Git, uv, Python 3.12, and the stable release of Visual Studio Code. All Windows commands in this book use **PowerShell**. The optional SQL Server driver is needed only for Python connections to an actual SQL Server database.
+
+## System and terminal
+
+Windows Update in Settings provides the normal operating-system update route. Managed computers may require institutional software installation. Windows Developer Mode is not a prerequisite for these course tools.
+
+PowerShell can be opened from the Start menu. In VS Code, Terminal: Select Default Profile selects PowerShell for new integrated terminals. Git Bash is a different shell; its path and environment-variable syntax should not be mixed with these commands.
+
+## Git, uv, and Python
+
+The [Git for Windows installer](https://git-scm.com/install/windows) supplies Git. Its setup should make Git available from the command line. After installation, a new PowerShell session can check the result:
+
+```powershell
+git --version
+```
+
+The [official uv installer](https://docs.astral.sh/uv/getting-started/installation/) downloads and runs an installation script:
+
+```powershell
+powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | iex"
+```
+
+The execution-policy option applies to that installer process. It is not a permanent change to the machine's execution policy. After a new terminal has loaded the updated PATH, these checks install and locate the course's Python version:
+
+```powershell
+uv --version
+uv python install 3.12
+uv python find 3.12
+```
+
+**Expected result:** Git and uv report versions, and the final command returns the path to a Python 3.12 executable. A separate global Python installation is unnecessary.
+
+## Visual Studio Code
+
+The stable [VS Code Windows installer](https://code.visualstudio.com/docs/setup/windows) provides the editor. The Microsoft Python extension (`ms-python.python`) adds Python editing and interpreter selection. File → Open Folder opens the course directory; Terminal → New Terminal opens PowerShell there.
+
+The [project setup chapter](03-project-setup.qmd) creates the shared `.venv`. After that step, Python: Select Interpreter selects `.venv\Scripts\python.exe`. Project commands use `uv run`, so manual environment activation is unnecessary.
+
+## Optional: SQL Server ODBC driver
+
+The synthetic database exercise requires no server driver. Live Python connections use [Microsoft ODBC Driver 18 for SQL Server](https://learn.microsoft.com/en-us/sql/connect/odbc/download-odbc-driver-for-sql-server?view=sql-server-ver17). The installer architecture must match Windows: x64 for Intel/AMD 64-bit systems, ARM64 for Windows on Arm, and x86 for 32-bit systems. Settings → System → About shows the system type. The Python process and driver must also have compatible architectures, especially when emulation is involved.
+
+The installer presents its license terms. After installation, PowerShell can inspect driver registration:
+
+```powershell
+Get-OdbcDriver -Name "ODBC Driver 18 for SQL Server" |
+    Select-Object Name, Platform
+```
+
+**Expected result:** a registered driver named `ODBC Driver 18 for SQL Server` appears for the relevant platform. This confirms installation, not server access. Server addresses, permissions, and certificates are covered in [SQL Server connections](mssql-connection.qmd); editor queries are covered in [SQL Server in VS Code](mssql-vscode.qmd).
+
+## Troubleshooting and exercise
+
+If a command is unrecognised, a new terminal is the first check. `Get-Command git, uv` shows the executables PowerShell resolves. Missing results point to an installation or PATH problem. A driver listed only for a different platform suggests an architecture mismatch.
+
+The setup exercise produces an environment report containing the PowerShell version (`$PSVersionTable.PSVersion`), Git and uv versions, the Python 3.12 path, and the course folder shown by `Get-Location`. No API keys or database passwords belong in the report.
+
+**Success criteria:** the core tools are discoverable, VS Code opens the course root, and the SQL Server driver is either verified for a live exercise or explicitly recorded as unnecessary for offline work.

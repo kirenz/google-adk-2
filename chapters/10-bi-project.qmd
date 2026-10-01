@@ -48,6 +48,8 @@ The threat model includes requests for writes, prompt injection inside questions
 
 ## Optional live SQL Server path
 
+[Server Connection](mssql-connection.qmd) establishes the database connection in VS Code and Python before model-generated queries are introduced. Native driver installation is covered separately for [Windows](windows-setup.qmd) and [macOS](mac-setup.qmd).
+
 ```bash
 uv sync --extra dev --extra sqlserver
 uv run python -m examples.bi.app --live

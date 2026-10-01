@@ -26,7 +26,7 @@ Current online documentation can describe a newer version than the course. For c
 
 ## What changed from the previous course
 
-The main additions are explicit graph workflows, a shared local environment, independently runnable examples, per-browser Gradio session identity, structured chart configuration, and executable offline checks. SQL access is a later project step instead of a prerequisite for the first agent.
+The main additions are explicit graph workflows, a shared local environment, independently runnable examples, per-browser Gradio session identity, structured chart configuration, and executable offline checks. The Preparation section also retains the earlier Accounts, Windows, macOS, VS Code, and Server Connection topics with updated tooling and connection settings. SQL access is optional preparation for the later BI project rather than a prerequisite for the first agent.
 
 Older `SequentialAgent`, `ParallelAgent`, and `LoopAgent` examples are explained as prior patterns; new examples use `Workflow`. The ADK 2 migration guidance also covers additional event fields, custom execution overrides, event emission, and exception handling. These matter when migrating custom applications, even when a simple `Agent` definition continues to work.
 

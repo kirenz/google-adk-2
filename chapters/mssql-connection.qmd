@@ -1,0 +1,148 @@
+---
+title: "Server Connection"
+---
+
+SQL Server can be inspected in the VS Code mssql extension and accessed from Python. Both clients connect to the same supplied database, but they have separate configuration and connection software. A successful editor connection therefore does not establish that the Python connector works. The synthetic SQLite [BI exercise](10-bi-project.qmd) remains available without SQL Server access.
+
+## Obtain the connection details
+
+The instructor or database administrator supplies the server address, port or instance if applicable, database name, authentication method, credentials, and permitted tables or views. Any required VPN, network restriction, and certificate configuration also belong to that supplied environment. Names and credentials cannot be inferred from the course's synthetic dataset.
+
+[VS Code](mssql-vscode.qmd) must be installed with Microsoft's mssql extension. [Accounts](accounts.qmd) separates database access from model-provider access. A manual database check requires no Gemini API key.
+
+## Connect with the VS Code extension
+
+1. Open the **MSSQL** view and select **Add Connection** in Object Explorer. The Command Palette's **MS SQL: Add Connection** opens the same dialog.
+2. Select **Parameters** as the input type. Enter the supplied server and database explicitly. Assign a recognizable profile name; a connection group is optional.
+3. Select the supplied authentication method. For **SQL Login**, enter the provided user name and password. Other authentication methods require their own supplied account setup.
+4. Check the security settings described below. Use **Advanced** if the necessary option is not visible in the main form.
+5. Select **Test connection**, then **Connect**. The saved connection appears in Object Explorer for later reuse.
+
+The current [Microsoft connection guide](https://learn.microsoft.com/en-us/sql/tools/visual-studio-code-extensions/mssql/mssql-database-connections) describes the dialog and authentication options. A SQLAlchemy URL from Python is not an ADO.NET connection string for this dialog; the individual parameters are the clearest route here.
+
+### Encryption and certificates
+
+Use required encryption, typically labelled **Mandatory** or **True**, and leave **Trust server certificate** disabled. In the Python ODBC URL, the corresponding settings are `Encrypt=yes` and `TrustServerCertificate=no`. Certificate validation checks the server's identity as well as protecting the connection's contents. The [Microsoft encryption settings](https://learn.microsoft.com/en-us/sql/connect/odbc/dsn-connection-string-attribute) explain the options.
+
+A certificate error needs the administrator's correct server name, trusted certificate chain, or documented environment-specific configuration. Selecting optional encryption or bypassing certificate validation is not a general fix. A course environment with a self-signed certificate needs an explicit instructor-provided exception before changing those settings.
+
+## Run the first queries
+
+Run **MS SQL: New Query** from the Command Palette and select the saved connection if prompted. Check the database shown for the editor before executing SQL. In a SQL editor, **F5** or **MS SQL: Execute Query** runs the statement. These commands are documented in the [extension's repository](https://github.com/microsoft/vscode-mssql) and its [keyboard shortcuts](https://learn.microsoft.com/en-us/sql/tools/visual-studio-code-extensions/mssql/mssql-keyboard-shortcuts).
+
+Start with a connection check:
+
+```sql
+SELECT DB_NAME() AS connected_database;
+```
+
+**Expected result:** one row with the supplied database name. A different name requires correcting the profile or editor connection before querying business data.
+
+The next query inspects column metadata visible to the login through [INFORMATION_SCHEMA.COLUMNS](https://learn.microsoft.com/en-us/sql/relational-databases/system-information-schema-views/columns-transact-sql):
+
+```sql
+SELECT TABLE_SCHEMA, TABLE_NAME, COLUMN_NAME, DATA_TYPE
+FROM INFORMATION_SCHEMA.COLUMNS
+ORDER BY TABLE_SCHEMA, TABLE_NAME, ORDINAL_POSITION;
+```
+
+**Expected result:** accessible table and view columns, with their schema and data types. Restricted metadata visibility can produce an empty or partial result; that does not prove that the database is empty. The administrator's permitted subset determines which objects may be used in the exercise.
+
+A bounded business query follows only after the actual object, columns, and query permission have been confirmed. For example, the earlier course used the following product query. It is suitable only if the supplied database contains this exact schema and the account is permitted to read it:
+
+```sql
+SELECT TOP (3)
+    ID_Product,
+    Material_Description,
+    Product_Category,
+    Transfer_Price_EUR
+FROM dbo.Dim_Product
+ORDER BY ID_Product;
+```
+
+**Expected result when that schema is confirmed:** up to three product rows ordered by `ID_Product`. Otherwise, use an instructor-supplied bounded SELECT against a confirmed object. `Invalid object name` and `Invalid column name` require checking metadata and the selected database, rather than inventing replacement names.
+
+## Check the Python connection separately
+
+Python uses the root project environment described in [Project Setup](03-project-setup.qmd). Synchronize the optional SQL Server extra from the repository root:
+
+```bash
+uv sync --extra dev --extra sqlserver
+```
+
+This installs `pyodbc` alongside the course dependencies. The native Microsoft ODBC driver is installed separately: the [Windows driver download](https://learn.microsoft.com/en-us/sql/connect/odbc/download-odbc-driver-for-sql-server) provides the installer, while the [macOS installation guide](https://learn.microsoft.com/en-us/sql/connect/odbc/linux-mac/install-microsoft-odbc-driver-sql-server-macos) covers supported architectures and installation. The mssql extension uses its own connection stack; it does not supply the native driver needed by Python.
+
+The installed ODBC driver names can be inspected without connecting:
+
+```bash
+uv run python -c "import pyodbc; print(pyodbc.drivers())"
+```
+
+**Expected result:** the driver named in the supplied URL appears in the list, such as `ODBC Driver 18 for SQL Server`. A missing or differently named driver requires correcting the native installation or the supplied configuration.
+
+### Configure the root `.env`
+
+Add the actual instructor-supplied SQLAlchemy `mssql+pyodbc` URL as `SQLSERVER_URL` in the root `.env`. The commented entry in `.env.example` illustrates the format, not a working server or login. The URL must use the installed driver, actual authentication method, and approved encryption settings. SQLAlchemy's [pyodbc connection documentation](https://docs.sqlalchemy.org/en/20/dialects/mssql.html#module-sqlalchemy.dialects.mssql.pyodbc) explains URL parameters; reserved characters in URL credentials require percent encoding.
+
+The URL stays local. It must not appear in source files, screenshots, reports, or shared error logs. The existing `.gitignore` excludes `.env`; this check confirms the rule without showing its contents:
+
+```bash
+git check-ignore .env
+```
+
+Create a temporary local file named `check_sqlserver.py` in the repository root with the following code. It performs one read-only query and loads `.env` relative to that file, regardless of the terminal's working directory:
+
+```python
+import os
+from pathlib import Path
+
+from dotenv import load_dotenv
+from sqlalchemy import create_engine, text
+
+load_dotenv(Path(__file__).resolve().parent / ".env")
+url = os.getenv("SQLSERVER_URL")
+if not url:
+    raise SystemExit("SQLSERVER_URL is missing from the local environment.")
+
+engine = None
+try:
+    engine = create_engine(url, echo=False, connect_args={"timeout": 10})
+    with engine.connect() as connection:
+        database = connection.execute(
+            text("SELECT DB_NAME() AS connected_database")
+        ).scalar_one()
+    print(f"Connected database: {database}")
+except Exception as error:
+    raise SystemExit(
+        f"Connection check failed ({type(error).__name__}). "
+        "Check the local settings and the troubleshooting table. "
+        "Keep connection details private."
+    ) from None
+finally:
+    if engine is not None:
+        engine.dispose()
+```
+
+Run it from the repository root:
+
+```bash
+uv run python check_sqlserver.py
+```
+
+**Expected result:** `Connected database:` followed by the supplied database name. The script neither prints the URL nor calls Gemini; failures show only the exception type. The connection closes after the query and the engine is disposed even if the query fails. The temporary check file can be removed after verification.
+
+## Resolve failures and prepare the BI project
+
+| Symptom | Next check |
+|---|---|
+| Server unavailable or login timeout | Supplied host, port or instance, VPN, and network access |
+| Login failed | Authentication method, supplied account, and database permission |
+| Certificate validation failed | Server name and trusted certificate chain with the administrator |
+| `No module named pyodbc` | SQL Server extra and the root `.venv` |
+| Driver not found | Native driver installation and exact driver name in the URL |
+| Python fails while the extension works | Python URL, authentication support, and native ODBC driver |
+| Business query fails despite `DB_NAME()` succeeding | Actual database, schema, columns, and object permissions |
+
+Successful SELECT statements prove connectivity and access to those statements. They do not establish that the account cannot write. Before setting `BI_READ_ONLY_ACCOUNT_CONFIRMED=yes`, the administrator must verify that the dedicated account permits the approved reads and has no write privileges for the course database. No destructive test is needed for this verification.
+
+The optional [live BI project](10-bi-project.qmd) additionally requires the actual permitted schema in `BI_SCHEMA`, exact approved source identifiers in `BI_ALLOWED_VIEWS`, and Gemini access. The confirmation flag records verified permissions; it does not grant or enforce them. The preparation result is two separate successful connection checks, a confirmed permitted schema, and independently verified read-only account permissions.

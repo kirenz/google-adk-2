@@ -1,0 +1,91 @@
+---
+title: "VS Code"
+---
+
+Visual Studio Code combines the course's Python editor, integrated terminal, and SQL query editor in one workspace. The editor setup works for all examples; the database extension is needed for the optional SQL Server exercises. The operating-system prerequisites are covered in [Windows Setup](windows-setup.qmd) and [Mac Setup](mac-setup.qmd).
+
+## Install the stable release
+
+The [VS Code download page](https://code.visualstudio.com/download) provides the stable release for Windows and macOS.
+
+::: {.panel-tabset}
+
+### Windows
+
+Download and run the Windows User Installer. The installer normally adds VS Code to `PATH`; a new PowerShell window is needed after installation. The usual user-install location is `%LOCALAPPDATA%\Programs\Microsoft VS Code`, with the command-line launcher in its `bin` subfolder. A system installation uses a different location. The [Windows installation guide](https://code.visualstudio.com/docs/setup/windows) explains the installation options.
+
+### macOS
+
+Download the build matching the Mac's architecture. Extract the downloaded archive, or open the disk image if that format is supplied, and drag `Visual Studio Code.app` into `Applications`. Launch it there. The [macOS installation guide](https://code.visualstudio.com/docs/setup/mac) describes the supported builds.
+
+:::
+
+## Enable the `code` command
+
+On macOS, open the Command Palette with `Cmd+Shift+P` and run **Shell Command: Install 'code' command in PATH**. Close and reopen the terminal afterwards. On Windows, restart PowerShell after installing VS Code. The command below works in both shells:
+
+```bash
+code --version
+```
+
+**Expected result:** a VS Code version, commit identifier, and architecture appear. If the command is missing on Windows, inspect the installer and its PATH option against the [official setup instructions](https://code.visualstudio.com/docs/setup/windows). On macOS, repeat the Command Palette step; the application's launcher resides in `/Applications/Visual Studio Code.app/Contents/Resources/app/bin`. A terminal still open from before installation may retain an older PATH.
+
+After the course repository has been downloaded as described in [Project Setup](03-project-setup.qmd), change into its root directory and open it:
+
+```bash
+cd google-adk-2
+code .
+```
+
+The `cd` command assumes that the terminal starts in the parent folder of the repository. Alternatively, **File → Open Folder** opens the downloaded folder directly. The correct root contains `pyproject.toml`, `.env.example`, and `examples/`. The [VS Code command-line documentation](https://code.visualstudio.com/docs/configure/command-line) explains `code .`.
+
+## Install the extensions
+
+Open the Extensions view with `Ctrl+Shift+X` on Windows or `Cmd+Shift+X` on macOS. Search by extension identifier to distinguish the intended extension from similarly named entries:
+
+| Extension | Identifier | Course use |
+|---|---|---|
+| [Python, Microsoft](https://marketplace.visualstudio.com/items?itemName=ms-python.python) | `ms-python.python` | Interpreter selection, Python editing, and debugging |
+| [SQL Server (mssql), Microsoft](https://marketplace.visualstudio.com/items?itemName=ms-mssql.mssql) | `ms-mssql.mssql` | Connections, database objects, and manual SQL queries |
+| [vscode-icons](https://marketplace.visualstudio.com/items?itemName=vscode-icons-team.vscode-icons) | `vscode-icons-team.vscode-icons` | Optional file icons |
+
+Icons affect presentation only. Python and mssql serve different purposes: installing the SQL extension does not select Python or install Python database dependencies.
+
+## Select the course interpreter
+
+The [shared project setup](03-project-setup.qmd) creates the environment in the root `.venv` with:
+
+```bash
+uv sync --extra dev
+```
+
+Open a Python file, then run **Python: Select Interpreter** from the Command Palette. Select the interpreter belonging to this repository's `.venv`. If it is absent from the list, use **Enter interpreter path** and select the appropriate executable:
+
+| Operating system | Interpreter relative to the repository root |
+|---|---|
+| Windows | `.venv\Scripts\python.exe` |
+| macOS | `.venv/bin/python` |
+
+The [Python environment documentation](https://code.visualstudio.com/docs/python/environments) explains interpreter selection. The selected interpreter controls Python editor features and debugging. Course terminal commands use `uv run` explicitly so that they resolve through the project environment.
+
+```bash
+uv run python -c "import sys; print(sys.executable)"
+```
+
+**Expected result:** the printed path points into this repository's `.venv`. A different path usually indicates that the terminal is in another project folder. An absent `.venv` indicates that the project synchronization has not completed.
+
+## Configure the integrated terminal
+
+Run **Terminal: Select Default Profile** from the Command Palette and select **PowerShell** on Windows or **zsh** on macOS. Open a new terminal with **Terminal → New Terminal**. The [terminal profile documentation](https://code.visualstudio.com/docs/terminal/profiles) describes this setting.
+
+Commands run from the repository root. This can be checked without exposing credentials:
+
+```bash
+uv run python -c "from pathlib import Path; print(Path.cwd()); print(Path('pyproject.toml').is_file())"
+```
+
+**Expected result:** the course folder and `True`. An `uv` command-not-found error belongs to the operating-system setup; changing the Python interpreter alone does not install `uv`.
+
+## Preparation result
+
+The root folder is open, `code --version` works, Python uses the root `.venv`, and a PowerShell or zsh terminal runs project commands. [Accounts](accounts.qmd) covers external access requirements. [Server Connection](mssql-connection.qmd) establishes database connectivity before the optional live [BI project](10-bi-project.qmd).

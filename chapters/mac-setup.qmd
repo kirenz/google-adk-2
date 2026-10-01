@@ -1,0 +1,100 @@
+---
+title: "macOS"
+---
+
+The macOS setup uses Terminal with zsh, Git, uv, Python 3.12, and the stable release of Visual Studio Code. Homebrew is optional for the core agent examples and provides the installation route for the SQL Server driver.
+
+## Terminal and command-line tools
+
+System Settings → General → Software Update provides operating-system updates. Terminal is available through Spotlight. The current shell can be checked with:
+
+```bash
+echo $SHELL
+```
+
+For the zsh route, the result ends in `/zsh`. Apple's [Command Line Tools](https://developer.apple.com/documentation/xcode/installing-the-command-line-tools/) provide Git and tools needed by some native dependencies. The installer opens with:
+
+```bash
+xcode-select --install
+```
+
+An “already installed” message means that installation can be skipped. After completion, these commands check the selected tools directory and Git:
+
+```bash
+xcode-select -p
+git --version
+```
+
+## uv and Python 3.12
+
+The [official uv installer](https://docs.astral.sh/uv/getting-started/installation/) downloads and executes a shell script:
+
+```bash
+curl -LsSf https://astral.sh/uv/install.sh | sh
+```
+
+A new Terminal session loads any installer PATH changes. Python is then managed through uv:
+
+```bash
+uv --version
+uv python install 3.12
+uv python find 3.12
+```
+
+**Expected result:** uv reports its version and the last command returns a Python 3.12 executable path.
+
+## Visual Studio Code
+
+The stable [VS Code macOS download](https://code.visualstudio.com/docs/setup/mac) supplies the editor. The application belongs in Applications. The Microsoft Python extension (`ms-python.python`) supplies Python support. File → Open Folder opens the course repository, and Terminal → New Terminal opens its integrated terminal.
+
+The [project setup chapter](03-project-setup.qmd) creates the shared environment. Python: Select Interpreter then selects `.venv/bin/python`. Commands using `uv run` do not need manual activation. Installing the `code` shell command is optional because File → Open Folder provides the same entry point.
+
+## Optional: Homebrew and SQL Server
+
+Only live Python connections to SQL Server require this section. The synthetic database exercise can run without it. An existing Homebrew installation can be checked with `brew --version`. Otherwise, the [Homebrew installer](https://brew.sh/) runs from zsh as follows:
+
+```bash
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+```
+
+The installer describes its changes and supplies shell-configuration instructions. Those instructions depend on the installation location. A new terminal should resolve `brew --version` before proceeding.
+
+Microsoft's [macOS driver instructions](https://learn.microsoft.com/en-us/sql/connect/odbc/linux-mac/install-microsoft-odbc-driver-sql-server-macos?view=sql-server-ver17) use its Homebrew tap:
+
+```bash
+brew tap microsoft/mssql-release https://github.com/Microsoft/homebrew-mssql-release
+```
+
+Homebrew 6 or later also requires explicit trust for this tap:
+
+```bash
+brew trust microsoft/mssql-release
+```
+
+Earlier Homebrew versions can omit that command. The driver installation is:
+
+```bash
+brew update
+brew install msodbcsql18
+```
+
+The [Microsoft formula](https://github.com/microsoft/homebrew-mssql-release/blob/master/Formula/msodbcsql18.rb) prompts for license acceptance and links the [ODBC 18 EULA](https://aka.ms/odbc18eula). Entering `YES` records acceptance; `NO` stops installation. Microsoft's unattended alternative, `HOMEBREW_ACCEPT_EULA=Y`, declares acceptance in advance and is deliberately absent from the commands above. unixODBC is installed as a dependency. The optional `mssql-tools18` package supplies `sqlcmd` and `bcp`; it is unnecessary for Python or the VS Code extension.
+
+The tap selects the package for the running architecture. On Apple Silicon, a native terminal keeps the driver and Python on the ARM64 route; Rosetta can introduce x64 components. The architecture and registered driver can be inspected with:
+
+```bash
+uname -m
+brew --prefix
+odbcinst -q -d
+odbcinst -q -d -n "ODBC Driver 18 for SQL Server"
+```
+
+**Expected result:** the driver list contains `[ODBC Driver 18 for SQL Server]`, and the final command returns its registration details. `odbcinst -j` reports configuration paths but alone does not establish driver registration. Connection details follow in [SQL Server connections](mssql-connection.qmd) and [SQL Server in VS Code](mssql-vscode.qmd).
+
+## Troubleshooting and exercise
+
+For a missing `uv` or `brew` command, a new terminal and the installer's PATH instructions are the first checks. `command -v git uv brew` shows resolved paths. After project setup, `uv run python -c "import platform; print(platform.machine())"` reports Python's architecture. An incompatible-library error calls for comparing this result with the terminal and driver architecture before reinstalling anything.
+
+The exercise produces an environment report with the shell, Git and uv versions, Python 3.12 path, and course folder (`pwd`). The optional driver entry records its registered name or states that offline work does not need it.
+
+**Success criteria:** the tools resolve in zsh, the course opens in VS Code, and any live database route has a registered driver with an architecture compatible with Python. Driver installation alone does not prove successful authentication or a network connection.

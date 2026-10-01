@@ -31,7 +31,7 @@ Evaluation includes both useful answers and observable execution: correct tool a
 
 | Stage | Practical result |
 |---|---|
-| Preparation | Reproducible Python environment and first offline checks |
+| Preparation | Accounts, Windows or macOS setup, VS Code, a reproducible Python environment, and an optional SQL Server connection |
 | Foundations | Single agent with a small, testable function tool |
 | Runtime | A recorded turn with events and session context |
 | Workflows | A graph combining deterministic functions and model reasoning |
