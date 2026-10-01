@@ -1,0 +1,25 @@
+[project]
+name = "google-adk-2-course"
+version = "0.1.0"
+description = "A hands-on Google ADK 2 course: from function tools to a BI workflow"
+readme = "README.md"
+requires-python = ">=3.12,<3.13"
+dependencies = [
+  "google-adk==2.10.0",
+  "gradio>=6.1,<7",
+  "pandas>=2.2,<3",
+  "altair>=5.5,<6",
+  "sqlalchemy>=2.0,<3",
+  "python-dotenv>=1.0,<2",
+  "sqlglot>=28,<30",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8,<10", "pytest-asyncio>=1,<2"]
+sqlserver = ["pyodbc>=5.1,<6"]
+eval = ["google-adk[eval]==2.10.0"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
+asyncio_mode = "auto"

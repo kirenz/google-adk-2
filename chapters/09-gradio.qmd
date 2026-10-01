@@ -1,0 +1,44 @@
+# A Gradio interface for an agent
+
+The ADK development interface supports inspection during development. A Gradio application adds a simple interface designed around a user's task. The important work is connecting the interface to the runtime while preserving session boundaries and making failures understandable.
+
+## Start the local interface
+
+```bash
+uv run python -m examples.gradio_app
+```
+
+The terminal reports the local URL. The supplied application wraps the first-agent example rather than constructing a separate agent with different business rules. It loads configuration from the same root project. This avoids a common debugging trap: the development interface and the custom interface appearing to test the same agent while actually using different models or instructions.
+
+The application is local. A public share link or deployed service is a separate decision. The exercise does not enable public sharing. Gradio's [ChatInterface documentation](https://www.gradio.app/docs/gradio/chatinterface) describes interface behavior, while the example code defines the ADK integration.
+
+## Interface history and agent history
+
+The browser displays chat messages. ADK maintains a session with events and state. These two histories have different roles. Browser messages alone omit tool-call events; an ADK session alone does not decide which UI components are rendered.
+
+A robust request handler maps a conversation to its own ADK session, sends a user message through the Runner, collects the response, and returns the display value. It must avoid replaying the entire browser history into a session that already contains those turns, because duplication changes the context. Starting a fresh chat should create a new session rather than changing only the visible screen.
+
+```{mermaid}
+flowchart LR
+    U[Gradio conversation] --> I[Conversation-specific session identity]
+    I --> R[ADK Runner]
+    R --> E[Events and tool results]
+    E --> D[Response extraction]
+    D --> U
+```
+
+The arrow returning to the UI means display, not a new model invocation. A clear-session action must manage the identity mapping as well as the visible chat.
+
+## Information worth showing
+
+A catalog or arithmetic assistant may need only a concise answer. The later BI interface benefits from separate components for SQL, data table, chart, and explanation. These components let a person inspect evidence without parsing a long paragraph. A failure should distinguish missing configuration, invalid input, rejected query, empty result, and provider error. Raw credentials and detailed connection strings are unsuitable error messages.
+
+A progress indicator communicates that a request is running; it does not prove that an answer has been checked. Repeated button clicks can create concurrent requests, so a production design also needs a concurrency policy. The local exercise demonstrates session isolation rather than claiming production authentication or scaling.
+
+## Exercise: test a new conversation
+
+One conversation receives an order calculation and a follow-up referring to “that quantity.” A second browser conversation begins without that first turn. Clearing the first chat is followed by another reference to the old quantity.
+
+**Expected result:** relevant follow-up context remains within one conversation and clearing creates a fresh conversational boundary.
+
+**Success criteria:** unrelated conversations do not inherit each other's order details; the interface handles a missing API key with a useful message; and stopping the process ends the local application. A working chat widget alone does not satisfy the session-isolation criterion.

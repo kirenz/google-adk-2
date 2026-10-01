@@ -1,0 +1,90 @@
+# Business intelligence with SQLite and SQL Server
+
+
+![Illustrative bicycle business, structured data, and an analyst reviewing a chart.](../images/business-scenario.png){fig-alt="Generated concept illustration of bicycles and a warehouse alongside data displays and an analyst. The scene is fictional."}
+
+The BI project answers a bounded sales question with inspectable evidence: candidate SQL, a returned data table, a chart, and an explanation. Its offline path uses a synthetic SQLite fixture. Its optional live path uses a supplied Global Bike SQL Server database with actual connection details and explicitly permitted views. These are different databases and different SQL dialects.
+
+## Begin with the offline fixture
+
+```bash
+uv run python -m examples.bi.app
+uv run python -m examples.bi.gradio_app
+```
+
+The offline question is total net sales by country. The fixture exposes `sales_demo` with `country`, `net_sales`, `order_date`, `product_name`, and `quantity`. The values are synthetic. Their totals establish a known answer for testing the pipeline, not a claim about a company.
+
+A candidate aggregate illustrates the task:
+
+```sql
+SELECT country, SUM(net_sales) AS total_sales
+FROM sales_demo
+GROUP BY country
+ORDER BY total_sales DESC
+```
+
+The application bounds the result and validates SQL before execution. Expected totals are Germany EUR 2,000, USA EUR 1,500, and France EUR 500. The offline chart plan is fixed; the live plan is schema-constrained model output. Trusted code validates columns, numeric data, and chart kinds before rendering. No model-generated Python is executed.
+
+```{mermaid}
+flowchart TD
+    Q[Question and permitted schema] --> S[Candidate SQL]
+    S --> G[Parser and query policy]
+    G -->|Rejected| F[Visible refusal]
+    G -->|Accepted| DB[Read-only database execution]
+    DB --> T[Bounded result table]
+    T --> C[Trusted chart code]
+    T --> E[Explanation grounded in rows]
+    C --> UI[SQL, table, chart, explanation]
+    E --> UI
+```
+
+Offline mode accepts exactly `total sales by country`, using fixed SQL and presentation. Live mode uses model proposals. The gate is necessary before execution. It does not certify that the query answers the business question; semantic correctness remains an evaluation task.
+
+## What the query gate protects
+
+The application accepts one simple SELECT against exact permitted table or view identifiers. It rejects star selection, INTO, subqueries, CTEs, UNION, and multiple statements. It replaces row limits with a cap of 100 and removes offsets; capped results require checking for truncation. A string check such as `sql.startswith("SELECT")` is insufficient: nested writes, multiple statements, unapproved sources, and expensive operations need deeper handling. Database read-only credentials provide a second layer if a parser or application check fails. The live connector sets a 15-second query timeout and a five-second lock timeout. Row caps and timeouts address resource usage; they do not make an incorrect join correct.
+
+The threat model includes requests for writes, prompt injection inside questions or source text, access to unauthorized tables, and attempts to run generated code. The parser is a policy component with a defined accepted subset, not a universal SQL security proof.
+
+## Optional live SQL Server path
+
+```bash
+uv sync --extra dev --extra sqlserver
+uv run python -m examples.bi.app --live
+uv run python -m examples.bi.gradio_app --live
+```
+
+The root `.env.example` documents the live variables:
+
+| Variable | Required value |
+|---|---|
+| `SQLSERVER_URL` | Supplied SQLAlchemy `mssql+pyodbc` connection URL, with the installed driver and approved encryption settings |
+| `BI_SCHEMA` | Actual approved tables/views, columns, keys, and metric definitions |
+| `BI_ALLOWED_VIEWS` | Comma-separated exact SQL identifiers matching permitted sources |
+| `BI_READ_ONLY_ACCOUNT_CONFIRMED` | `yes` only after the dedicated SELECT-only account has been verified |
+
+The confirmation flag is a local assertion, not a database permission grant. The administrator's actual permissions remain the enforcement layer. Credential characters in a URL may need percent encoding. Secrets stay in `.env`; the URL must not be printed in a report or shared trace. The actual server, database, authentication method, schema, and read-only view allowlist must come from the supplied environment. Credentials and schema names must not be inferred from the synthetic fixture. A live run requires both authorized database access and Gemini access. The live graph generates SQL and a structured chart plan with a model.
+
+The Python connector uses pyodbc, which also requires the native [Microsoft ODBC Driver for SQL Server](https://learn.microsoft.com/en-us/sql/connect/odbc/download-odbc-driver-for-sql-server). Installing a Python package alone does not install that driver. The [Microsoft SQL Server extension for VS Code](https://marketplace.visualstudio.com/items?itemName=ms-mssql.mssql) provides an independent query editor for inspecting a supplied database. Server encryption and certificate settings follow the provided environment; disabling verification is not a general setup instruction.
+
+A supplied table might include `dbo.Dim_Product`, but the current server's metadata determines whether that name exists. An initial manual query against an approved view verifies connectivity and known column names before agent SQL is attempted.
+
+The server's accessible metadata can be inspected with this read-only query, before the permitted subset is recorded in `BI_SCHEMA`:
+
+```sql
+SELECT TABLE_SCHEMA, TABLE_NAME, COLUMN_NAME, DATA_TYPE
+FROM INFORMATION_SCHEMA.COLUMNS
+ORDER BY TABLE_SCHEMA, TABLE_NAME, ORDINAL_POSITION;
+```
+
+Metadata visibility depends on account permissions. An empty metadata result does not prove that the server has no tables. A manual bounded query then checks one approved view with its actual columns. Those exact source identifiers are added to `BI_ALLOWED_VIEWS`; the fixture name is not reused without evidence.
+
+On Windows, the Microsoft driver download provides an installer. On macOS, Microsoft's [ODBC installation guide](https://learn.microsoft.com/en-us/sql/connect/odbc/linux-mac/install-microsoft-odbc-driver-sql-server-macos) describes the supported installation route and architecture requirements. A mismatch between the installed driver name and the connection URL causes connector failure before SQL execution. These driver steps are unnecessary for offline SQLite work. SQL Server uses T-SQL features such as `TOP`; the offline SQLite example must not be copied as though all dialect features were interchangeable.
+
+## Project exercise and evidence
+
+The project submission includes a supported business question, metric definition, schema description, accepted query, result table, chart, explanation, and evaluation record. A country ranking must state that net sales are aggregated by country and preserve currency and period assumptions. A chart that silently mixes currencies or date ranges is misleading even if its bars render correctly.
+
+**Expected result:** an analyst can reproduce the aggregation and compare the explanation with the returned rows.
+
+**Success criteria:** an offline run works without credentials, a write request is rejected, a disallowed-source request fails, the SQL and data remain inspectable, and the chart uses the actual result. The optional live result is reported as verified only after authorized execution against the provided server; an offline pass does not verify SQL Server connectivity.

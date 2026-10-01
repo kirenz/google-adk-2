@@ -1,0 +1,50 @@
+# A first ADK agent
+
+The first example calculates order totals for the synthetic Global Bike case. Its scope is deliberately narrow: explicit unit price and quantity are required; unsupported financial totals require an explicit limitation. The example introduces the agent configuration before introducing a custom runtime.
+
+## An agent is a configured component
+
+The central definition uses `Agent`, the model name loaded from configuration, instructions, and a list of tools. An illustrative minimal definition is:
+
+```python
+import os
+from google.adk import Agent
+
+root_agent = Agent(
+    name="order_assistant",
+    model=os.getenv("GEMINI_MODEL", "gemini-flash-latest"),
+    description="Calculates explicit orders for the teaching case.",
+    instruction=(
+        "Use calculate_order_total for all order arithmetic. "
+        "Ask for missing values and never invent a price. "
+        "Do not invent current sales figures."
+    ),
+    tools=[calculate_order_total],
+)
+```
+
+`calculate_order_total` is the function defined in the runnable source file. This excerpt explains the configuration fields; the runnable package in `examples/first_agent/` adds the root configuration loader and arithmetic tool. The exported `root_agent` is the entry point discovered by ADK's local development interface. It is not a web server by itself. The [ADK Python quickstart](https://adk.dev/get-started/python/) documents the development pattern.
+
+## Run and inspect
+
+```bash
+uv run adk web examples
+```
+
+The terminal displays the local address. Opening that address and selecting `first_agent` creates a conversation with the example. The development interface is useful for exploring messages and events. Stopping the terminal process stops this local server; launching it does not publish an application.
+
+A useful first question is “What is the total for 3 bikes at EUR 499.95 each?” The tool call should contain unit_price=499.95 and quantity=3. The result contains currency="EUR", total="1499.85", and quantity=3. A question missing its price requires clarification rather than an invented catalog price.
+
+## Instructions are testable requirements
+
+“Be helpful” leaves many decisions undefined. A stronger instruction states the evidence source, the output shape, and the rule for missing information. For example, an order answer contains the quantity, EUR total, and one short explanation. An instruction that prohibits fabricated sales figures can be tested with a question asking for yesterday's revenue.
+
+Instructions guide model behavior; they do not prove correctness. The events reveal whether the arithmetic tool was called and which arguments were used. Tool execution and the final answer must agree. A model can give a correct answer from conversational history without a new tool call, so fresh-session checks help distinguish grounded behavior from a remembered earlier response.
+
+## Exercise: three questions, three observations
+
+The exercise records a complete order, an order missing its price, and a request with negative quantity. For each case, the record contains the question, relevant tool event if present, and final answer. The tool validates nonnegative finite prices and quantities from zero to ten thousand. Decimal arithmetic rounds totals to two decimals using half-up rounding.
+
+**Expected result:** the complete order totals EUR 1,499.85; missing information remains missing; no database query or write occurs.
+
+**Success criteria:** the record distinguishes observed behavior from expected behavior, identifies the evidence behind each supported fact, and flags any invented fact. A screenshot of a pleasant answer without its evidence is not a complete verification.

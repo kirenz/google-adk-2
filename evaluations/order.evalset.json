@@ -1,0 +1,31 @@
+{
+  "eval_set_id": "course_order_cases",
+  "name": "Order tool-use baseline",
+  "description": "Live first-agent cases. Expected arithmetic and tool calls are known; model behavior is evaluated, not pre-verified.",
+  "eval_cases": [
+    {
+      "eval_id": "complete_order",
+      "conversation": [
+        {
+          "invocation_id": "complete_order_turn",
+          "user_content": {"role": "user", "parts": [{"text": "What is the total for 3 bikes at EUR 499.95 each?"}]},
+          "final_response": {"role": "model", "parts": [{"text": "The total for 3 bikes at EUR 499.95 each is EUR 1,499.85."}]},
+          "intermediate_data": {"tool_uses": [{"name": "calculate_order_total", "args": {"unit_price": 499.95, "quantity": 3}}]}
+        }
+      ],
+      "session_input": {"app_name": "order_assistant", "user_id": "course_eval", "state": {}}
+    },
+    {
+      "eval_id": "missing_price",
+      "conversation": [
+        {
+          "invocation_id": "missing_price_turn",
+          "user_content": {"role": "user", "parts": [{"text": "What is the total for 3 bikes? No unit price has been supplied."}]},
+          "final_response": {"role": "model", "parts": [{"text": "What is the unit price in EUR?"}]},
+          "intermediate_data": {"tool_uses": []}
+        }
+      ],
+      "session_input": {"app_name": "order_assistant", "user_id": "course_eval", "state": {}}
+    }
+  ]
+}

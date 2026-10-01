@@ -1,0 +1,36 @@
+# From business questions to agent systems
+
+Global Bike is the running business case in this book: a bicycle business needs understandable answers about products, customers, and sales. The later database exercise uses synthetic teaching data first. These rows are not records from a real Global Bike system. The case makes an agent's responsibilities concrete without implying access to an operational company database.
+
+Consider the question, “Which product category generated the most revenue?” A language model can explain revenue and propose an analysis. Without a trusted data source, it cannot establish the current answer. A useful application obtains the relevant data, calculates or queries the result, and explains what that result supports. A confident paragraph alone is not business intelligence.
+
+## Four distinct responsibilities
+
+The **model** interprets language and generates candidate outputs. A **tool** performs a specific operation, such as looking up a product or executing an approved query. The **runtime** coordinates messages, tool calls, and results. The **application** decides which capabilities exist, which data is visible, and which actions are allowed.
+
+An agent uses a model to choose some steps toward a goal. A workflow fixes some steps in code. Both can appear in one system: interpretation may be probabilistic while a database validation rule remains deterministic. ADK provides Python components for this combination. Its [official repository](https://github.com/google/adk-python) contains the implementation; the code examples in this book target `google-adk==2.10.0` rather than whichever release happens to be newest.
+
+```{mermaid}
+flowchart LR
+    Q[Business question] --> M[Model proposes a tool call]
+    M --> V[Application validates arguments]
+    V --> T[Approved tool executes]
+    T --> R[Result returns to model]
+    R --> A[Grounded explanation]
+```
+
+This is a conceptual tool cycle, not a promise that every question invokes a tool. A definition question may need none. A database question needs evidence before an answer can claim a measured result.
+
+## A useful boundary
+
+“Explain the difference between revenue and profit” is a language task. “Calculate revenue by product category from these transactions” is an analysis task. “Change all product prices by ten percent” is a write action. The course application permits bounded analysis and refuses database writes. That boundary is enforced in tools and database permissions, not merely stated in a prompt.
+
+More autonomy creates more possible paths to check. A fixed SQL aggregation may be easier to verify than an agent that invents a query, executes it, generates Python, and creates a chart. The engineering question is which decisions benefit from language interpretation and which decisions should stay in code.
+
+## Exercise: define an agent's contract
+
+A one-page specification describes an assistant for a sales analyst. It contains one supported question, the required source, the allowed operation, the response fields, and one refusal case. For example: category revenue, a sales table, one read-only aggregate, SQL plus result plus explanation, and refusal of a delete request.
+
+**Expected result:** a specification that distinguishes evidence from explanation and access from authorization.
+
+**Success criteria:** another developer can identify the exact data needed, determine whether a request is in scope, and check the answer without trusting the prose alone. A specification that simply says “help with sales” is not sufficiently precise.

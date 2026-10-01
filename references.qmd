@@ -1,0 +1,37 @@
+# Sources and migration notes
+
+## Course sources
+
+This course builds on Jan Kirenz's [MIS Agentic AI course](https://kirenz.github.io/mis-agentic-ai/) and [Agentic AI Introduction](https://kirenz.github.io/agentic-ai-introduction/). The earlier book supplied the preparation-to-BI-project progression. The introduction materials supplied the agent, context, tool, runtime, and evaluation topics. Selected ideas are adapted as connected book chapters rather than copied as Reveal.js slide decks.
+
+The new course keeps its required chapters and examples together. The older course URLs are historical references, not required runtime dependencies.
+
+## Primary technical references
+
+- [ADK 2 overview and Python migration](https://adk.dev/2.0/)
+- [ADK Python 2.10.0 release](https://github.com/google/adk-python/releases/tag/v2.10.0)
+- [Python quickstart](https://adk.dev/get-started/python/)
+- [Graph-based workflows](https://adk.dev/graphs/)
+- [Pinned Workflow guide](https://github.com/google/adk-python/blob/v2.10.0/docs/guides/workflow/workflow/index.md)
+- [Pinned Runner guide](https://github.com/google/adk-python/blob/v2.10.0/docs/guides/runners/runner/index.md)
+- [Function tools](https://adk.dev/tools-custom/function-tools/)
+- [Sessions and state](https://adk.dev/sessions/)
+- [Agent evaluation](https://adk.dev/evaluate/)
+- [uv documentation](https://docs.astral.sh/uv/)
+- [Gradio documentation](https://www.gradio.app/docs)
+- [Microsoft ODBC Driver for SQL Server](https://learn.microsoft.com/en-us/sql/connect/odbc/download-odbc-driver-for-sql-server)
+- [SQLGlot](https://github.com/tobymao/sqlglot)
+
+Current online documentation can describe a newer version than the course. For conflicting signatures or behavior, the installed version and the pinned ADK source are the implementation reference.
+
+## What changed from the previous course
+
+The main additions are explicit graph workflows, a shared local environment, independently runnable examples, per-browser Gradio session identity, structured chart configuration, and executable offline checks. SQL access is a later project step instead of a prerequisite for the first agent.
+
+Older `SequentialAgent`, `ParallelAgent`, and `LoopAgent` examples are explained as prior patterns; new examples use `Workflow`. The ADK 2 migration guidance also covers additional event fields, custom execution overrides, event emission, and exception handling. These matter when migrating custom applications, even when a simple `Agent` definition continues to work.
+
+MCP, cross-session memory, persistent services, human input, and deployment are extensions rather than requirements of the introductory project.
+
+## Illustration provenance
+
+The course cover and the business-scenario illustration are generated illustrations. They provide visual context, not evidence of an actual Global Bike installation. Architecture and execution diagrams use Mermaid so their labels and connections can be reviewed and edited alongside the text. Prompts and filenames are recorded in `images/README.md`.

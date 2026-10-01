@@ -1,0 +1,68 @@
+# Project, credentials, and reproducibility
+
+A reproducible agent project has two different configurations. Python dependencies describe the software. Environment variables describe local credentials and service choices. Keeping these separate allows code to be shared while API keys stay local.
+
+## One environment for the whole book
+
+The course source includes every example and the shared environment:
+
+```bash
+git clone https://github.com/kirenz/google-adk-2.git
+cd google-adk-2
+```
+
+These two commands work in PowerShell and macOS Terminal. The published book is available at [Google ADK 2](https://kirenz.github.io/google-adk-2/); GitHub's Code → Download ZIP is an alternative to cloning. An extracted ZIP is opened in VS Code at the folder containing `pyproject.toml`.
+
+All commands run from the folder containing `pyproject.toml`. The project specifies Python 3.12 and exactly ADK 2.10.0. The lockfile records the dependency resolution. The development extra installs the offline testing tools.
+
+```bash
+uv sync --extra dev
+uv run python --version
+uv run python -c "from importlib.metadata import version; print(version('google-adk'))"
+```
+
+**Expected output:** Python reports a 3.12 version and the ADK check reports `2.10.0`. `uv sync` may download Python packages, but it does not submit a business question to Gemini.
+
+## Gemini Developer API
+
+The local learning route uses an API key from [Google AI Studio](https://aistudio.google.com/) and the Gemini Developer API. A Google account and an API key with access to the selected model are necessary for live model examples. Cloud deployment and a separately configured Vertex AI project are not prerequisites for this route. Account restrictions, model availability, quotas, and charges depend on the provider and account; this book does not promise free API access. Google's [API-key documentation](https://ai.google.dev/gemini-api/docs/api-key) explains key creation and handling.
+
+The supplied `.env.example` is copied to `.env`:
+
+::: {.panel-tabset}
+
+### Windows PowerShell
+
+```powershell
+Copy-Item .env.example .env
+```
+
+### macOS
+
+```bash
+cp .env.example .env
+```
+
+:::
+
+The local `.env` contains these settings with the actual key substituted only in the local file:
+
+```dotenv
+GOOGLE_GENAI_USE_VERTEXAI=FALSE
+GOOGLE_API_KEY=replace_with_local_key
+GEMINI_MODEL=gemini-flash-latest
+```
+
+`gemini-flash-latest` is a mutable alias, not an immutable model version. A later provider change can alter behavior without changing Python dependencies. Before a live exercise, the model must be available for the account in AI Studio or the provider's model listing. An unavailable-model error requires selecting an available compatible model and updating `GEMINI_MODEL`, not downgrading ADK blindly.
+
+The examples load the root `.env` with python-dotenv. Keys must not appear in Python files, screenshots, notebooks, prompts, or committed configuration. `.env` is ignored by Git. `git check-ignore .env` confirms that rule without printing the key. A key exposed in a commit or screenshot must be revoked and replaced.
+
+## Offline and live work
+
+The offline tests and synthetic database exercise can run without a Gemini key. A model-driven conversation requires a network connection and valid API credentials. A live request also has provider-dependent latency and may incur charges. Rendering the Quarto book does not execute its Python snippets or contact Gemini.
+
+## Exercise: establish a baseline
+
+The three version commands and `git check-ignore .env` form the setup record. A second developer should be able to repeat the software setup from the repository while supplying a different local key.
+
+**Success criteria:** the reported ADK version is exactly `2.10.0`, `.env` is ignored, and only `.env.example` contains shareable placeholders. When no API account is available, the setup record explicitly identifies the live exercises as pending while offline work continues.

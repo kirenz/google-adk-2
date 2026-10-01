@@ -1,0 +1,58 @@
+# Evaluation: responses, actions, and evidence
+
+Agent evaluation asks whether the system meets its contract across representative cases. A fluent answer is one observable output. Tool choice, arguments, query policy decisions, returned rows, and session behavior are equally important. Different components require different kinds of evidence.
+
+## Separate deterministic and model checks
+
+Offline tests check arithmetic, graph functions, SQL policy, fixture totals, and chart inputs. These checks are fast and repeatable because they do not need a live model. From the course root:
+
+```bash
+uv run pytest
+```
+
+A passing offline suite establishes the tested local behaviors. It does not establish that an API key works, that an account can access a model, or that the live SQL Server is reachable. Those are separate live checks performed only in an authorized environment.
+
+Live agent evaluation checks whether the model chooses the appropriate tool and accurately communicates its result. ADK supports evaluation of responses and tool-use trajectories. Its [evaluation guide](https://adk.dev/evaluate/) and [criteria documentation](https://adk.dev/evaluate/criteria/) describe available metrics. Model-based grading can help assess language quality, but a judge's agreement is not a replacement for known arithmetic or SQL results.
+
+## A compact case set
+
+### A supplied ADK evaluation set
+
+`evaluations/order.evalset.json` contains a complete-order case and a missing-price case for `first_agent`. The expected trajectories require the arithmetic tool with known arguments in the first case and no tool call in the second. `evaluations/tool-use-config.json` scores the tool trajectory only. Its example final responses are references for human review; this configuration does not score factual agreement of the final text.
+
+The optional evaluation dependency is separate from the lightweight offline setup:
+
+```bash
+uv sync --extra dev --extra eval
+uv run adk eval examples/first_agent evaluations/order.evalset.json --config_file_path evaluations/tool-use-config.json --print_detailed_results
+```
+
+The CLI path names the **agent directory**, as required by the installed 2.10.0 implementation. Running this command invokes Gemini for the agent and may incur usage charges; it is not an offline test. The supplied JSON has been validated against the installed ADK schema, but the live evaluation has not been run as part of course authoring. A passing trajectory score still requires checking the final EUR total and any invented claims.
+
+| Case | Expected action | Expected response |
+|---|---|---|
+| Complete order | Validated arithmetic tool or graph calculation | Correct total and unit |
+| Missing quantity | No invented successful total | Clarification or explicit limitation |
+| Negative quantity | Validation refusal | Clear reason without fabricated result |
+| Country sales aggregate | Approved query and bounded rows | Ranking matches fixture totals |
+| Delete sales records | No execution | Refusal within read-only scope |
+| Unauthorized table | Gate rejection | No leaked rows |
+| Question in separate chat | Separate session | No inherited private context |
+
+The table defines desired behavior. Each evaluation record separately states what the current implementation actually did. A failed case is evidence for a change, not an excuse to rewrite the expectation until it passes.
+
+## Reproducible observations
+
+A record contains case ID, prompt, expected behavior, software version, configured model name, session identity, relevant events, actual result, and verdict. Model aliases can change, so the date and available resolved model identifier are recorded when the provider exposes it. Credentials and personal database rows are excluded from shared traces.
+
+Response quality can be scored along distinct dimensions: factual agreement, completeness, uncertainty handling, and readability. Tool behavior can be checked for name, arguments, order when relevant, and result use. A different valid tool sequence is not necessarily a failure; the task contract determines whether exact sequencing matters. The fixed graph's validation step does matter because skipping it violates the architecture.
+
+Repeating selected live cases reveals variability. A first successful run is encouraging, but repeated failures on an ambiguous question reveal a reliability problem. A report should include the number of runs and failures rather than generalizing from a single attractive example. Cost and latency belong beside quality when comparing alternative designs.
+
+## Exercise: evaluate before and after one change
+
+A baseline uses the case set above. One change is then made, such as improving a tool description or narrowing an extraction schema. The same cases are rerun in fresh sessions. The report identifies improvements, regressions, and results that remain uncertain.
+
+**Expected result:** a small, auditable comparison tied to observable behavior.
+
+**Success criteria:** correct totals are checked against known values, rejected operations show no database execution, final explanations match tool results, and no live success is inferred from offline tests. The report distinguishes measured outcomes from proposed improvements.
