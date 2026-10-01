@@ -50,7 +50,7 @@ In ADK Web, choose `first_agent` for the tool-using agent, `function_workflow` f
 
 ## SQL Server extension
 
-The book's BI chapter describes driver installation, schema inspection, permitted views, credentials, and SQL dialect. The offline route does not require pyodbc. For live SQL Server use:
+The Preparation chapters cover [Accounts](chapters/accounts.qmd), [Windows](chapters/windows-setup.qmd), [macOS](chapters/mac-setup.qmd), [VS Code](chapters/mssql-vscode.qmd), and [Server Connection](chapters/mssql-connection.qmd). The server chapter verifies connectivity independently of Gemini; the BI chapter adds permitted views and agent query validation. The offline route does not require pyodbc. For live SQL Server use:
 
 ```bash
 uv sync --extra dev --extra sqlserver
@@ -64,7 +64,7 @@ Configure `SQLSERVER_URL`, `BI_SCHEMA`, `BI_ALLOWED_VIEWS`, and `BI_READ_ONLY_AC
 ```text
 google-adk-2/
 ├── index.qmd, references.qmd, _quarto.yml, theme.scss
-├── chapters/        # Twelve learning chapters with exercises
+├── chapters/        # Learning chapters and platform-specific preparation
 ├── images/          # Generated illustrations and provenance
 ├── examples/        # Agents, graphs, Runner, Gradio, BI
 ├── tests/           # Offline behavior and integration checks

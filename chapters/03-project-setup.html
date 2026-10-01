@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>2&nbsp; Project, credentials, and reproducibility – Google ADK 2</title>
+<title>5&nbsp; Project, credentials, and reproducibility – Google ADK 2</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -65,8 +65,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../chapters/01-agent-fundamentals.html" rel="next">
-<link href="../chapters/02-workstation.html" rel="prev">
+<link href="../chapters/mssql-connection.html" rel="next">
+<link href="../chapters/mssql-vscode.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -117,7 +117,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/02-workstation.html">Preparation</a></li><li class="breadcrumb-item"><a href="../chapters/03-project-setup.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Project, credentials, and reproducibility</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/02-workstation.html">Preparation</a></li><li class="breadcrumb-item"><a href="../chapters/03-project-setup.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Project, credentials, and reproducibility</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -159,13 +159,43 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapters/02-workstation.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Workstation and development tools</span></span></a>
+ <span class="menu-text">Preparation overview</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/accounts.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Accounts</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/windows-setup.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Windows</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/mac-setup.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">macOS</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/mssql-vscode.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">VS Code</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapters/03-project-setup.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Project, credentials, and reproducibility</span></span></a>
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Project, credentials, and reproducibility</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/mssql-connection.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Server Connection</span></span></a>
   </div>
 </li>
       </ul>
@@ -182,25 +212,25 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapters/01-agent-fundamentals.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">From business questions to agent systems</span></span></a>
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">From business questions to agent systems</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapters/04-first-agent.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">A first ADK agent</span></span></a>
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">A first ADK agent</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapters/05-tools-context.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Function tools and context engineering</span></span></a>
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Function tools and context engineering</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapters/06-runtime-sessions.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Runner, events, and separate sessions</span></span></a>
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Runner, events, and separate sessions</span></span></a>
   </div>
 </li>
       </ul>
@@ -217,25 +247,25 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapters/07-workflow-graphs.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">ADK 2 workflow graphs</span></span></a>
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">ADK 2 workflow graphs</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapters/08-multi-agent.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Composing agents with deterministic work</span></span></a>
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Composing agents with deterministic work</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapters/09-gradio.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">A Gradio interface for an agent</span></span></a>
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">A Gradio interface for an agent</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapters/10-bi-project.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Business intelligence with SQLite and SQL Server</span></span></a>
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Business intelligence with SQLite and SQL Server</span></span></a>
   </div>
 </li>
       </ul>
@@ -252,13 +282,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapters/11-evaluation.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Evaluation: responses, actions, and evidence</span></span></a>
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Evaluation: responses, actions, and evidence</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapters/12-advanced.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Optional extensions and engineering decisions</span></span></a>
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Optional extensions and engineering decisions</span></span></a>
   </div>
 </li>
       </ul>
@@ -266,7 +296,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../references.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Sources and migration notes</span></span></a>
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Sources and migration notes</span></span></a>
   </div>
 </li>
     </ul>
@@ -279,19 +309,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#one-environment-for-the-whole-book" id="toc-one-environment-for-the-whole-book" class="nav-link active" data-scroll-target="#one-environment-for-the-whole-book"><span class="header-section-number">2.1</span> One environment for the whole book</a></li>
-  <li><a href="#gemini-developer-api" id="toc-gemini-developer-api" class="nav-link" data-scroll-target="#gemini-developer-api"><span class="header-section-number">2.2</span> Gemini Developer API</a></li>
-  <li><a href="#offline-and-live-work" id="toc-offline-and-live-work" class="nav-link" data-scroll-target="#offline-and-live-work"><span class="header-section-number">2.3</span> Offline and live work</a></li>
-  <li><a href="#exercise-establish-a-baseline" id="toc-exercise-establish-a-baseline" class="nav-link" data-scroll-target="#exercise-establish-a-baseline"><span class="header-section-number">2.4</span> Exercise: establish a baseline</a></li>
+  <li><a href="#one-environment-for-the-whole-book" id="toc-one-environment-for-the-whole-book" class="nav-link active" data-scroll-target="#one-environment-for-the-whole-book"><span class="header-section-number">5.1</span> One environment for the whole book</a></li>
+  <li><a href="#gemini-developer-api" id="toc-gemini-developer-api" class="nav-link" data-scroll-target="#gemini-developer-api"><span class="header-section-number">5.2</span> Gemini Developer API</a></li>
+  <li><a href="#offline-and-live-work" id="toc-offline-and-live-work" class="nav-link" data-scroll-target="#offline-and-live-work"><span class="header-section-number">5.3</span> Offline and live work</a></li>
+  <li><a href="#exercise-establish-a-baseline" id="toc-exercise-establish-a-baseline" class="nav-link" data-scroll-target="#exercise-establish-a-baseline"><span class="header-section-number">5.4</span> Exercise: establish a baseline</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/kirenz/google-adk-2/blob/main/chapters/03-project-setup.qmd" class="toc-action"><i class="bi bi-github"></i>View source</a></li><li><a href="https://github.com/kirenz/google-adk-2/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/02-workstation.html">Preparation</a></li><li class="breadcrumb-item"><a href="../chapters/03-project-setup.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Project, credentials, and reproducibility</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/02-workstation.html">Preparation</a></li><li class="breadcrumb-item"><a href="../chapters/03-project-setup.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Project, credentials, and reproducibility</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Project, credentials, and reproducibility</span></h1>
+<h1 class="title"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Project, credentials, and reproducibility</span></h1>
 </div>
 
 
@@ -309,8 +339,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <p>A reproducible agent project has two different configurations. Python dependencies describe the software. Environment variables describe local credentials and service choices. Keeping these separate allows code to be shared while API keys stay local.</p>
-<section id="one-environment-for-the-whole-book" class="level2" data-number="2.1">
-<h2 data-number="2.1" class="anchored" data-anchor-id="one-environment-for-the-whole-book"><span class="header-section-number">2.1</span> One environment for the whole book</h2>
+<section id="one-environment-for-the-whole-book" class="level2" data-number="5.1">
+<h2 data-number="5.1" class="anchored" data-anchor-id="one-environment-for-the-whole-book"><span class="header-section-number">5.1</span> One environment for the whole book</h2>
 <p>The course source includes every example and the shared environment:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/kirenz/google-adk-2.git</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> google-adk-2</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -321,8 +351,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> run python <span class="at">-c</span> <span class="st">"from importlib.metadata import version; print(version('google-adk'))"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p><strong>Expected output:</strong> Python reports a 3.12 version and the ADK check reports <code>2.10.0</code>. <code>uv sync</code> may download Python packages, but it does not submit a business question to Gemini.</p>
 </section>
-<section id="gemini-developer-api" class="level2" data-number="2.2">
-<h2 data-number="2.2" class="anchored" data-anchor-id="gemini-developer-api"><span class="header-section-number">2.2</span> Gemini Developer API</h2>
+<section id="gemini-developer-api" class="level2" data-number="5.2">
+<h2 data-number="5.2" class="anchored" data-anchor-id="gemini-developer-api"><span class="header-section-number">5.2</span> Gemini Developer API</h2>
 <p>The local learning route uses an API key from <a href="https://aistudio.google.com/">Google AI Studio</a> and the Gemini Developer API. A Google account and an API key with access to the selected model are necessary for live model examples. Cloud deployment and a separately configured Vertex AI project are not prerequisites for this route. Account restrictions, model availability, quotas, and charges depend on the provider and account; this book does not promise free API access. Google’s <a href="https://ai.google.dev/gemini-api/docs/api-key">API-key documentation</a> explains key creation and handling.</p>
 <p>The supplied <code>.env.example</code> is copied to <code>.env</code>:</p>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
@@ -343,12 +373,12 @@ GEMINI_MODEL=gemini-flash-latest</code></pre>
 <p><code>gemini-flash-latest</code> is a mutable alias, not an immutable model version. A later provider change can alter behavior without changing Python dependencies. Before a live exercise, the model must be available for the account in AI Studio or the provider’s model listing. An unavailable-model error requires selecting an available compatible model and updating <code>GEMINI_MODEL</code>, not downgrading ADK blindly.</p>
 <p>The examples load the root <code>.env</code> with python-dotenv. Keys must not appear in Python files, screenshots, notebooks, prompts, or committed configuration. <code>.env</code> is ignored by Git. <code>git check-ignore .env</code> confirms that rule without printing the key. A key exposed in a commit or screenshot must be revoked and replaced.</p>
 </section>
-<section id="offline-and-live-work" class="level2" data-number="2.3">
-<h2 data-number="2.3" class="anchored" data-anchor-id="offline-and-live-work"><span class="header-section-number">2.3</span> Offline and live work</h2>
+<section id="offline-and-live-work" class="level2" data-number="5.3">
+<h2 data-number="5.3" class="anchored" data-anchor-id="offline-and-live-work"><span class="header-section-number">5.3</span> Offline and live work</h2>
 <p>The offline tests and synthetic database exercise can run without a Gemini key. A model-driven conversation requires a network connection and valid API credentials. A live request also has provider-dependent latency and may incur charges. Rendering the Quarto book does not execute its Python snippets or contact Gemini.</p>
 </section>
-<section id="exercise-establish-a-baseline" class="level2" data-number="2.4">
-<h2 data-number="2.4" class="anchored" data-anchor-id="exercise-establish-a-baseline"><span class="header-section-number">2.4</span> Exercise: establish a baseline</h2>
+<section id="exercise-establish-a-baseline" class="level2" data-number="5.4">
+<h2 data-number="5.4" class="anchored" data-anchor-id="exercise-establish-a-baseline"><span class="header-section-number">5.4</span> Exercise: establish a baseline</h2>
 <p>The three version commands and <code>git check-ignore .env</code> form the setup record. A second developer should be able to repeat the software setup from the repository while supplying a different local key.</p>
 <p><strong>Success criteria:</strong> the reported ADK version is exactly <code>2.10.0</code>, <code>.env</code> is ignored, and only <code>.env.example</code> contains shareable placeholders. When no API account is available, the setup record explicitly identifies the live exercises as pending while offline work continues.</p>
 
@@ -763,13 +793,13 @@ GEMINI_MODEL=gemini-flash-latest</code></pre>
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../chapters/02-workstation.html" class="pagination-link" aria-label="Workstation and development tools">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Workstation and development tools</span></span>
+      <a href="../chapters/mssql-vscode.html" class="pagination-link" aria-label="VS Code">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">VS Code</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../chapters/01-agent-fundamentals.html" class="pagination-link" aria-label="From business questions to agent systems">
-        <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">From business questions to agent systems</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../chapters/mssql-connection.html" class="pagination-link" aria-label="Server Connection">
+        <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Server Connection</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

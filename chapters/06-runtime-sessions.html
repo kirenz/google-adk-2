@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>6&nbsp; Runner, events, and separate sessions – Google ADK 2</title>
+<title>10&nbsp; Runner, events, and separate sessions – Google ADK 2</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -120,7 +120,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/01-agent-fundamentals.html">Build and understand agents</a></li><li class="breadcrumb-item"><a href="../chapters/06-runtime-sessions.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Runner, events, and separate sessions</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/01-agent-fundamentals.html">Build and understand agents</a></li><li class="breadcrumb-item"><a href="../chapters/06-runtime-sessions.html"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Runner, events, and separate sessions</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -162,13 +162,43 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapters/02-workstation.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Workstation and development tools</span></span></a>
+ <span class="menu-text">Preparation overview</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/accounts.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Accounts</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/windows-setup.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Windows</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/mac-setup.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">macOS</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/mssql-vscode.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">VS Code</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapters/03-project-setup.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Project, credentials, and reproducibility</span></span></a>
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Project, credentials, and reproducibility</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/mssql-connection.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Server Connection</span></span></a>
   </div>
 </li>
       </ul>
@@ -185,25 +215,25 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapters/01-agent-fundamentals.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">From business questions to agent systems</span></span></a>
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">From business questions to agent systems</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapters/04-first-agent.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">A first ADK agent</span></span></a>
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">A first ADK agent</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapters/05-tools-context.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Function tools and context engineering</span></span></a>
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Function tools and context engineering</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapters/06-runtime-sessions.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Runner, events, and separate sessions</span></span></a>
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Runner, events, and separate sessions</span></span></a>
   </div>
 </li>
       </ul>
@@ -220,25 +250,25 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapters/07-workflow-graphs.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">ADK 2 workflow graphs</span></span></a>
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">ADK 2 workflow graphs</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapters/08-multi-agent.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Composing agents with deterministic work</span></span></a>
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Composing agents with deterministic work</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapters/09-gradio.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">A Gradio interface for an agent</span></span></a>
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">A Gradio interface for an agent</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapters/10-bi-project.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Business intelligence with SQLite and SQL Server</span></span></a>
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Business intelligence with SQLite and SQL Server</span></span></a>
   </div>
 </li>
       </ul>
@@ -255,13 +285,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapters/11-evaluation.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Evaluation: responses, actions, and evidence</span></span></a>
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Evaluation: responses, actions, and evidence</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapters/12-advanced.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Optional extensions and engineering decisions</span></span></a>
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Optional extensions and engineering decisions</span></span></a>
   </div>
 </li>
       </ul>
@@ -269,7 +299,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../references.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Sources and migration notes</span></span></a>
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Sources and migration notes</span></span></a>
   </div>
 </li>
     </ul>
@@ -282,19 +312,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#one-invocation-several-events" id="toc-one-invocation-several-events" class="nav-link active" data-scroll-target="#one-invocation-several-events"><span class="header-section-number">6.1</span> One invocation, several events</a></li>
-  <li><a href="#session-identity" id="toc-session-identity" class="nav-link" data-scroll-target="#session-identity"><span class="header-section-number">6.2</span> Session identity</a></li>
-  <li><a href="#state-is-an-application-contract" id="toc-state-is-an-application-contract" class="nav-link" data-scroll-target="#state-is-an-application-contract"><span class="header-section-number">6.3</span> State is an application contract</a></li>
-  <li><a href="#exercise-compare-two-histories" id="toc-exercise-compare-two-histories" class="nav-link" data-scroll-target="#exercise-compare-two-histories"><span class="header-section-number">6.4</span> Exercise: compare two histories</a></li>
+  <li><a href="#one-invocation-several-events" id="toc-one-invocation-several-events" class="nav-link active" data-scroll-target="#one-invocation-several-events"><span class="header-section-number">10.1</span> One invocation, several events</a></li>
+  <li><a href="#session-identity" id="toc-session-identity" class="nav-link" data-scroll-target="#session-identity"><span class="header-section-number">10.2</span> Session identity</a></li>
+  <li><a href="#state-is-an-application-contract" id="toc-state-is-an-application-contract" class="nav-link" data-scroll-target="#state-is-an-application-contract"><span class="header-section-number">10.3</span> State is an application contract</a></li>
+  <li><a href="#exercise-compare-two-histories" id="toc-exercise-compare-two-histories" class="nav-link" data-scroll-target="#exercise-compare-two-histories"><span class="header-section-number">10.4</span> Exercise: compare two histories</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/kirenz/google-adk-2/blob/main/chapters/06-runtime-sessions.qmd" class="toc-action"><i class="bi bi-github"></i>View source</a></li><li><a href="https://github.com/kirenz/google-adk-2/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/01-agent-fundamentals.html">Build and understand agents</a></li><li class="breadcrumb-item"><a href="../chapters/06-runtime-sessions.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Runner, events, and separate sessions</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/01-agent-fundamentals.html">Build and understand agents</a></li><li class="breadcrumb-item"><a href="../chapters/06-runtime-sessions.html"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Runner, events, and separate sessions</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Runner, events, and separate sessions</span></h1>
+<h1 class="title"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Runner, events, and separate sessions</span></h1>
 </div>
 
 
@@ -312,8 +342,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <p>The ADK development interface supplies a runtime automatically. A custom Python application needs to construct that runtime itself. The Runner coordinates an agent invocation with a session service and returns an asynchronous stream of events. Understanding that stream explains why a final response is only one part of an agent run.</p>
-<section id="one-invocation-several-events" class="level2" data-number="6.1">
-<h2 data-number="6.1" class="anchored" data-anchor-id="one-invocation-several-events"><span class="header-section-number">6.1</span> One invocation, several events</h2>
+<section id="one-invocation-several-events" class="level2" data-number="10.1">
+<h2 data-number="10.1" class="anchored" data-anchor-id="one-invocation-several-events"><span class="header-section-number">10.1</span> One invocation, several events</h2>
 <p>A question can produce a model response containing a function call, a tool response, and a final natural-language answer. A graph may also emit node-related information and structured outputs. Printing every event as if it were a completed answer produces confusing interfaces. Ignoring every event except the final text discards evidence needed for debugging.</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
@@ -341,8 +371,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p>This diagram describes the order example’s tool cycle. Actual event order depends on the invoked agent and available tools.</p>
 </section>
-<section id="session-identity" class="level2" data-number="6.2">
-<h2 data-number="6.2" class="anchored" data-anchor-id="session-identity"><span class="header-section-number">6.2</span> Session identity</h2>
+<section id="session-identity" class="level2" data-number="10.2">
+<h2 data-number="10.2" class="anchored" data-anchor-id="session-identity"><span class="header-section-number">10.2</span> Session identity</h2>
 <p>A session holds a conversation’s events and state. Memory is a separate concept for information retrieved across conversations. An in-memory session service is convenient for learning, but its contents disappear when the Python process ends. The <a href="https://adk.dev/sessions/">official session overview</a> explains these distinctions.</p>
 <p>The supplied runner example is started from the course root:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> run python <span class="at">-m</span> examples.run_agent <span class="st">"What is the total for 3 bikes at EUR 499.95 each?"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -351,13 +381,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    text <span class="op">=</span> <span class="st">""</span>.join(part.text <span class="kw">or</span> <span class="st">""</span> <span class="cf">for</span> part <span class="kw">in</span> event.content.parts <span class="kw">or</span> [])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>The guard handles content without text. A model response can contain function calls, and a workflow can expose structured <code>output</code> instead of a final text part. A general UI must handle these cases deliberately.</p>
 </section>
-<section id="state-is-an-application-contract" class="level2" data-number="6.3">
-<h2 data-number="6.3" class="anchored" data-anchor-id="state-is-an-application-contract"><span class="header-section-number">6.3</span> State is an application contract</h2>
+<section id="state-is-an-application-contract" class="level2" data-number="10.3">
+<h2 data-number="10.3" class="anchored" data-anchor-id="state-is-an-application-contract"><span class="header-section-number">10.3</span> State is an application contract</h2>
 <p>A clarified reporting period can live in session state. A product identifier passed from one graph node to another can live in the graph output. These are different data paths. Using session state for every intermediate value can leave stale values after a failed run. Explicit node input and output contracts reduce that ambiguity.</p>
 <p>Application identity, user identity, and session identity must be kept consistent. A browser conversation cannot safely reuse a hard-coded shared session for all users. A new session per conversation isolates histories; real deployments also require authenticated users and access controls. Random identifiers alone do not establish authorization.</p>
 </section>
-<section id="exercise-compare-two-histories" class="level2" data-number="6.4">
-<h2 data-number="6.4" class="anchored" data-anchor-id="exercise-compare-two-histories"><span class="header-section-number">6.4</span> Exercise: compare two histories</h2>
+<section id="exercise-compare-two-histories" class="level2" data-number="10.4">
+<h2 data-number="10.4" class="anchored" data-anchor-id="exercise-compare-two-histories"><span class="header-section-number">10.4</span> Exercise: compare two histories</h2>
 <p>Two fresh sessions receive different initial questions. A follow-up in the first session refers to its own earlier order; the second session receives a question that would require the first session’s history. A small trace records session IDs, authors, function calls, results, and final-response flags without credentials.</p>
 <p><strong>Expected result:</strong> the first conversation can use its own history, while the second does not inherit it.</p>
 <p><strong>Success criteria:</strong> no cross-session order or question leaks into the second answer, intermediate events remain distinguishable from final output, and restarting the in-memory process demonstrates loss of local history.</p>
@@ -774,12 +804,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="../chapters/05-tools-context.html" class="pagination-link" aria-label="Function tools and context engineering">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Function tools and context engineering</span></span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Function tools and context engineering</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
       <a href="../chapters/07-workflow-graphs.html" class="pagination-link" aria-label="ADK 2 workflow graphs">
-        <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">ADK 2 workflow graphs</span></span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">ADK 2 workflow graphs</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

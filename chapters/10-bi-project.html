@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>10&nbsp; Business intelligence with SQLite and SQL Server – Google ADK 2</title>
+<title>14&nbsp; Business intelligence with SQLite and SQL Server – Google ADK 2</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -120,7 +120,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/07-workflow-graphs.html">Connect the system</a></li><li class="breadcrumb-item"><a href="../chapters/10-bi-project.html"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Business intelligence with SQLite and SQL Server</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/07-workflow-graphs.html">Connect the system</a></li><li class="breadcrumb-item"><a href="../chapters/10-bi-project.html"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Business intelligence with SQLite and SQL Server</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -162,13 +162,43 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapters/02-workstation.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Workstation and development tools</span></span></a>
+ <span class="menu-text">Preparation overview</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/accounts.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Accounts</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/windows-setup.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Windows</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/mac-setup.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">macOS</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/mssql-vscode.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">VS Code</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapters/03-project-setup.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Project, credentials, and reproducibility</span></span></a>
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Project, credentials, and reproducibility</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/mssql-connection.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Server Connection</span></span></a>
   </div>
 </li>
       </ul>
@@ -185,25 +215,25 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapters/01-agent-fundamentals.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">From business questions to agent systems</span></span></a>
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">From business questions to agent systems</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapters/04-first-agent.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">A first ADK agent</span></span></a>
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">A first ADK agent</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapters/05-tools-context.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Function tools and context engineering</span></span></a>
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Function tools and context engineering</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapters/06-runtime-sessions.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Runner, events, and separate sessions</span></span></a>
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Runner, events, and separate sessions</span></span></a>
   </div>
 </li>
       </ul>
@@ -220,25 +250,25 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapters/07-workflow-graphs.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">ADK 2 workflow graphs</span></span></a>
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">ADK 2 workflow graphs</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapters/08-multi-agent.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Composing agents with deterministic work</span></span></a>
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Composing agents with deterministic work</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapters/09-gradio.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">A Gradio interface for an agent</span></span></a>
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">A Gradio interface for an agent</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapters/10-bi-project.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Business intelligence with SQLite and SQL Server</span></span></a>
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Business intelligence with SQLite and SQL Server</span></span></a>
   </div>
 </li>
       </ul>
@@ -255,13 +285,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapters/11-evaluation.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Evaluation: responses, actions, and evidence</span></span></a>
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Evaluation: responses, actions, and evidence</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapters/12-advanced.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Optional extensions and engineering decisions</span></span></a>
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Optional extensions and engineering decisions</span></span></a>
   </div>
 </li>
       </ul>
@@ -269,7 +299,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../references.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Sources and migration notes</span></span></a>
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Sources and migration notes</span></span></a>
   </div>
 </li>
     </ul>
@@ -282,19 +312,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#begin-with-the-offline-fixture" id="toc-begin-with-the-offline-fixture" class="nav-link active" data-scroll-target="#begin-with-the-offline-fixture"><span class="header-section-number">10.1</span> Begin with the offline fixture</a></li>
-  <li><a href="#what-the-query-gate-protects" id="toc-what-the-query-gate-protects" class="nav-link" data-scroll-target="#what-the-query-gate-protects"><span class="header-section-number">10.2</span> What the query gate protects</a></li>
-  <li><a href="#optional-live-sql-server-path" id="toc-optional-live-sql-server-path" class="nav-link" data-scroll-target="#optional-live-sql-server-path"><span class="header-section-number">10.3</span> Optional live SQL Server path</a></li>
-  <li><a href="#project-exercise-and-evidence" id="toc-project-exercise-and-evidence" class="nav-link" data-scroll-target="#project-exercise-and-evidence"><span class="header-section-number">10.4</span> Project exercise and evidence</a></li>
+  <li><a href="#begin-with-the-offline-fixture" id="toc-begin-with-the-offline-fixture" class="nav-link active" data-scroll-target="#begin-with-the-offline-fixture"><span class="header-section-number">14.1</span> Begin with the offline fixture</a></li>
+  <li><a href="#what-the-query-gate-protects" id="toc-what-the-query-gate-protects" class="nav-link" data-scroll-target="#what-the-query-gate-protects"><span class="header-section-number">14.2</span> What the query gate protects</a></li>
+  <li><a href="#optional-live-sql-server-path" id="toc-optional-live-sql-server-path" class="nav-link" data-scroll-target="#optional-live-sql-server-path"><span class="header-section-number">14.3</span> Optional live SQL Server path</a></li>
+  <li><a href="#project-exercise-and-evidence" id="toc-project-exercise-and-evidence" class="nav-link" data-scroll-target="#project-exercise-and-evidence"><span class="header-section-number">14.4</span> Project exercise and evidence</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/kirenz/google-adk-2/blob/main/chapters/10-bi-project.qmd" class="toc-action"><i class="bi bi-github"></i>View source</a></li><li><a href="https://github.com/kirenz/google-adk-2/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/07-workflow-graphs.html">Connect the system</a></li><li class="breadcrumb-item"><a href="../chapters/10-bi-project.html"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Business intelligence with SQLite and SQL Server</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/07-workflow-graphs.html">Connect the system</a></li><li class="breadcrumb-item"><a href="../chapters/10-bi-project.html"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Business intelligence with SQLite and SQL Server</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Business intelligence with SQLite and SQL Server</span></h1>
+<h1 class="title"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Business intelligence with SQLite and SQL Server</span></h1>
 </div>
 
 
@@ -318,8 +348,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </figure>
 </div>
 <p>The BI project answers a bounded sales question with inspectable evidence: candidate SQL, a returned data table, a chart, and an explanation. Its offline path uses a synthetic SQLite fixture. Its optional live path uses a supplied Global Bike SQL Server database with actual connection details and explicitly permitted views. These are different databases and different SQL dialects.</p>
-<section id="begin-with-the-offline-fixture" class="level2" data-number="10.1">
-<h2 data-number="10.1" class="anchored" data-anchor-id="begin-with-the-offline-fixture"><span class="header-section-number">10.1</span> Begin with the offline fixture</h2>
+<section id="begin-with-the-offline-fixture" class="level2" data-number="14.1">
+<h2 data-number="14.1" class="anchored" data-anchor-id="begin-with-the-offline-fixture"><span class="header-section-number">14.1</span> Begin with the offline fixture</h2>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> run python <span class="at">-m</span> examples.bi.app</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> run python <span class="at">-m</span> examples.bi.gradio_app</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>The offline question is total net sales by country. The fixture exposes <code>sales_demo</code> with <code>country</code>, <code>net_sales</code>, <code>order_date</code>, <code>product_name</code>, and <code>quantity</code>. The values are synthetic. Their totals establish a known answer for testing the pipeline, not a claim about a company.</p>
@@ -352,13 +382,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p>Offline mode accepts exactly <code>total sales by country</code>, using fixed SQL and presentation. Live mode uses model proposals. The gate is necessary before execution. It does not certify that the query answers the business question; semantic correctness remains an evaluation task.</p>
 </section>
-<section id="what-the-query-gate-protects" class="level2" data-number="10.2">
-<h2 data-number="10.2" class="anchored" data-anchor-id="what-the-query-gate-protects"><span class="header-section-number">10.2</span> What the query gate protects</h2>
+<section id="what-the-query-gate-protects" class="level2" data-number="14.2">
+<h2 data-number="14.2" class="anchored" data-anchor-id="what-the-query-gate-protects"><span class="header-section-number">14.2</span> What the query gate protects</h2>
 <p>The application accepts one simple SELECT against exact permitted table or view identifiers. It rejects star selection, INTO, subqueries, CTEs, UNION, and multiple statements. It replaces row limits with a cap of 100 and removes offsets; capped results require checking for truncation. A string check such as <code>sql.startswith("SELECT")</code> is insufficient: nested writes, multiple statements, unapproved sources, and expensive operations need deeper handling. Database read-only credentials provide a second layer if a parser or application check fails. The live connector sets a 15-second query timeout and a five-second lock timeout. Row caps and timeouts address resource usage; they do not make an incorrect join correct.</p>
 <p>The threat model includes requests for writes, prompt injection inside questions or source text, access to unauthorized tables, and attempts to run generated code. The parser is a policy component with a defined accepted subset, not a universal SQL security proof.</p>
 </section>
-<section id="optional-live-sql-server-path" class="level2" data-number="10.3">
-<h2 data-number="10.3" class="anchored" data-anchor-id="optional-live-sql-server-path"><span class="header-section-number">10.3</span> Optional live SQL Server path</h2>
+<section id="optional-live-sql-server-path" class="level2" data-number="14.3">
+<h2 data-number="14.3" class="anchored" data-anchor-id="optional-live-sql-server-path"><span class="header-section-number">14.3</span> Optional live SQL Server path</h2>
+<p><a href="../chapters/mssql-connection.html">Server Connection</a> establishes the database connection in VS Code and Python before model-generated queries are introduced. Native driver installation is covered separately for <a href="../chapters/windows-setup.html">Windows</a> and <a href="../chapters/mac-setup.html">macOS</a>.</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> sync <span class="at">--extra</span> dev <span class="at">--extra</span> sqlserver</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> run python <span class="at">-m</span> examples.bi.app <span class="at">--live</span></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> run python <span class="at">-m</span> examples.bi.gradio_app <span class="at">--live</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -403,8 +434,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Metadata visibility depends on account permissions. An empty metadata result does not prove that the server has no tables. A manual bounded query then checks one approved view with its actual columns. Those exact source identifiers are added to <code>BI_ALLOWED_VIEWS</code>; the fixture name is not reused without evidence.</p>
 <p>On Windows, the Microsoft driver download provides an installer. On macOS, Microsoft’s <a href="https://learn.microsoft.com/en-us/sql/connect/odbc/linux-mac/install-microsoft-odbc-driver-sql-server-macos">ODBC installation guide</a> describes the supported installation route and architecture requirements. A mismatch between the installed driver name and the connection URL causes connector failure before SQL execution. These driver steps are unnecessary for offline SQLite work. SQL Server uses T-SQL features such as <code>TOP</code>; the offline SQLite example must not be copied as though all dialect features were interchangeable.</p>
 </section>
-<section id="project-exercise-and-evidence" class="level2" data-number="10.4">
-<h2 data-number="10.4" class="anchored" data-anchor-id="project-exercise-and-evidence"><span class="header-section-number">10.4</span> Project exercise and evidence</h2>
+<section id="project-exercise-and-evidence" class="level2" data-number="14.4">
+<h2 data-number="14.4" class="anchored" data-anchor-id="project-exercise-and-evidence"><span class="header-section-number">14.4</span> Project exercise and evidence</h2>
 <p>The project submission includes a supported business question, metric definition, schema description, accepted query, result table, chart, explanation, and evaluation record. A country ranking must state that net sales are aggregated by country and preserve currency and period assumptions. A chart that silently mixes currencies or date ranges is misleading even if its bars render correctly.</p>
 <p><strong>Expected result:</strong> an analyst can reproduce the aggregation and compare the explanation with the returned rows.</p>
 <p><strong>Success criteria:</strong> an offline run works without credentials, a write request is rejected, a disallowed-source request fails, the SQL and data remain inspectable, and the chart uses the actual result. The optional live result is reported as verified only after authorized execution against the provided server; an offline pass does not verify SQL Server connectivity.</p>
@@ -821,12 +852,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="../chapters/09-gradio.html" class="pagination-link" aria-label="A Gradio interface for an agent">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">A Gradio interface for an agent</span></span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">A Gradio interface for an agent</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
       <a href="../chapters/11-evaluation.html" class="pagination-link" aria-label="Evaluation: responses, actions, and evidence">
-        <span class="nav-page-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Evaluation: responses, actions, and evidence</span></span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Evaluation: responses, actions, and evidence</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

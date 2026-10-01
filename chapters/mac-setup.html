@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>13&nbsp; A Gradio interface for an agent – Google ADK 2</title>
+<title>3&nbsp; macOS – Google ADK 2</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -65,8 +65,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../chapters/10-bi-project.html" rel="next">
-<link href="../chapters/08-multi-agent.html" rel="prev">
+<link href="../chapters/mssql-vscode.html" rel="next">
+<link href="../chapters/windows-setup.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -104,9 +104,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
-<script src="../site_libs/quarto-diagram/mermaid.min.js"></script>
-<script src="../site_libs/quarto-diagram/mermaid-init.js"></script>
-<link href="../site_libs/quarto-diagram/mermaid.css" rel="stylesheet">
 
 
 </head>
@@ -120,7 +117,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/07-workflow-graphs.html">Connect the system</a></li><li class="breadcrumb-item"><a href="../chapters/09-gradio.html"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">A Gradio interface for an agent</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/02-workstation.html">Preparation</a></li><li class="breadcrumb-item"><a href="../chapters/mac-setup.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">macOS</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -179,7 +176,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/mac-setup.html" class="sidebar-item-text sidebar-link">
+  <a href="../chapters/mac-setup.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">macOS</span></span></a>
   </div>
 </li>
@@ -261,7 +258,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/09-gradio.html" class="sidebar-item-text sidebar-link active">
+  <a href="../chapters/09-gradio.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">A Gradio interface for an agent</span></span></a>
   </div>
 </li>
@@ -312,19 +309,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#start-the-local-interface" id="toc-start-the-local-interface" class="nav-link active" data-scroll-target="#start-the-local-interface"><span class="header-section-number">13.1</span> Start the local interface</a></li>
-  <li><a href="#interface-history-and-agent-history" id="toc-interface-history-and-agent-history" class="nav-link" data-scroll-target="#interface-history-and-agent-history"><span class="header-section-number">13.2</span> Interface history and agent history</a></li>
-  <li><a href="#information-worth-showing" id="toc-information-worth-showing" class="nav-link" data-scroll-target="#information-worth-showing"><span class="header-section-number">13.3</span> Information worth showing</a></li>
-  <li><a href="#exercise-test-a-new-conversation" id="toc-exercise-test-a-new-conversation" class="nav-link" data-scroll-target="#exercise-test-a-new-conversation"><span class="header-section-number">13.4</span> Exercise: test a new conversation</a></li>
+  <li><a href="#terminal-and-command-line-tools" id="toc-terminal-and-command-line-tools" class="nav-link active" data-scroll-target="#terminal-and-command-line-tools"><span class="header-section-number">3.1</span> Terminal and command-line tools</a></li>
+  <li><a href="#uv-and-python-3.12" id="toc-uv-and-python-3.12" class="nav-link" data-scroll-target="#uv-and-python-3.12"><span class="header-section-number">3.2</span> uv and Python 3.12</a></li>
+  <li><a href="#visual-studio-code" id="toc-visual-studio-code" class="nav-link" data-scroll-target="#visual-studio-code"><span class="header-section-number">3.3</span> Visual Studio Code</a></li>
+  <li><a href="#optional-homebrew-and-sql-server" id="toc-optional-homebrew-and-sql-server" class="nav-link" data-scroll-target="#optional-homebrew-and-sql-server"><span class="header-section-number">3.4</span> Optional: Homebrew and SQL Server</a></li>
+  <li><a href="#troubleshooting-and-exercise" id="toc-troubleshooting-and-exercise" class="nav-link" data-scroll-target="#troubleshooting-and-exercise"><span class="header-section-number">3.5</span> Troubleshooting and exercise</a></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/kirenz/google-adk-2/blob/main/chapters/09-gradio.qmd" class="toc-action"><i class="bi bi-github"></i>View source</a></li><li><a href="https://github.com/kirenz/google-adk-2/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/kirenz/google-adk-2/blob/main/chapters/mac-setup.qmd" class="toc-action"><i class="bi bi-github"></i>View source</a></li><li><a href="https://github.com/kirenz/google-adk-2/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/07-workflow-graphs.html">Connect the system</a></li><li class="breadcrumb-item"><a href="../chapters/09-gradio.html"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">A Gradio interface for an agent</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/02-workstation.html">Preparation</a></li><li class="breadcrumb-item"><a href="../chapters/mac-setup.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">macOS</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">A Gradio interface for an agent</span></h1>
+<h1 class="title"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">macOS</span></h1>
 </div>
 
 
@@ -341,46 +339,57 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p>The ADK development interface supports inspection during development. A Gradio application adds a simple interface designed around a user’s task. The important work is connecting the interface to the runtime while preserving session boundaries and making failures understandable.</p>
-<section id="start-the-local-interface" class="level2" data-number="13.1">
-<h2 data-number="13.1" class="anchored" data-anchor-id="start-the-local-interface"><span class="header-section-number">13.1</span> Start the local interface</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> run python <span class="at">-m</span> examples.gradio_app</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>The terminal reports the local URL. The supplied application wraps the first-agent example rather than constructing a separate agent with different business rules. It loads configuration from the same root project. This avoids a common debugging trap: the development interface and the custom interface appearing to test the same agent while actually using different models or instructions.</p>
-<p>The application is local. A public share link or deployed service is a separate decision. The exercise does not enable public sharing. Gradio’s <a href="https://www.gradio.app/docs/gradio/chatinterface">ChatInterface documentation</a> describes interface behavior, while the example code defines the ADK integration.</p>
+<p>The macOS setup uses Terminal with zsh, Git, uv, Python 3.12, and the stable release of Visual Studio Code. Homebrew is optional for the core agent examples and provides the installation route for the SQL Server driver.</p>
+<section id="terminal-and-command-line-tools" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="terminal-and-command-line-tools"><span class="header-section-number">3.1</span> Terminal and command-line tools</h2>
+<p>System Settings → General → Software Update provides operating-system updates. Terminal is available through Spotlight. The current shell can be checked with:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="va">$SHELL</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>For the zsh route, the result ends in <code>/zsh</code>. Apple’s <a href="https://developer.apple.com/documentation/xcode/installing-the-command-line-tools/">Command Line Tools</a> provide Git and tools needed by some native dependencies. The installer opens with:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">xcode-select</span> <span class="at">--install</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>An “already installed” message means that installation can be skipped. After completion, these commands check the selected tools directory and Git:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">xcode-select</span> <span class="at">-p</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> <span class="at">--version</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
-<section id="interface-history-and-agent-history" class="level2" data-number="13.2">
-<h2 data-number="13.2" class="anchored" data-anchor-id="interface-history-and-agent-history"><span class="header-section-number">13.2</span> Interface history and agent history</h2>
-<p>The browser displays chat messages. ADK maintains a session with events and state. These two histories have different roles. Browser messages alone omit tool-call events; an ADK session alone does not decide which UI components are rendered.</p>
-<p>A robust request handler maps a conversation to its own ADK session, sends a user message through the Runner, collects the response, and returns the display value. It must avoid replaying the entire browser history into a session that already contains those turns, because duplication changes the context. Starting a fresh chat should create a new session rather than changing only the visible screen.</p>
-<div class="cell" data-layout-align="center">
-<div class="cell-output-display">
-<div>
-<p></p><figure class="figure"><p></p>
-<div>
-<pre class="mermaid mermaid-js">flowchart LR
-    U[Gradio conversation] --&gt; I[Conversation-specific session identity]
-    I --&gt; R[ADK Runner]
-    R --&gt; E[Events and tool results]
-    E --&gt; D[Response extraction]
-    D --&gt; U
-</pre>
-</div>
-<p></p></figure><p></p>
-</div>
-</div>
-</div>
-<p>The arrow returning to the UI means display, not a new model invocation. A clear-session action must manage the identity mapping as well as the visible chat.</p>
+<section id="uv-and-python-3.12" class="level2" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="uv-and-python-3.12"><span class="header-section-number">3.2</span> uv and Python 3.12</h2>
+<p>The <a href="https://docs.astral.sh/uv/getting-started/installation/">official uv installer</a> downloads and executes a shell script:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">curl</span> <span class="at">-LsSf</span> https://astral.sh/uv/install.sh <span class="kw">|</span> <span class="fu">sh</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>A new Terminal session loads any installer PATH changes. Python is then managed through uv:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> <span class="at">--version</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> python install 3.12</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> python find 3.12</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Expected result:</strong> uv reports its version and the last command returns a Python 3.12 executable path.</p>
 </section>
-<section id="information-worth-showing" class="level2" data-number="13.3">
-<h2 data-number="13.3" class="anchored" data-anchor-id="information-worth-showing"><span class="header-section-number">13.3</span> Information worth showing</h2>
-<p>A catalog or arithmetic assistant may need only a concise answer. The later BI interface benefits from separate components for SQL, data table, chart, and explanation. These components let a person inspect evidence without parsing a long paragraph. A failure should distinguish missing configuration, invalid input, rejected query, empty result, and provider error. Raw credentials and detailed connection strings are unsuitable error messages.</p>
-<p>A progress indicator communicates that a request is running; it does not prove that an answer has been checked. Repeated button clicks can create concurrent requests, so a production design also needs a concurrency policy. The local exercise demonstrates session isolation rather than claiming production authentication or scaling.</p>
+<section id="visual-studio-code" class="level2" data-number="3.3">
+<h2 data-number="3.3" class="anchored" data-anchor-id="visual-studio-code"><span class="header-section-number">3.3</span> Visual Studio Code</h2>
+<p>The stable <a href="https://code.visualstudio.com/docs/setup/mac">VS Code macOS download</a> supplies the editor. The application belongs in Applications. The Microsoft Python extension (<code>ms-python.python</code>) supplies Python support. File → Open Folder opens the course repository, and Terminal → New Terminal opens its integrated terminal.</p>
+<p>The <a href="../chapters/03-project-setup.html">project setup chapter</a> creates the shared environment. Python: Select Interpreter then selects <code>.venv/bin/python</code>. Commands using <code>uv run</code> do not need manual activation. Installing the <code>code</code> shell command is optional because File → Open Folder provides the same entry point.</p>
 </section>
-<section id="exercise-test-a-new-conversation" class="level2" data-number="13.4">
-<h2 data-number="13.4" class="anchored" data-anchor-id="exercise-test-a-new-conversation"><span class="header-section-number">13.4</span> Exercise: test a new conversation</h2>
-<p>One conversation receives an order calculation and a follow-up referring to “that quantity.” A second browser conversation begins without that first turn. Clearing the first chat is followed by another reference to the old quantity.</p>
-<p><strong>Expected result:</strong> relevant follow-up context remains within one conversation and clearing creates a fresh conversational boundary.</p>
-<p><strong>Success criteria:</strong> unrelated conversations do not inherit each other’s order details; the interface handles a missing API key with a useful message; and stopping the process ends the local application. A working chat widget alone does not satisfy the session-isolation criterion.</p>
+<section id="optional-homebrew-and-sql-server" class="level2" data-number="3.4">
+<h2 data-number="3.4" class="anchored" data-anchor-id="optional-homebrew-and-sql-server"><span class="header-section-number">3.4</span> Optional: Homebrew and SQL Server</h2>
+<p>Only live Python connections to SQL Server require this section. The synthetic database exercise can run without it. An existing Homebrew installation can be checked with <code>brew --version</code>. Otherwise, the <a href="https://brew.sh/">Homebrew installer</a> runs from zsh as follows:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">/bin/bash</span> <span class="at">-c</span> <span class="st">"</span><span class="va">$(</span><span class="ex">curl</span> <span class="at">-fsSL</span> https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh<span class="va">)</span><span class="st">"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>The installer describes its changes and supplies shell-configuration instructions. Those instructions depend on the installation location. A new terminal should resolve <code>brew --version</code> before proceeding.</p>
+<p>Microsoft’s <a href="https://learn.microsoft.com/en-us/sql/connect/odbc/linux-mac/install-microsoft-odbc-driver-sql-server-macos?view=sql-server-ver17">macOS driver instructions</a> use its Homebrew tap:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">brew</span> tap microsoft/mssql-release https://github.com/Microsoft/homebrew-mssql-release</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Homebrew 6 or later also requires explicit trust for this tap:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">brew</span> trust microsoft/mssql-release</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Earlier Homebrew versions can omit that command. The driver installation is:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ex">brew</span> update</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="ex">brew</span> install msodbcsql18</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>The <a href="https://github.com/microsoft/homebrew-mssql-release/blob/master/Formula/msodbcsql18.rb">Microsoft formula</a> prompts for license acceptance and links the <a href="https://aka.ms/odbc18eula">ODBC 18 EULA</a>. Entering <code>YES</code> records acceptance; <code>NO</code> stops installation. Microsoft’s unattended alternative, <code>HOMEBREW_ACCEPT_EULA=Y</code>, declares acceptance in advance and is deliberately absent from the commands above. unixODBC is installed as a dependency. The optional <code>mssql-tools18</code> package supplies <code>sqlcmd</code> and <code>bcp</code>; it is unnecessary for Python or the VS Code extension.</p>
+<p>The tap selects the package for the running architecture. On Apple Silicon, a native terminal keeps the driver and Python on the ARM64 route; Rosetta can introduce x64 components. The architecture and registered driver can be inspected with:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">uname</span> <span class="at">-m</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="ex">brew</span> <span class="at">--prefix</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="ex">odbcinst</span> <span class="at">-q</span> <span class="at">-d</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="ex">odbcinst</span> <span class="at">-q</span> <span class="at">-d</span> <span class="at">-n</span> <span class="st">"ODBC Driver 18 for SQL Server"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Expected result:</strong> the driver list contains <code>[ODBC Driver 18 for SQL Server]</code>, and the final command returns its registration details. <code>odbcinst -j</code> reports configuration paths but alone does not establish driver registration. Connection details follow in <a href="../chapters/mssql-connection.html">SQL Server connections</a> and <a href="../chapters/mssql-vscode.html">SQL Server in VS Code</a>.</p>
+</section>
+<section id="troubleshooting-and-exercise" class="level2" data-number="3.5">
+<h2 data-number="3.5" class="anchored" data-anchor-id="troubleshooting-and-exercise"><span class="header-section-number">3.5</span> Troubleshooting and exercise</h2>
+<p>For a missing <code>uv</code> or <code>brew</code> command, a new terminal and the installer’s PATH instructions are the first checks. <code>command -v git uv brew</code> shows resolved paths. After project setup, <code>uv run python -c "import platform; print(platform.machine())"</code> reports Python’s architecture. An incompatible-library error calls for comparing this result with the terminal and driver architecture before reinstalling anything.</p>
+<p>The exercise produces an environment report with the shell, Git and uv versions, Python 3.12 path, and course folder (<code>pwd</code>). The optional driver entry records its registered name or states that offline work does not need it.</p>
+<p><strong>Success criteria:</strong> the tools resolve in zsh, the course opens in VS Code, and any live database route has a registered driver with an architecture compatible with Python. Driver installation alone does not prove successful authentication or a network connection.</p>
 
 
 </section>
@@ -793,13 +802,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../chapters/08-multi-agent.html" class="pagination-link" aria-label="Composing agents with deterministic work">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Composing agents with deterministic work</span></span>
+      <a href="../chapters/windows-setup.html" class="pagination-link" aria-label="Windows">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Windows</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../chapters/10-bi-project.html" class="pagination-link" aria-label="Business intelligence with SQLite and SQL Server">
-        <span class="nav-page-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Business intelligence with SQLite and SQL Server</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../chapters/mssql-vscode.html" class="pagination-link" aria-label="VS Code">
+        <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">VS Code</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
@@ -811,7 +820,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/kirenz/google-adk-2/blob/main/chapters/09-gradio.qmd" class="toc-action"><i class="bi bi-github"></i>View source</a></li><li><a href="https://github.com/kirenz/google-adk-2/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/kirenz/google-adk-2/blob/main/chapters/mac-setup.qmd" class="toc-action"><i class="bi bi-github"></i>View source</a></li><li><a href="https://github.com/kirenz/google-adk-2/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
 <p>Python · ADK 2 · uv · Gradio</p>
 </div>

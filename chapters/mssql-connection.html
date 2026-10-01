@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>13&nbsp; A Gradio interface for an agent – Google ADK 2</title>
+<title>6&nbsp; Server Connection – Google ADK 2</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -65,8 +65,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../chapters/10-bi-project.html" rel="next">
-<link href="../chapters/08-multi-agent.html" rel="prev">
+<link href="../chapters/01-agent-fundamentals.html" rel="next">
+<link href="../chapters/03-project-setup.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -104,9 +104,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
-<script src="../site_libs/quarto-diagram/mermaid.min.js"></script>
-<script src="../site_libs/quarto-diagram/mermaid-init.js"></script>
-<link href="../site_libs/quarto-diagram/mermaid.css" rel="stylesheet">
 
 
 </head>
@@ -120,7 +117,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/07-workflow-graphs.html">Connect the system</a></li><li class="breadcrumb-item"><a href="../chapters/09-gradio.html"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">A Gradio interface for an agent</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/02-workstation.html">Preparation</a></li><li class="breadcrumb-item"><a href="../chapters/mssql-connection.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Server Connection</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -197,7 +194,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/mssql-connection.html" class="sidebar-item-text sidebar-link">
+  <a href="../chapters/mssql-connection.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Server Connection</span></span></a>
   </div>
 </li>
@@ -261,7 +258,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/09-gradio.html" class="sidebar-item-text sidebar-link active">
+  <a href="../chapters/09-gradio.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">A Gradio interface for an agent</span></span></a>
   </div>
 </li>
@@ -312,19 +309,26 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#start-the-local-interface" id="toc-start-the-local-interface" class="nav-link active" data-scroll-target="#start-the-local-interface"><span class="header-section-number">13.1</span> Start the local interface</a></li>
-  <li><a href="#interface-history-and-agent-history" id="toc-interface-history-and-agent-history" class="nav-link" data-scroll-target="#interface-history-and-agent-history"><span class="header-section-number">13.2</span> Interface history and agent history</a></li>
-  <li><a href="#information-worth-showing" id="toc-information-worth-showing" class="nav-link" data-scroll-target="#information-worth-showing"><span class="header-section-number">13.3</span> Information worth showing</a></li>
-  <li><a href="#exercise-test-a-new-conversation" id="toc-exercise-test-a-new-conversation" class="nav-link" data-scroll-target="#exercise-test-a-new-conversation"><span class="header-section-number">13.4</span> Exercise: test a new conversation</a></li>
+  <li><a href="#obtain-the-connection-details" id="toc-obtain-the-connection-details" class="nav-link active" data-scroll-target="#obtain-the-connection-details"><span class="header-section-number">6.1</span> Obtain the connection details</a></li>
+  <li><a href="#connect-with-the-vs-code-extension" id="toc-connect-with-the-vs-code-extension" class="nav-link" data-scroll-target="#connect-with-the-vs-code-extension"><span class="header-section-number">6.2</span> Connect with the VS Code extension</a>
+  <ul class="collapse">
+  <li><a href="#encryption-and-certificates" id="toc-encryption-and-certificates" class="nav-link" data-scroll-target="#encryption-and-certificates"><span class="header-section-number">6.2.1</span> Encryption and certificates</a></li>
+  </ul></li>
+  <li><a href="#run-the-first-queries" id="toc-run-the-first-queries" class="nav-link" data-scroll-target="#run-the-first-queries"><span class="header-section-number">6.3</span> Run the first queries</a></li>
+  <li><a href="#check-the-python-connection-separately" id="toc-check-the-python-connection-separately" class="nav-link" data-scroll-target="#check-the-python-connection-separately"><span class="header-section-number">6.4</span> Check the Python connection separately</a>
+  <ul class="collapse">
+  <li><a href="#configure-the-root-.env" id="toc-configure-the-root-.env" class="nav-link" data-scroll-target="#configure-the-root-.env"><span class="header-section-number">6.4.1</span> Configure the root <code>.env</code></a></li>
+  </ul></li>
+  <li><a href="#resolve-failures-and-prepare-the-bi-project" id="toc-resolve-failures-and-prepare-the-bi-project" class="nav-link" data-scroll-target="#resolve-failures-and-prepare-the-bi-project"><span class="header-section-number">6.5</span> Resolve failures and prepare the BI project</a></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/kirenz/google-adk-2/blob/main/chapters/09-gradio.qmd" class="toc-action"><i class="bi bi-github"></i>View source</a></li><li><a href="https://github.com/kirenz/google-adk-2/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/kirenz/google-adk-2/blob/main/chapters/mssql-connection.qmd" class="toc-action"><i class="bi bi-github"></i>View source</a></li><li><a href="https://github.com/kirenz/google-adk-2/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/07-workflow-graphs.html">Connect the system</a></li><li class="breadcrumb-item"><a href="../chapters/09-gradio.html"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">A Gradio interface for an agent</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/02-workstation.html">Preparation</a></li><li class="breadcrumb-item"><a href="../chapters/mssql-connection.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Server Connection</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">A Gradio interface for an agent</span></h1>
+<h1 class="title"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Server Connection</span></h1>
 </div>
 
 
@@ -341,46 +345,142 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p>The ADK development interface supports inspection during development. A Gradio application adds a simple interface designed around a user’s task. The important work is connecting the interface to the runtime while preserving session boundaries and making failures understandable.</p>
-<section id="start-the-local-interface" class="level2" data-number="13.1">
-<h2 data-number="13.1" class="anchored" data-anchor-id="start-the-local-interface"><span class="header-section-number">13.1</span> Start the local interface</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> run python <span class="at">-m</span> examples.gradio_app</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>The terminal reports the local URL. The supplied application wraps the first-agent example rather than constructing a separate agent with different business rules. It loads configuration from the same root project. This avoids a common debugging trap: the development interface and the custom interface appearing to test the same agent while actually using different models or instructions.</p>
-<p>The application is local. A public share link or deployed service is a separate decision. The exercise does not enable public sharing. Gradio’s <a href="https://www.gradio.app/docs/gradio/chatinterface">ChatInterface documentation</a> describes interface behavior, while the example code defines the ADK integration.</p>
+<p>SQL Server can be inspected in the VS Code mssql extension and accessed from Python. Both clients connect to the same supplied database, but they have separate configuration and connection software. A successful editor connection therefore does not establish that the Python connector works. The synthetic SQLite <a href="../chapters/10-bi-project.html">BI exercise</a> remains available without SQL Server access.</p>
+<section id="obtain-the-connection-details" class="level2" data-number="6.1">
+<h2 data-number="6.1" class="anchored" data-anchor-id="obtain-the-connection-details"><span class="header-section-number">6.1</span> Obtain the connection details</h2>
+<p>The instructor or database administrator supplies the server address, port or instance if applicable, database name, authentication method, credentials, and permitted tables or views. Any required VPN, network restriction, and certificate configuration also belong to that supplied environment. Names and credentials cannot be inferred from the course’s synthetic dataset.</p>
+<p><a href="../chapters/mssql-vscode.html">VS Code</a> must be installed with Microsoft’s mssql extension. <a href="../chapters/accounts.html">Accounts</a> separates database access from model-provider access. A manual database check requires no Gemini API key.</p>
 </section>
-<section id="interface-history-and-agent-history" class="level2" data-number="13.2">
-<h2 data-number="13.2" class="anchored" data-anchor-id="interface-history-and-agent-history"><span class="header-section-number">13.2</span> Interface history and agent history</h2>
-<p>The browser displays chat messages. ADK maintains a session with events and state. These two histories have different roles. Browser messages alone omit tool-call events; an ADK session alone does not decide which UI components are rendered.</p>
-<p>A robust request handler maps a conversation to its own ADK session, sends a user message through the Runner, collects the response, and returns the display value. It must avoid replaying the entire browser history into a session that already contains those turns, because duplication changes the context. Starting a fresh chat should create a new session rather than changing only the visible screen.</p>
-<div class="cell" data-layout-align="center">
-<div class="cell-output-display">
-<div>
-<p></p><figure class="figure"><p></p>
-<div>
-<pre class="mermaid mermaid-js">flowchart LR
-    U[Gradio conversation] --&gt; I[Conversation-specific session identity]
-    I --&gt; R[ADK Runner]
-    R --&gt; E[Events and tool results]
-    E --&gt; D[Response extraction]
-    D --&gt; U
-</pre>
-</div>
-<p></p></figure><p></p>
-</div>
-</div>
-</div>
-<p>The arrow returning to the UI means display, not a new model invocation. A clear-session action must manage the identity mapping as well as the visible chat.</p>
+<section id="connect-with-the-vs-code-extension" class="level2" data-number="6.2">
+<h2 data-number="6.2" class="anchored" data-anchor-id="connect-with-the-vs-code-extension"><span class="header-section-number">6.2</span> Connect with the VS Code extension</h2>
+<ol type="1">
+<li>Open the <strong>MSSQL</strong> view and select <strong>Add Connection</strong> in Object Explorer. The Command Palette’s <strong>MS SQL: Add Connection</strong> opens the same dialog.</li>
+<li>Select <strong>Parameters</strong> as the input type. Enter the supplied server and database explicitly. Assign a recognizable profile name; a connection group is optional.</li>
+<li>Select the supplied authentication method. For <strong>SQL Login</strong>, enter the provided user name and password. Other authentication methods require their own supplied account setup.</li>
+<li>Check the security settings described below. Use <strong>Advanced</strong> if the necessary option is not visible in the main form.</li>
+<li>Select <strong>Test connection</strong>, then <strong>Connect</strong>. The saved connection appears in Object Explorer for later reuse.</li>
+</ol>
+<p>The current <a href="https://learn.microsoft.com/en-us/sql/tools/visual-studio-code-extensions/mssql/mssql-database-connections">Microsoft connection guide</a> describes the dialog and authentication options. A SQLAlchemy URL from Python is not an ADO.NET connection string for this dialog; the individual parameters are the clearest route here.</p>
+<section id="encryption-and-certificates" class="level3" data-number="6.2.1">
+<h3 data-number="6.2.1" class="anchored" data-anchor-id="encryption-and-certificates"><span class="header-section-number">6.2.1</span> Encryption and certificates</h3>
+<p>Use required encryption, typically labelled <strong>Mandatory</strong> or <strong>True</strong>, and leave <strong>Trust server certificate</strong> disabled. In the Python ODBC URL, the corresponding settings are <code>Encrypt=yes</code> and <code>TrustServerCertificate=no</code>. Certificate validation checks the server’s identity as well as protecting the connection’s contents. The <a href="https://learn.microsoft.com/en-us/sql/connect/odbc/dsn-connection-string-attribute">Microsoft encryption settings</a> explain the options.</p>
+<p>A certificate error needs the administrator’s correct server name, trusted certificate chain, or documented environment-specific configuration. Selecting optional encryption or bypassing certificate validation is not a general fix. A course environment with a self-signed certificate needs an explicit instructor-provided exception before changing those settings.</p>
 </section>
-<section id="information-worth-showing" class="level2" data-number="13.3">
-<h2 data-number="13.3" class="anchored" data-anchor-id="information-worth-showing"><span class="header-section-number">13.3</span> Information worth showing</h2>
-<p>A catalog or arithmetic assistant may need only a concise answer. The later BI interface benefits from separate components for SQL, data table, chart, and explanation. These components let a person inspect evidence without parsing a long paragraph. A failure should distinguish missing configuration, invalid input, rejected query, empty result, and provider error. Raw credentials and detailed connection strings are unsuitable error messages.</p>
-<p>A progress indicator communicates that a request is running; it does not prove that an answer has been checked. Repeated button clicks can create concurrent requests, so a production design also needs a concurrency policy. The local exercise demonstrates session isolation rather than claiming production authentication or scaling.</p>
 </section>
-<section id="exercise-test-a-new-conversation" class="level2" data-number="13.4">
-<h2 data-number="13.4" class="anchored" data-anchor-id="exercise-test-a-new-conversation"><span class="header-section-number">13.4</span> Exercise: test a new conversation</h2>
-<p>One conversation receives an order calculation and a follow-up referring to “that quantity.” A second browser conversation begins without that first turn. Clearing the first chat is followed by another reference to the old quantity.</p>
-<p><strong>Expected result:</strong> relevant follow-up context remains within one conversation and clearing creates a fresh conversational boundary.</p>
-<p><strong>Success criteria:</strong> unrelated conversations do not inherit each other’s order details; the interface handles a missing API key with a useful message; and stopping the process ends the local application. A working chat widget alone does not satisfy the session-isolation criterion.</p>
+<section id="run-the-first-queries" class="level2" data-number="6.3">
+<h2 data-number="6.3" class="anchored" data-anchor-id="run-the-first-queries"><span class="header-section-number">6.3</span> Run the first queries</h2>
+<p>Run <strong>MS SQL: New Query</strong> from the Command Palette and select the saved connection if prompted. Check the database shown for the editor before executing SQL. In a SQL editor, <strong>F5</strong> or <strong>MS SQL: Execute Query</strong> runs the statement. These commands are documented in the <a href="https://github.com/microsoft/vscode-mssql">extension’s repository</a> and its <a href="https://learn.microsoft.com/en-us/sql/tools/visual-studio-code-extensions/mssql/mssql-keyboard-shortcuts">keyboard shortcuts</a>.</p>
+<p>Start with a connection check:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> DB_NAME() <span class="kw">AS</span> connected_database;</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Expected result:</strong> one row with the supplied database name. A different name requires correcting the profile or editor connection before querying business data.</p>
+<p>The next query inspects column metadata visible to the login through <a href="https://learn.microsoft.com/en-us/sql/relational-databases/system-information-schema-views/columns-transact-sql">INFORMATION_SCHEMA.COLUMNS</a>:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> TABLE_SCHEMA, TABLE_NAME, COLUMN_NAME, DATA_TYPE</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="kw">FROM</span> INFORMATION_SCHEMA.<span class="kw">COLUMNS</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="kw">ORDER</span> <span class="kw">BY</span> TABLE_SCHEMA, TABLE_NAME, ORDINAL_POSITION;</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Expected result:</strong> accessible table and view columns, with their schema and data types. Restricted metadata visibility can produce an empty or partial result; that does not prove that the database is empty. The administrator’s permitted subset determines which objects may be used in the exercise.</p>
+<p>A bounded business query follows only after the actual object, columns, and query permission have been confirmed. For example, the earlier course used the following product query. It is suitable only if the supplied database contains this exact schema and the account is permitted to read it:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> TOP (<span class="dv">3</span>)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    ID_Product,</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    Material_Description,</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    Product_Category,</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    Transfer_Price_EUR</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="kw">FROM</span> dbo.Dim_Product</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="kw">ORDER</span> <span class="kw">BY</span> ID_Product;</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Expected result when that schema is confirmed:</strong> up to three product rows ordered by <code>ID_Product</code>. Otherwise, use an instructor-supplied bounded SELECT against a confirmed object. <code>Invalid object name</code> and <code>Invalid column name</code> require checking metadata and the selected database, rather than inventing replacement names.</p>
+</section>
+<section id="check-the-python-connection-separately" class="level2" data-number="6.4">
+<h2 data-number="6.4" class="anchored" data-anchor-id="check-the-python-connection-separately"><span class="header-section-number">6.4</span> Check the Python connection separately</h2>
+<p>Python uses the root project environment described in <a href="../chapters/03-project-setup.html">Project Setup</a>. Synchronize the optional SQL Server extra from the repository root:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> sync <span class="at">--extra</span> dev <span class="at">--extra</span> sqlserver</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>This installs <code>pyodbc</code> alongside the course dependencies. The native Microsoft ODBC driver is installed separately: the <a href="https://learn.microsoft.com/en-us/sql/connect/odbc/download-odbc-driver-for-sql-server">Windows driver download</a> provides the installer, while the <a href="https://learn.microsoft.com/en-us/sql/connect/odbc/linux-mac/install-microsoft-odbc-driver-sql-server-macos">macOS installation guide</a> covers supported architectures and installation. The mssql extension uses its own connection stack; it does not supply the native driver needed by Python.</p>
+<p>The installed ODBC driver names can be inspected without connecting:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> run python <span class="at">-c</span> <span class="st">"import pyodbc; print(pyodbc.drivers())"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Expected result:</strong> the driver named in the supplied URL appears in the list, such as <code>ODBC Driver 18 for SQL Server</code>. A missing or differently named driver requires correcting the native installation or the supplied configuration.</p>
+<section id="configure-the-root-.env" class="level3" data-number="6.4.1">
+<h3 data-number="6.4.1" class="anchored" data-anchor-id="configure-the-root-.env"><span class="header-section-number">6.4.1</span> Configure the root <code>.env</code></h3>
+<p>Add the actual instructor-supplied SQLAlchemy <code>mssql+pyodbc</code> URL as <code>SQLSERVER_URL</code> in the root <code>.env</code>. The commented entry in <code>.env.example</code> illustrates the format, not a working server or login. The URL must use the installed driver, actual authentication method, and approved encryption settings. SQLAlchemy’s <a href="https://docs.sqlalchemy.org/en/20/dialects/mssql.html#module-sqlalchemy.dialects.mssql.pyodbc">pyodbc connection documentation</a> explains URL parameters; reserved characters in URL credentials require percent encoding.</p>
+<p>The URL stays local. It must not appear in source files, screenshots, reports, or shared error logs. The existing <code>.gitignore</code> excludes <code>.env</code>; this check confirms the rule without showing its contents:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> check-ignore .env</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Create a temporary local file named <code>check_sqlserver.py</code> in the repository root with the following code. It performs one read-only query and loads <code>.env</code> relative to that file, regardless of the terminal’s working directory:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pathlib <span class="im">import</span> Path</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> dotenv <span class="im">import</span> load_dotenv</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sqlalchemy <span class="im">import</span> create_engine, text</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>load_dotenv(Path(<span class="va">__file__</span>).resolve().parent <span class="op">/</span> <span class="st">".env"</span>)</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>url <span class="op">=</span> os.getenv(<span class="st">"SQLSERVER_URL"</span>)</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="kw">not</span> url:</span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">raise</span> <span class="pp">SystemExit</span>(<span class="st">"SQLSERVER_URL is missing from the local environment."</span>)</span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>engine <span class="op">=</span> <span class="va">None</span></span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span>:</span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>    engine <span class="op">=</span> create_engine(url, echo<span class="op">=</span><span class="va">False</span>, connect_args<span class="op">=</span>{<span class="st">"timeout"</span>: <span class="dv">10</span>})</span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>    <span class="cf">with</span> engine.<span class="ex">connect</span>() <span class="im">as</span> connection:</span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>        database <span class="op">=</span> connection.execute(</span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>            text(<span class="st">"SELECT DB_NAME() AS connected_database"</span>)</span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a>        ).scalar_one()</span>
+<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Connected database: </span><span class="sc">{</span>database<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a><span class="cf">except</span> <span class="pp">Exception</span> <span class="im">as</span> error:</span>
+<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a>    <span class="cf">raise</span> <span class="pp">SystemExit</span>(</span>
+<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a>        <span class="ss">f"Connection check failed (</span><span class="sc">{</span><span class="bu">type</span>(error)<span class="sc">.</span><span class="va">__name__</span><span class="sc">}</span><span class="ss">). "</span></span>
+<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a>        <span class="st">"Check the local settings and the troubleshooting table. "</span></span>
+<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a>        <span class="st">"Keep connection details private."</span></span>
+<span id="cb7-25"><a href="#cb7-25" aria-hidden="true" tabindex="-1"></a>    ) <span class="im">from</span> <span class="va">None</span></span>
+<span id="cb7-26"><a href="#cb7-26" aria-hidden="true" tabindex="-1"></a><span class="cf">finally</span>:</span>
+<span id="cb7-27"><a href="#cb7-27" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> engine <span class="kw">is</span> <span class="kw">not</span> <span class="va">None</span>:</span>
+<span id="cb7-28"><a href="#cb7-28" aria-hidden="true" tabindex="-1"></a>        engine.dispose()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Run it from the repository root:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> run python check_sqlserver.py</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Expected result:</strong> <code>Connected database:</code> followed by the supplied database name. The script neither prints the URL nor calls Gemini; failures show only the exception type. The connection closes after the query and the engine is disposed even if the query fails. The temporary check file can be removed after verification.</p>
+</section>
+</section>
+<section id="resolve-failures-and-prepare-the-bi-project" class="level2" data-number="6.5">
+<h2 data-number="6.5" class="anchored" data-anchor-id="resolve-failures-and-prepare-the-bi-project"><span class="header-section-number">6.5</span> Resolve failures and prepare the BI project</h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Symptom</th>
+<th>Next check</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Server unavailable or login timeout</td>
+<td>Supplied host, port or instance, VPN, and network access</td>
+</tr>
+<tr class="even">
+<td>Login failed</td>
+<td>Authentication method, supplied account, and database permission</td>
+</tr>
+<tr class="odd">
+<td>Certificate validation failed</td>
+<td>Server name and trusted certificate chain with the administrator</td>
+</tr>
+<tr class="even">
+<td><code>No module named pyodbc</code></td>
+<td>SQL Server extra and the root <code>.venv</code></td>
+</tr>
+<tr class="odd">
+<td>Driver not found</td>
+<td>Native driver installation and exact driver name in the URL</td>
+</tr>
+<tr class="even">
+<td>Python fails while the extension works</td>
+<td>Python URL, authentication support, and native ODBC driver</td>
+</tr>
+<tr class="odd">
+<td>Business query fails despite <code>DB_NAME()</code> succeeding</td>
+<td>Actual database, schema, columns, and object permissions</td>
+</tr>
+</tbody>
+</table>
+<p>Successful SELECT statements prove connectivity and access to those statements. They do not establish that the account cannot write. Before setting <code>BI_READ_ONLY_ACCOUNT_CONFIRMED=yes</code>, the administrator must verify that the dedicated account permits the approved reads and has no write privileges for the course database. No destructive test is needed for this verification.</p>
+<p>The optional <a href="../chapters/10-bi-project.html">live BI project</a> additionally requires the actual permitted schema in <code>BI_SCHEMA</code>, exact approved source identifiers in <code>BI_ALLOWED_VIEWS</code>, and Gemini access. The confirmation flag records verified permissions; it does not grant or enforce them. The preparation result is two separate successful connection checks, a confirmed permitted schema, and independently verified read-only account permissions.</p>
 
 
 </section>
@@ -793,13 +893,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../chapters/08-multi-agent.html" class="pagination-link" aria-label="Composing agents with deterministic work">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Composing agents with deterministic work</span></span>
+      <a href="../chapters/03-project-setup.html" class="pagination-link" aria-label="Project, credentials, and reproducibility">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Project, credentials, and reproducibility</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../chapters/10-bi-project.html" class="pagination-link" aria-label="Business intelligence with SQLite and SQL Server">
-        <span class="nav-page-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Business intelligence with SQLite and SQL Server</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../chapters/01-agent-fundamentals.html" class="pagination-link" aria-label="From business questions to agent systems">
+        <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">From business questions to agent systems</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
@@ -811,7 +911,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/kirenz/google-adk-2/blob/main/chapters/09-gradio.qmd" class="toc-action"><i class="bi bi-github"></i>View source</a></li><li><a href="https://github.com/kirenz/google-adk-2/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/kirenz/google-adk-2/blob/main/chapters/mssql-connection.qmd" class="toc-action"><i class="bi bi-github"></i>View source</a></li><li><a href="https://github.com/kirenz/google-adk-2/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
 <p>Python · ADK 2 · uv · Gradio</p>
 </div>

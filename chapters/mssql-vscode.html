@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>13&nbsp; A Gradio interface for an agent – Google ADK 2</title>
+<title>4&nbsp; VS Code – Google ADK 2</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -65,8 +65,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../chapters/10-bi-project.html" rel="next">
-<link href="../chapters/08-multi-agent.html" rel="prev">
+<link href="../chapters/03-project-setup.html" rel="next">
+<link href="../chapters/mac-setup.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -104,9 +104,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
-<script src="../site_libs/quarto-diagram/mermaid.min.js"></script>
-<script src="../site_libs/quarto-diagram/mermaid-init.js"></script>
-<link href="../site_libs/quarto-diagram/mermaid.css" rel="stylesheet">
 
 
 </head>
@@ -120,7 +117,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/07-workflow-graphs.html">Connect the system</a></li><li class="breadcrumb-item"><a href="../chapters/09-gradio.html"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">A Gradio interface for an agent</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/02-workstation.html">Preparation</a></li><li class="breadcrumb-item"><a href="../chapters/mssql-vscode.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">VS Code</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -185,7 +182,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/mssql-vscode.html" class="sidebar-item-text sidebar-link">
+  <a href="../chapters/mssql-vscode.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">VS Code</span></span></a>
   </div>
 </li>
@@ -261,7 +258,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/09-gradio.html" class="sidebar-item-text sidebar-link active">
+  <a href="../chapters/09-gradio.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">A Gradio interface for an agent</span></span></a>
   </div>
 </li>
@@ -312,19 +309,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#start-the-local-interface" id="toc-start-the-local-interface" class="nav-link active" data-scroll-target="#start-the-local-interface"><span class="header-section-number">13.1</span> Start the local interface</a></li>
-  <li><a href="#interface-history-and-agent-history" id="toc-interface-history-and-agent-history" class="nav-link" data-scroll-target="#interface-history-and-agent-history"><span class="header-section-number">13.2</span> Interface history and agent history</a></li>
-  <li><a href="#information-worth-showing" id="toc-information-worth-showing" class="nav-link" data-scroll-target="#information-worth-showing"><span class="header-section-number">13.3</span> Information worth showing</a></li>
-  <li><a href="#exercise-test-a-new-conversation" id="toc-exercise-test-a-new-conversation" class="nav-link" data-scroll-target="#exercise-test-a-new-conversation"><span class="header-section-number">13.4</span> Exercise: test a new conversation</a></li>
+  <li><a href="#install-the-stable-release" id="toc-install-the-stable-release" class="nav-link active" data-scroll-target="#install-the-stable-release"><span class="header-section-number">4.1</span> Install the stable release</a></li>
+  <li><a href="#enable-the-code-command" id="toc-enable-the-code-command" class="nav-link" data-scroll-target="#enable-the-code-command"><span class="header-section-number">4.2</span> Enable the <code>code</code> command</a></li>
+  <li><a href="#install-the-extensions" id="toc-install-the-extensions" class="nav-link" data-scroll-target="#install-the-extensions"><span class="header-section-number">4.3</span> Install the extensions</a></li>
+  <li><a href="#select-the-course-interpreter" id="toc-select-the-course-interpreter" class="nav-link" data-scroll-target="#select-the-course-interpreter"><span class="header-section-number">4.4</span> Select the course interpreter</a></li>
+  <li><a href="#configure-the-integrated-terminal" id="toc-configure-the-integrated-terminal" class="nav-link" data-scroll-target="#configure-the-integrated-terminal"><span class="header-section-number">4.5</span> Configure the integrated terminal</a></li>
+  <li><a href="#preparation-result" id="toc-preparation-result" class="nav-link" data-scroll-target="#preparation-result"><span class="header-section-number">4.6</span> Preparation result</a></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/kirenz/google-adk-2/blob/main/chapters/09-gradio.qmd" class="toc-action"><i class="bi bi-github"></i>View source</a></li><li><a href="https://github.com/kirenz/google-adk-2/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/kirenz/google-adk-2/blob/main/chapters/mssql-vscode.qmd" class="toc-action"><i class="bi bi-github"></i>View source</a></li><li><a href="https://github.com/kirenz/google-adk-2/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/07-workflow-graphs.html">Connect the system</a></li><li class="breadcrumb-item"><a href="../chapters/09-gradio.html"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">A Gradio interface for an agent</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/02-workstation.html">Preparation</a></li><li class="breadcrumb-item"><a href="../chapters/mssql-vscode.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">VS Code</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">A Gradio interface for an agent</span></h1>
+<h1 class="title"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">VS Code</span></h1>
 </div>
 
 
@@ -341,46 +340,100 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p>The ADK development interface supports inspection during development. A Gradio application adds a simple interface designed around a user’s task. The important work is connecting the interface to the runtime while preserving session boundaries and making failures understandable.</p>
-<section id="start-the-local-interface" class="level2" data-number="13.1">
-<h2 data-number="13.1" class="anchored" data-anchor-id="start-the-local-interface"><span class="header-section-number">13.1</span> Start the local interface</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> run python <span class="at">-m</span> examples.gradio_app</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>The terminal reports the local URL. The supplied application wraps the first-agent example rather than constructing a separate agent with different business rules. It loads configuration from the same root project. This avoids a common debugging trap: the development interface and the custom interface appearing to test the same agent while actually using different models or instructions.</p>
-<p>The application is local. A public share link or deployed service is a separate decision. The exercise does not enable public sharing. Gradio’s <a href="https://www.gradio.app/docs/gradio/chatinterface">ChatInterface documentation</a> describes interface behavior, while the example code defines the ADK integration.</p>
+<p>Visual Studio Code combines the course’s Python editor, integrated terminal, and SQL query editor in one workspace. The editor setup works for all examples; the database extension is needed for the optional SQL Server exercises. The operating-system prerequisites are covered in <a href="../chapters/windows-setup.html">Windows Setup</a> and <a href="../chapters/mac-setup.html">Mac Setup</a>.</p>
+<section id="install-the-stable-release" class="level2" data-number="4.1">
+<h2 data-number="4.1" class="anchored" data-anchor-id="install-the-stable-release"><span class="header-section-number">4.1</span> Install the stable release</h2>
+<p>The <a href="https://code.visualstudio.com/download">VS Code download page</a> provides the stable release for Windows and macOS.</p>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true" href="">Windows</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false" href="">macOS</a></li></ul>
+<div class="tab-content">
+<div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
+<p>Download and run the Windows User Installer. The installer normally adds VS Code to <code>PATH</code>; a new PowerShell window is needed after installation. The usual user-install location is <code>%LOCALAPPDATA%\Programs\Microsoft VS Code</code>, with the command-line launcher in its <code>bin</code> subfolder. A system installation uses a different location. The <a href="https://code.visualstudio.com/docs/setup/windows">Windows installation guide</a> explains the installation options.</p>
+</div>
+<div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
+<p>Download the build matching the Mac’s architecture. Extract the downloaded archive, or open the disk image if that format is supplied, and drag <code>Visual Studio Code.app</code> into <code>Applications</code>. Launch it there. The <a href="https://code.visualstudio.com/docs/setup/mac">macOS installation guide</a> describes the supported builds.</p>
+</div>
+</div>
+</div>
 </section>
-<section id="interface-history-and-agent-history" class="level2" data-number="13.2">
-<h2 data-number="13.2" class="anchored" data-anchor-id="interface-history-and-agent-history"><span class="header-section-number">13.2</span> Interface history and agent history</h2>
-<p>The browser displays chat messages. ADK maintains a session with events and state. These two histories have different roles. Browser messages alone omit tool-call events; an ADK session alone does not decide which UI components are rendered.</p>
-<p>A robust request handler maps a conversation to its own ADK session, sends a user message through the Runner, collects the response, and returns the display value. It must avoid replaying the entire browser history into a session that already contains those turns, because duplication changes the context. Starting a fresh chat should create a new session rather than changing only the visible screen.</p>
-<div class="cell" data-layout-align="center">
-<div class="cell-output-display">
-<div>
-<p></p><figure class="figure"><p></p>
-<div>
-<pre class="mermaid mermaid-js">flowchart LR
-    U[Gradio conversation] --&gt; I[Conversation-specific session identity]
-    I --&gt; R[ADK Runner]
-    R --&gt; E[Events and tool results]
-    E --&gt; D[Response extraction]
-    D --&gt; U
-</pre>
-</div>
-<p></p></figure><p></p>
-</div>
-</div>
-</div>
-<p>The arrow returning to the UI means display, not a new model invocation. A clear-session action must manage the identity mapping as well as the visible chat.</p>
+<section id="enable-the-code-command" class="level2" data-number="4.2">
+<h2 data-number="4.2" class="anchored" data-anchor-id="enable-the-code-command"><span class="header-section-number">4.2</span> Enable the <code>code</code> command</h2>
+<p>On macOS, open the Command Palette with <code>Cmd+Shift+P</code> and run <strong>Shell Command: Install ‘code’ command in PATH</strong>. Close and reopen the terminal afterwards. On Windows, restart PowerShell after installing VS Code. The command below works in both shells:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">code</span> <span class="at">--version</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Expected result:</strong> a VS Code version, commit identifier, and architecture appear. If the command is missing on Windows, inspect the installer and its PATH option against the <a href="https://code.visualstudio.com/docs/setup/windows">official setup instructions</a>. On macOS, repeat the Command Palette step; the application’s launcher resides in <code>/Applications/Visual Studio Code.app/Contents/Resources/app/bin</code>. A terminal still open from before installation may retain an older PATH.</p>
+<p>After the course repository has been downloaded as described in <a href="../chapters/03-project-setup.html">Project Setup</a>, change into its root directory and open it:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> google-adk-2</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="ex">code</span> .</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>The <code>cd</code> command assumes that the terminal starts in the parent folder of the repository. Alternatively, <strong>File → Open Folder</strong> opens the downloaded folder directly. The correct root contains <code>pyproject.toml</code>, <code>.env.example</code>, and <code>examples/</code>. The <a href="https://code.visualstudio.com/docs/configure/command-line">VS Code command-line documentation</a> explains <code>code .</code>.</p>
 </section>
-<section id="information-worth-showing" class="level2" data-number="13.3">
-<h2 data-number="13.3" class="anchored" data-anchor-id="information-worth-showing"><span class="header-section-number">13.3</span> Information worth showing</h2>
-<p>A catalog or arithmetic assistant may need only a concise answer. The later BI interface benefits from separate components for SQL, data table, chart, and explanation. These components let a person inspect evidence without parsing a long paragraph. A failure should distinguish missing configuration, invalid input, rejected query, empty result, and provider error. Raw credentials and detailed connection strings are unsuitable error messages.</p>
-<p>A progress indicator communicates that a request is running; it does not prove that an answer has been checked. Repeated button clicks can create concurrent requests, so a production design also needs a concurrency policy. The local exercise demonstrates session isolation rather than claiming production authentication or scaling.</p>
+<section id="install-the-extensions" class="level2" data-number="4.3">
+<h2 data-number="4.3" class="anchored" data-anchor-id="install-the-extensions"><span class="header-section-number">4.3</span> Install the extensions</h2>
+<p>Open the Extensions view with <code>Ctrl+Shift+X</code> on Windows or <code>Cmd+Shift+X</code> on macOS. Search by extension identifier to distinguish the intended extension from similarly named entries:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Extension</th>
+<th>Identifier</th>
+<th>Course use</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><a href="https://marketplace.visualstudio.com/items?itemName=ms-python.python">Python, Microsoft</a></td>
+<td><code>ms-python.python</code></td>
+<td>Interpreter selection, Python editing, and debugging</td>
+</tr>
+<tr class="even">
+<td><a href="https://marketplace.visualstudio.com/items?itemName=ms-mssql.mssql">SQL Server (mssql), Microsoft</a></td>
+<td><code>ms-mssql.mssql</code></td>
+<td>Connections, database objects, and manual SQL queries</td>
+</tr>
+<tr class="odd">
+<td><a href="https://marketplace.visualstudio.com/items?itemName=vscode-icons-team.vscode-icons">vscode-icons</a></td>
+<td><code>vscode-icons-team.vscode-icons</code></td>
+<td>Optional file icons</td>
+</tr>
+</tbody>
+</table>
+<p>Icons affect presentation only. Python and mssql serve different purposes: installing the SQL extension does not select Python or install Python database dependencies.</p>
 </section>
-<section id="exercise-test-a-new-conversation" class="level2" data-number="13.4">
-<h2 data-number="13.4" class="anchored" data-anchor-id="exercise-test-a-new-conversation"><span class="header-section-number">13.4</span> Exercise: test a new conversation</h2>
-<p>One conversation receives an order calculation and a follow-up referring to “that quantity.” A second browser conversation begins without that first turn. Clearing the first chat is followed by another reference to the old quantity.</p>
-<p><strong>Expected result:</strong> relevant follow-up context remains within one conversation and clearing creates a fresh conversational boundary.</p>
-<p><strong>Success criteria:</strong> unrelated conversations do not inherit each other’s order details; the interface handles a missing API key with a useful message; and stopping the process ends the local application. A working chat widget alone does not satisfy the session-isolation criterion.</p>
+<section id="select-the-course-interpreter" class="level2" data-number="4.4">
+<h2 data-number="4.4" class="anchored" data-anchor-id="select-the-course-interpreter"><span class="header-section-number">4.4</span> Select the course interpreter</h2>
+<p>The <a href="../chapters/03-project-setup.html">shared project setup</a> creates the environment in the root <code>.venv</code> with:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> sync <span class="at">--extra</span> dev</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Open a Python file, then run <strong>Python: Select Interpreter</strong> from the Command Palette. Select the interpreter belonging to this repository’s <code>.venv</code>. If it is absent from the list, use <strong>Enter interpreter path</strong> and select the appropriate executable:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Operating system</th>
+<th>Interpreter relative to the repository root</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Windows</td>
+<td><code>.venv\Scripts\python.exe</code></td>
+</tr>
+<tr class="even">
+<td>macOS</td>
+<td><code>.venv/bin/python</code></td>
+</tr>
+</tbody>
+</table>
+<p>The <a href="https://code.visualstudio.com/docs/python/environments">Python environment documentation</a> explains interpreter selection. The selected interpreter controls Python editor features and debugging. Course terminal commands use <code>uv run</code> explicitly so that they resolve through the project environment.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> run python <span class="at">-c</span> <span class="st">"import sys; print(sys.executable)"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Expected result:</strong> the printed path points into this repository’s <code>.venv</code>. A different path usually indicates that the terminal is in another project folder. An absent <code>.venv</code> indicates that the project synchronization has not completed.</p>
+</section>
+<section id="configure-the-integrated-terminal" class="level2" data-number="4.5">
+<h2 data-number="4.5" class="anchored" data-anchor-id="configure-the-integrated-terminal"><span class="header-section-number">4.5</span> Configure the integrated terminal</h2>
+<p>Run <strong>Terminal: Select Default Profile</strong> from the Command Palette and select <strong>PowerShell</strong> on Windows or <strong>zsh</strong> on macOS. Open a new terminal with <strong>Terminal → New Terminal</strong>. The <a href="https://code.visualstudio.com/docs/terminal/profiles">terminal profile documentation</a> describes this setting.</p>
+<p>Commands run from the repository root. This can be checked without exposing credentials:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> run python <span class="at">-c</span> <span class="st">"from pathlib import Path; print(Path.cwd()); print(Path('pyproject.toml').is_file())"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Expected result:</strong> the course folder and <code>True</code>. An <code>uv</code> command-not-found error belongs to the operating-system setup; changing the Python interpreter alone does not install <code>uv</code>.</p>
+</section>
+<section id="preparation-result" class="level2" data-number="4.6">
+<h2 data-number="4.6" class="anchored" data-anchor-id="preparation-result"><span class="header-section-number">4.6</span> Preparation result</h2>
+<p>The root folder is open, <code>code --version</code> works, Python uses the root <code>.venv</code>, and a PowerShell or zsh terminal runs project commands. <a href="../chapters/accounts.html">Accounts</a> covers external access requirements. <a href="../chapters/mssql-connection.html">Server Connection</a> establishes database connectivity before the optional live <a href="../chapters/10-bi-project.html">BI project</a>.</p>
 
 
 </section>
@@ -793,13 +846,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../chapters/08-multi-agent.html" class="pagination-link" aria-label="Composing agents with deterministic work">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Composing agents with deterministic work</span></span>
+      <a href="../chapters/mac-setup.html" class="pagination-link" aria-label="macOS">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">macOS</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../chapters/10-bi-project.html" class="pagination-link" aria-label="Business intelligence with SQLite and SQL Server">
-        <span class="nav-page-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Business intelligence with SQLite and SQL Server</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../chapters/03-project-setup.html" class="pagination-link" aria-label="Project, credentials, and reproducibility">
+        <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Project, credentials, and reproducibility</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
@@ -811,7 +864,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/kirenz/google-adk-2/blob/main/chapters/09-gradio.qmd" class="toc-action"><i class="bi bi-github"></i>View source</a></li><li><a href="https://github.com/kirenz/google-adk-2/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/kirenz/google-adk-2/blob/main/chapters/mssql-vscode.qmd" class="toc-action"><i class="bi bi-github"></i>View source</a></li><li><a href="https://github.com/kirenz/google-adk-2/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
 <p>Python · ADK 2 · uv · Gradio</p>
 </div>

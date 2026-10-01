@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>13&nbsp; A Gradio interface for an agent – Google ADK 2</title>
+<title>1&nbsp; Accounts – Google ADK 2</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,41 +20,6 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-html { -webkit-text-size-adjust: 100%; }
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 </style>
 
 
@@ -65,8 +30,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../chapters/10-bi-project.html" rel="next">
-<link href="../chapters/08-multi-agent.html" rel="prev">
+<link href="../chapters/windows-setup.html" rel="next">
+<link href="../chapters/02-workstation.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -104,9 +69,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
-<script src="../site_libs/quarto-diagram/mermaid.min.js"></script>
-<script src="../site_libs/quarto-diagram/mermaid-init.js"></script>
-<link href="../site_libs/quarto-diagram/mermaid.css" rel="stylesheet">
 
 
 </head>
@@ -120,7 +82,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/07-workflow-graphs.html">Connect the system</a></li><li class="breadcrumb-item"><a href="../chapters/09-gradio.html"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">A Gradio interface for an agent</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/02-workstation.html">Preparation</a></li><li class="breadcrumb-item"><a href="../chapters/accounts.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Accounts</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -167,7 +129,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/accounts.html" class="sidebar-item-text sidebar-link">
+  <a href="../chapters/accounts.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Accounts</span></span></a>
   </div>
 </li>
@@ -261,7 +223,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/09-gradio.html" class="sidebar-item-text sidebar-link active">
+  <a href="../chapters/09-gradio.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">A Gradio interface for an agent</span></span></a>
   </div>
 </li>
@@ -312,19 +274,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#start-the-local-interface" id="toc-start-the-local-interface" class="nav-link active" data-scroll-target="#start-the-local-interface"><span class="header-section-number">13.1</span> Start the local interface</a></li>
-  <li><a href="#interface-history-and-agent-history" id="toc-interface-history-and-agent-history" class="nav-link" data-scroll-target="#interface-history-and-agent-history"><span class="header-section-number">13.2</span> Interface history and agent history</a></li>
-  <li><a href="#information-worth-showing" id="toc-information-worth-showing" class="nav-link" data-scroll-target="#information-worth-showing"><span class="header-section-number">13.3</span> Information worth showing</a></li>
-  <li><a href="#exercise-test-a-new-conversation" id="toc-exercise-test-a-new-conversation" class="nav-link" data-scroll-target="#exercise-test-a-new-conversation"><span class="header-section-number">13.4</span> Exercise: test a new conversation</a></li>
+  <li><a href="#google-account-and-ai-studio" id="toc-google-account-and-ai-studio" class="nav-link active" data-scroll-target="#google-account-and-ai-studio"><span class="header-section-number">1.1</span> Google account and AI Studio</a></li>
+  <li><a href="#store-the-key-locally" id="toc-store-the-key-locally" class="nav-link" data-scroll-target="#store-the-key-locally"><span class="header-section-number">1.2</span> Store the key locally</a></li>
+  <li><a href="#github-and-student-benefits" id="toc-github-and-student-benefits" class="nav-link" data-scroll-target="#github-and-student-benefits"><span class="header-section-number">1.3</span> GitHub and student benefits</a></li>
+  <li><a href="#exercise-record-account-readiness" id="toc-exercise-record-account-readiness" class="nav-link" data-scroll-target="#exercise-record-account-readiness"><span class="header-section-number">1.4</span> Exercise: record account readiness</a></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/kirenz/google-adk-2/blob/main/chapters/09-gradio.qmd" class="toc-action"><i class="bi bi-github"></i>View source</a></li><li><a href="https://github.com/kirenz/google-adk-2/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/kirenz/google-adk-2/blob/main/chapters/accounts.qmd" class="toc-action"><i class="bi bi-github"></i>View source</a></li><li><a href="https://github.com/kirenz/google-adk-2/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/07-workflow-graphs.html">Connect the system</a></li><li class="breadcrumb-item"><a href="../chapters/09-gradio.html"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">A Gradio interface for an agent</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/02-workstation.html">Preparation</a></li><li class="breadcrumb-item"><a href="../chapters/accounts.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Accounts</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">A Gradio interface for an agent</span></h1>
+<h1 class="title"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Accounts</span></h1>
 </div>
 
 
@@ -341,46 +303,26 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p>The ADK development interface supports inspection during development. A Gradio application adds a simple interface designed around a user’s task. The important work is connecting the interface to the runtime while preserving session boundaries and making failures understandable.</p>
-<section id="start-the-local-interface" class="level2" data-number="13.1">
-<h2 data-number="13.1" class="anchored" data-anchor-id="start-the-local-interface"><span class="header-section-number">13.1</span> Start the local interface</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> run python <span class="at">-m</span> examples.gradio_app</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>The terminal reports the local URL. The supplied application wraps the first-agent example rather than constructing a separate agent with different business rules. It loads configuration from the same root project. This avoids a common debugging trap: the development interface and the custom interface appearing to test the same agent while actually using different models or instructions.</p>
-<p>The application is local. A public share link or deployed service is a separate decision. The exercise does not enable public sharing. Gradio’s <a href="https://www.gradio.app/docs/gradio/chatinterface">ChatInterface documentation</a> describes interface behavior, while the example code defines the ADK integration.</p>
+<p>The live agent examples use a Google account and a Gemini API key. A GitHub account supports collaboration and optional educational benefits. Account preparation is separate from installing Python: the offline exercises remain available while access to an external service is pending.</p>
+<section id="google-account-and-ai-studio" class="level2" data-number="1.1">
+<h2 data-number="1.1" class="anchored" data-anchor-id="google-account-and-ai-studio"><span class="header-section-number">1.1</span> Google account and AI Studio</h2>
+<p>An existing Google account can be used, or a new account can be created through <a href="https://www.google.com/intl/en/account/about/">Google’s account page</a>. Signing in to <a href="https://aistudio.google.com/">Google AI Studio</a> establishes whether the account can access the service. Institutional accounts may have administrative restrictions.</p>
+<p>The <a href="https://aistudio.google.com/app/apikey">AI Studio API Keys page</a> manages Gemini credentials. After any required terms have been reviewed and accepted, an available project can be selected and a key created. AI Studio may already have created a default project and key for a new account. Existing Cloud projects may need importing before they appear. Google’s <a href="https://ai.google.dev/gemini-api/docs/api-key">API-key documentation</a> describes the current workflow and permission requirements.</p>
+<p>The course uses the Gemini Developer API. Separate Vertex AI configuration is unnecessary for this route. API availability, quotas, and possible charges depend on the account and selected model; a Google account alone does not establish usable API access.</p>
 </section>
-<section id="interface-history-and-agent-history" class="level2" data-number="13.2">
-<h2 data-number="13.2" class="anchored" data-anchor-id="interface-history-and-agent-history"><span class="header-section-number">13.2</span> Interface history and agent history</h2>
-<p>The browser displays chat messages. ADK maintains a session with events and state. These two histories have different roles. Browser messages alone omit tool-call events; an ADK session alone does not decide which UI components are rendered.</p>
-<p>A robust request handler maps a conversation to its own ADK session, sends a user message through the Runner, collects the response, and returns the display value. It must avoid replaying the entire browser history into a session that already contains those turns, because duplication changes the context. Starting a fresh chat should create a new session rather than changing only the visible screen.</p>
-<div class="cell" data-layout-align="center">
-<div class="cell-output-display">
-<div>
-<p></p><figure class="figure"><p></p>
-<div>
-<pre class="mermaid mermaid-js">flowchart LR
-    U[Gradio conversation] --&gt; I[Conversation-specific session identity]
-    I --&gt; R[ADK Runner]
-    R --&gt; E[Events and tool results]
-    E --&gt; D[Response extraction]
-    D --&gt; U
-</pre>
-</div>
-<p></p></figure><p></p>
-</div>
-</div>
-</div>
-<p>The arrow returning to the UI means display, not a new model invocation. A clear-session action must manage the identity mapping as well as the visible chat.</p>
+<section id="store-the-key-locally" class="level2" data-number="1.2">
+<h2 data-number="1.2" class="anchored" data-anchor-id="store-the-key-locally"><span class="header-section-number">1.2</span> Store the key locally</h2>
+<p>The key belongs in the course root’s local <code>.env</code> file as <code>GOOGLE_API_KEY</code>. The <a href="../chapters/03-project-setup.html">project setup chapter</a> explains copying <code>.env.example</code>, setting <code>GOOGLE_GENAI_USE_VERTEXAI=FALSE</code>, and checking that Git ignores <code>.env</code>. Shared files and screenshots must contain placeholders rather than credentials.</p>
 </section>
-<section id="information-worth-showing" class="level2" data-number="13.3">
-<h2 data-number="13.3" class="anchored" data-anchor-id="information-worth-showing"><span class="header-section-number">13.3</span> Information worth showing</h2>
-<p>A catalog or arithmetic assistant may need only a concise answer. The later BI interface benefits from separate components for SQL, data table, chart, and explanation. These components let a person inspect evidence without parsing a long paragraph. A failure should distinguish missing configuration, invalid input, rejected query, empty result, and provider error. Raw credentials and detailed connection strings are unsuitable error messages.</p>
-<p>A progress indicator communicates that a request is running; it does not prove that an answer has been checked. Repeated button clicks can create concurrent requests, so a production design also needs a concurrency policy. The local exercise demonstrates session isolation rather than claiming production authentication or scaling.</p>
+<section id="github-and-student-benefits" class="level2" data-number="1.3">
+<h2 data-number="1.3" class="anchored" data-anchor-id="github-and-student-benefits"><span class="header-section-number">1.3</span> GitHub and student benefits</h2>
+<p>A <a href="https://github.com/join">GitHub account</a> supports repository work. An existing account can retain its current identity: the university email address can be added in account settings and verified through the confirmation email.</p>
+<p>The <a href="https://education.github.com/pack">GitHub Student Developer Pack</a> is optional. GitHub checks student eligibility and may require evidence of current enrolment in addition to a verified academic email. Approval and the included benefits follow GitHub’s current rules; the course does not depend on approval. The <a href="https://docs.github.com/en/education/about-github-education/github-education-for-students/apply-to-github-education-as-a-student">official application guide</a> lists the requirements.</p>
 </section>
-<section id="exercise-test-a-new-conversation" class="level2" data-number="13.4">
-<h2 data-number="13.4" class="anchored" data-anchor-id="exercise-test-a-new-conversation"><span class="header-section-number">13.4</span> Exercise: test a new conversation</h2>
-<p>One conversation receives an order calculation and a follow-up referring to “that quantity.” A second browser conversation begins without that first turn. Clearing the first chat is followed by another reference to the old quantity.</p>
-<p><strong>Expected result:</strong> relevant follow-up context remains within one conversation and clearing creates a fresh conversational boundary.</p>
-<p><strong>Success criteria:</strong> unrelated conversations do not inherit each other’s order details; the interface handles a missing API key with a useful message; and stopping the process ends the local application. A working chat widget alone does not satisfy the session-isolation criterion.</p>
+<section id="exercise-record-account-readiness" class="level2" data-number="1.4">
+<h2 data-number="1.4" class="anchored" data-anchor-id="exercise-record-account-readiness"><span class="header-section-number">1.4</span> Exercise: record account readiness</h2>
+<p>A short preparation record distinguishes Google sign-in, AI Studio access, API-key availability, and GitHub sign-in. It records only status, never the key itself. If AI Studio denies access, the record includes the error category and whether the account is institutionally managed.</p>
+<p><strong>Expected result:</strong> the credentials route is clear before the first live example. Offline work can proceed when API access remains pending. Student Pack approval is optional and is recorded separately.</p>
 
 
 </section>
@@ -793,13 +735,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../chapters/08-multi-agent.html" class="pagination-link" aria-label="Composing agents with deterministic work">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Composing agents with deterministic work</span></span>
+      <a href="../chapters/02-workstation.html" class="pagination-link" aria-label="Preparation overview">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Preparation overview</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../chapters/10-bi-project.html" class="pagination-link" aria-label="Business intelligence with SQLite and SQL Server">
-        <span class="nav-page-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Business intelligence with SQLite and SQL Server</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../chapters/windows-setup.html" class="pagination-link" aria-label="Windows">
+        <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Windows</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
@@ -811,7 +753,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/kirenz/google-adk-2/blob/main/chapters/09-gradio.qmd" class="toc-action"><i class="bi bi-github"></i>View source</a></li><li><a href="https://github.com/kirenz/google-adk-2/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/kirenz/google-adk-2/blob/main/chapters/accounts.qmd" class="toc-action"><i class="bi bi-github"></i>View source</a></li><li><a href="https://github.com/kirenz/google-adk-2/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
 <p>Python · ADK 2 · uv · Gradio</p>
 </div>

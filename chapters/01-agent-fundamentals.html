@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>3&nbsp; From business questions to agent systems – Google ADK 2</title>
+<title>7&nbsp; From business questions to agent systems – Google ADK 2</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -31,7 +31,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
 <link href="../chapters/04-first-agent.html" rel="next">
-<link href="../chapters/03-project-setup.html" rel="prev">
+<link href="../chapters/mssql-connection.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -85,7 +85,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/01-agent-fundamentals.html">Build and understand agents</a></li><li class="breadcrumb-item"><a href="../chapters/01-agent-fundamentals.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">From business questions to agent systems</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/01-agent-fundamentals.html">Build and understand agents</a></li><li class="breadcrumb-item"><a href="../chapters/01-agent-fundamentals.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">From business questions to agent systems</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -127,13 +127,43 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapters/02-workstation.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Workstation and development tools</span></span></a>
+ <span class="menu-text">Preparation overview</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/accounts.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Accounts</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/windows-setup.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Windows</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/mac-setup.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">macOS</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/mssql-vscode.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">VS Code</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapters/03-project-setup.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Project, credentials, and reproducibility</span></span></a>
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Project, credentials, and reproducibility</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/mssql-connection.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Server Connection</span></span></a>
   </div>
 </li>
       </ul>
@@ -150,25 +180,25 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapters/01-agent-fundamentals.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">From business questions to agent systems</span></span></a>
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">From business questions to agent systems</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapters/04-first-agent.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">A first ADK agent</span></span></a>
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">A first ADK agent</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapters/05-tools-context.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Function tools and context engineering</span></span></a>
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Function tools and context engineering</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapters/06-runtime-sessions.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Runner, events, and separate sessions</span></span></a>
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Runner, events, and separate sessions</span></span></a>
   </div>
 </li>
       </ul>
@@ -185,25 +215,25 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapters/07-workflow-graphs.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">ADK 2 workflow graphs</span></span></a>
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">ADK 2 workflow graphs</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapters/08-multi-agent.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Composing agents with deterministic work</span></span></a>
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Composing agents with deterministic work</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapters/09-gradio.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">A Gradio interface for an agent</span></span></a>
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">A Gradio interface for an agent</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapters/10-bi-project.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Business intelligence with SQLite and SQL Server</span></span></a>
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Business intelligence with SQLite and SQL Server</span></span></a>
   </div>
 </li>
       </ul>
@@ -220,13 +250,13 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapters/11-evaluation.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Evaluation: responses, actions, and evidence</span></span></a>
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Evaluation: responses, actions, and evidence</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapters/12-advanced.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Optional extensions and engineering decisions</span></span></a>
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Optional extensions and engineering decisions</span></span></a>
   </div>
 </li>
       </ul>
@@ -234,7 +264,7 @@ ul.task-list li input[type="checkbox"] {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../references.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Sources and migration notes</span></span></a>
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Sources and migration notes</span></span></a>
   </div>
 </li>
     </ul>
@@ -247,18 +277,18 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#four-distinct-responsibilities" id="toc-four-distinct-responsibilities" class="nav-link active" data-scroll-target="#four-distinct-responsibilities"><span class="header-section-number">3.1</span> Four distinct responsibilities</a></li>
-  <li><a href="#a-useful-boundary" id="toc-a-useful-boundary" class="nav-link" data-scroll-target="#a-useful-boundary"><span class="header-section-number">3.2</span> A useful boundary</a></li>
-  <li><a href="#exercise-define-an-agents-contract" id="toc-exercise-define-an-agents-contract" class="nav-link" data-scroll-target="#exercise-define-an-agents-contract"><span class="header-section-number">3.3</span> Exercise: define an agent’s contract</a></li>
+  <li><a href="#four-distinct-responsibilities" id="toc-four-distinct-responsibilities" class="nav-link active" data-scroll-target="#four-distinct-responsibilities"><span class="header-section-number">7.1</span> Four distinct responsibilities</a></li>
+  <li><a href="#a-useful-boundary" id="toc-a-useful-boundary" class="nav-link" data-scroll-target="#a-useful-boundary"><span class="header-section-number">7.2</span> A useful boundary</a></li>
+  <li><a href="#exercise-define-an-agents-contract" id="toc-exercise-define-an-agents-contract" class="nav-link" data-scroll-target="#exercise-define-an-agents-contract"><span class="header-section-number">7.3</span> Exercise: define an agent’s contract</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/kirenz/google-adk-2/blob/main/chapters/01-agent-fundamentals.qmd" class="toc-action"><i class="bi bi-github"></i>View source</a></li><li><a href="https://github.com/kirenz/google-adk-2/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/01-agent-fundamentals.html">Build and understand agents</a></li><li class="breadcrumb-item"><a href="../chapters/01-agent-fundamentals.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">From business questions to agent systems</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/01-agent-fundamentals.html">Build and understand agents</a></li><li class="breadcrumb-item"><a href="../chapters/01-agent-fundamentals.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">From business questions to agent systems</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">From business questions to agent systems</span></h1>
+<h1 class="title"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">From business questions to agent systems</span></h1>
 </div>
 
 
@@ -277,8 +307,8 @@ ul.task-list li input[type="checkbox"] {
 
 <p>Global Bike is the running business case in this book: a bicycle business needs understandable answers about products, customers, and sales. The later database exercise uses synthetic teaching data first. These rows are not records from a real Global Bike system. The case makes an agent’s responsibilities concrete without implying access to an operational company database.</p>
 <p>Consider the question, “Which product category generated the most revenue?” A language model can explain revenue and propose an analysis. Without a trusted data source, it cannot establish the current answer. A useful application obtains the relevant data, calculates or queries the result, and explains what that result supports. A confident paragraph alone is not business intelligence.</p>
-<section id="four-distinct-responsibilities" class="level2" data-number="3.1">
-<h2 data-number="3.1" class="anchored" data-anchor-id="four-distinct-responsibilities"><span class="header-section-number">3.1</span> Four distinct responsibilities</h2>
+<section id="four-distinct-responsibilities" class="level2" data-number="7.1">
+<h2 data-number="7.1" class="anchored" data-anchor-id="four-distinct-responsibilities"><span class="header-section-number">7.1</span> Four distinct responsibilities</h2>
 <p>The <strong>model</strong> interprets language and generates candidate outputs. A <strong>tool</strong> performs a specific operation, such as looking up a product or executing an approved query. The <strong>runtime</strong> coordinates messages, tool calls, and results. The <strong>application</strong> decides which capabilities exist, which data is visible, and which actions are allowed.</p>
 <p>An agent uses a model to choose some steps toward a goal. A workflow fixes some steps in code. Both can appear in one system: interpretation may be probabilistic while a database validation rule remains deterministic. ADK provides Python components for this combination. Its <a href="https://github.com/google/adk-python">official repository</a> contains the implementation; the code examples in this book target <code>google-adk==2.10.0</code> rather than whichever release happens to be newest.</p>
 <div class="cell" data-layout-align="center">
@@ -300,13 +330,13 @@ ul.task-list li input[type="checkbox"] {
 </div>
 <p>This is a conceptual tool cycle, not a promise that every question invokes a tool. A definition question may need none. A database question needs evidence before an answer can claim a measured result.</p>
 </section>
-<section id="a-useful-boundary" class="level2" data-number="3.2">
-<h2 data-number="3.2" class="anchored" data-anchor-id="a-useful-boundary"><span class="header-section-number">3.2</span> A useful boundary</h2>
+<section id="a-useful-boundary" class="level2" data-number="7.2">
+<h2 data-number="7.2" class="anchored" data-anchor-id="a-useful-boundary"><span class="header-section-number">7.2</span> A useful boundary</h2>
 <p>“Explain the difference between revenue and profit” is a language task. “Calculate revenue by product category from these transactions” is an analysis task. “Change all product prices by ten percent” is a write action. The course application permits bounded analysis and refuses database writes. That boundary is enforced in tools and database permissions, not merely stated in a prompt.</p>
 <p>More autonomy creates more possible paths to check. A fixed SQL aggregation may be easier to verify than an agent that invents a query, executes it, generates Python, and creates a chart. The engineering question is which decisions benefit from language interpretation and which decisions should stay in code.</p>
 </section>
-<section id="exercise-define-an-agents-contract" class="level2" data-number="3.3">
-<h2 data-number="3.3" class="anchored" data-anchor-id="exercise-define-an-agents-contract"><span class="header-section-number">3.3</span> Exercise: define an agent’s contract</h2>
+<section id="exercise-define-an-agents-contract" class="level2" data-number="7.3">
+<h2 data-number="7.3" class="anchored" data-anchor-id="exercise-define-an-agents-contract"><span class="header-section-number">7.3</span> Exercise: define an agent’s contract</h2>
 <p>A one-page specification describes an assistant for a sales analyst. It contains one supported question, the required source, the allowed operation, the response fields, and one refusal case. For example: category revenue, a sales table, one read-only aggregate, SQL plus result plus explanation, and refusal of a delete request.</p>
 <p><strong>Expected result:</strong> a specification that distinguishes evidence from explanation and access from authorization.</p>
 <p><strong>Success criteria:</strong> another developer can identify the exact data needed, determine whether a request is in scope, and check the answer without trusting the prose alone. A specification that simply says “help with sales” is not sufficiently precise.</p>
@@ -722,13 +752,13 @@ ul.task-list li input[type="checkbox"] {
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../chapters/03-project-setup.html" class="pagination-link" aria-label="Project, credentials, and reproducibility">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Project, credentials, and reproducibility</span></span>
+      <a href="../chapters/mssql-connection.html" class="pagination-link" aria-label="Server Connection">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Server Connection</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
       <a href="../chapters/04-first-agent.html" class="pagination-link" aria-label="A first ADK agent">
-        <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">A first ADK agent</span></span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">A first ADK agent</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

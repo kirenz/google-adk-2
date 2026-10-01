@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>12&nbsp; Optional extensions and engineering decisions – Google ADK 2</title>
+<title>16&nbsp; Optional extensions and engineering decisions – Google ADK 2</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -85,7 +85,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/11-evaluation.html">Check and extend</a></li><li class="breadcrumb-item"><a href="../chapters/12-advanced.html"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Optional extensions and engineering decisions</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/11-evaluation.html">Check and extend</a></li><li class="breadcrumb-item"><a href="../chapters/12-advanced.html"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Optional extensions and engineering decisions</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -127,13 +127,43 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapters/02-workstation.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Workstation and development tools</span></span></a>
+ <span class="menu-text">Preparation overview</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/accounts.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Accounts</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/windows-setup.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Windows</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/mac-setup.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">macOS</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/mssql-vscode.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">VS Code</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapters/03-project-setup.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Project, credentials, and reproducibility</span></span></a>
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Project, credentials, and reproducibility</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/mssql-connection.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Server Connection</span></span></a>
   </div>
 </li>
       </ul>
@@ -150,25 +180,25 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapters/01-agent-fundamentals.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">From business questions to agent systems</span></span></a>
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">From business questions to agent systems</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapters/04-first-agent.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">A first ADK agent</span></span></a>
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">A first ADK agent</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapters/05-tools-context.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Function tools and context engineering</span></span></a>
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Function tools and context engineering</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapters/06-runtime-sessions.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Runner, events, and separate sessions</span></span></a>
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Runner, events, and separate sessions</span></span></a>
   </div>
 </li>
       </ul>
@@ -185,25 +215,25 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapters/07-workflow-graphs.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">ADK 2 workflow graphs</span></span></a>
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">ADK 2 workflow graphs</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapters/08-multi-agent.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Composing agents with deterministic work</span></span></a>
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Composing agents with deterministic work</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapters/09-gradio.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">A Gradio interface for an agent</span></span></a>
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">A Gradio interface for an agent</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapters/10-bi-project.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Business intelligence with SQLite and SQL Server</span></span></a>
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Business intelligence with SQLite and SQL Server</span></span></a>
   </div>
 </li>
       </ul>
@@ -220,13 +250,13 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapters/11-evaluation.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Evaluation: responses, actions, and evidence</span></span></a>
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Evaluation: responses, actions, and evidence</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapters/12-advanced.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Optional extensions and engineering decisions</span></span></a>
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Optional extensions and engineering decisions</span></span></a>
   </div>
 </li>
       </ul>
@@ -234,7 +264,7 @@ ul.task-list li input[type="checkbox"] {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../references.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Sources and migration notes</span></span></a>
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Sources and migration notes</span></span></a>
   </div>
 </li>
     </ul>
@@ -247,20 +277,20 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#retrieval-before-a-query" id="toc-retrieval-before-a-query" class="nav-link active" data-scroll-target="#retrieval-before-a-query"><span class="header-section-number">12.1</span> Retrieval before a query</a></li>
-  <li><a href="#bounded-review-and-repair" id="toc-bounded-review-and-repair" class="nav-link" data-scroll-target="#bounded-review-and-repair"><span class="header-section-number">12.2</span> Bounded review and repair</a></li>
-  <li><a href="#persistent-sessions-and-artifacts" id="toc-persistent-sessions-and-artifacts" class="nav-link" data-scroll-target="#persistent-sessions-and-artifacts"><span class="header-section-number">12.3</span> Persistent sessions and artifacts</a></li>
-  <li><a href="#mcp-a2a-and-deployment" id="toc-mcp-a2a-and-deployment" class="nav-link" data-scroll-target="#mcp-a2a-and-deployment"><span class="header-section-number">12.4</span> MCP, A2A, and deployment</a></li>
-  <li><a href="#exercise-an-evidence-based-extension-proposal" id="toc-exercise-an-evidence-based-extension-proposal" class="nav-link" data-scroll-target="#exercise-an-evidence-based-extension-proposal"><span class="header-section-number">12.5</span> Exercise: an evidence-based extension proposal</a></li>
+  <li><a href="#retrieval-before-a-query" id="toc-retrieval-before-a-query" class="nav-link active" data-scroll-target="#retrieval-before-a-query"><span class="header-section-number">16.1</span> Retrieval before a query</a></li>
+  <li><a href="#bounded-review-and-repair" id="toc-bounded-review-and-repair" class="nav-link" data-scroll-target="#bounded-review-and-repair"><span class="header-section-number">16.2</span> Bounded review and repair</a></li>
+  <li><a href="#persistent-sessions-and-artifacts" id="toc-persistent-sessions-and-artifacts" class="nav-link" data-scroll-target="#persistent-sessions-and-artifacts"><span class="header-section-number">16.3</span> Persistent sessions and artifacts</a></li>
+  <li><a href="#mcp-a2a-and-deployment" id="toc-mcp-a2a-and-deployment" class="nav-link" data-scroll-target="#mcp-a2a-and-deployment"><span class="header-section-number">16.4</span> MCP, A2A, and deployment</a></li>
+  <li><a href="#exercise-an-evidence-based-extension-proposal" id="toc-exercise-an-evidence-based-extension-proposal" class="nav-link" data-scroll-target="#exercise-an-evidence-based-extension-proposal"><span class="header-section-number">16.5</span> Exercise: an evidence-based extension proposal</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/kirenz/google-adk-2/blob/main/chapters/12-advanced.qmd" class="toc-action"><i class="bi bi-github"></i>View source</a></li><li><a href="https://github.com/kirenz/google-adk-2/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/11-evaluation.html">Check and extend</a></li><li class="breadcrumb-item"><a href="../chapters/12-advanced.html"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Optional extensions and engineering decisions</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/11-evaluation.html">Check and extend</a></li><li class="breadcrumb-item"><a href="../chapters/12-advanced.html"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Optional extensions and engineering decisions</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Optional extensions and engineering decisions</span></h1>
+<h1 class="title"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Optional extensions and engineering decisions</span></h1>
 </div>
 
 
@@ -278,13 +308,13 @@ ul.task-list li input[type="checkbox"] {
 
 
 <p>The core project provides a local agent, deterministic tools, a graph, session handling, an interface, and an evaluated BI pipeline. Extensions should solve a demonstrated problem. Adding a protocol, vector database, or autonomous loop without such a problem increases complexity and the number of boundaries that need testing.</p>
-<section id="retrieval-before-a-query" class="level2" data-number="12.1">
-<h2 data-number="12.1" class="anchored" data-anchor-id="retrieval-before-a-query"><span class="header-section-number">12.1</span> Retrieval before a query</h2>
+<section id="retrieval-before-a-query" class="level2" data-number="16.1">
+<h2 data-number="16.1" class="anchored" data-anchor-id="retrieval-before-a-query"><span class="header-section-number">16.1</span> Retrieval before a query</h2>
 <p>A larger database may require retrieval of a relevant schema fragment. A schema-retrieval tool can return approved table names, column descriptions, join keys, and metric definitions. Its output remains subject to the SQL execution allowlist. Finding a table in a document does not grant permission to query it.</p>
 <p>A useful retrieval experiment compares the full permitted schema with a smaller retrieved fragment on the same question set. Accuracy, missing-column failures, token usage, and latency show whether the additional component helps. A schema summary that omits a currency column can make an answer less reliable despite reducing context size.</p>
 </section>
-<section id="bounded-review-and-repair" class="level2" data-number="12.2">
-<h2 data-number="12.2" class="anchored" data-anchor-id="bounded-review-and-repair"><span class="header-section-number">12.2</span> Bounded review and repair</h2>
+<section id="bounded-review-and-repair" class="level2" data-number="16.2">
+<h2 data-number="16.2" class="anchored" data-anchor-id="bounded-review-and-repair"><span class="header-section-number">16.2</span> Bounded review and repair</h2>
 <p>A failed SQL proposal can be returned to a drafting agent with a structured reason. A loop must have a maximum attempt count and a clear terminal failure. The same gate validates every attempt; a reviewer agent cannot waive the gate. A failure after the final attempt is reported to the interface without execution.</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
@@ -305,18 +335,18 @@ ul.task-list li input[type="checkbox"] {
 </div>
 <p>This is an optional design, not a claim that the supplied baseline retries. The retry counter and the validator are trusted code. A retry limit controls iteration, while a database timeout controls one execution; both are needed if this extension becomes runnable.</p>
 </section>
-<section id="persistent-sessions-and-artifacts" class="level2" data-number="12.3">
-<h2 data-number="12.3" class="anchored" data-anchor-id="persistent-sessions-and-artifacts"><span class="header-section-number">12.3</span> Persistent sessions and artifacts</h2>
+<section id="persistent-sessions-and-artifacts" class="level2" data-number="16.3">
+<h2 data-number="16.3" class="anchored" data-anchor-id="persistent-sessions-and-artifacts"><span class="header-section-number">16.3</span> Persistent sessions and artifacts</h2>
 <p>In-memory sessions disappear when the process ends. Persistence adds storage, retention rules, and access controls. A deployment must decide which data is saved, who may retrieve it, and how it is deleted. Artifacts such as exported charts or tables also require ownership and provenance. The <a href="https://adk.dev/artifacts/">official ADK artifacts documentation</a> describes the framework component, but application storage policy remains a separate responsibility.</p>
 <p>A useful experiment restarts a local persistent-session prototype and verifies both continuity and isolation. It tests two users, missing authorization, and deletion. The mere fact that a conversation survives a restart does not prove that the implementation is safe for shared use.</p>
 </section>
-<section id="mcp-a2a-and-deployment" class="level2" data-number="12.4">
-<h2 data-number="12.4" class="anchored" data-anchor-id="mcp-a2a-and-deployment"><span class="header-section-number">12.4</span> MCP, A2A, and deployment</h2>
+<section id="mcp-a2a-and-deployment" class="level2" data-number="16.4">
+<h2 data-number="16.4" class="anchored" data-anchor-id="mcp-a2a-and-deployment"><span class="header-section-number">16.4</span> MCP, A2A, and deployment</h2>
 <p>MCP integrates external tool servers; A2A supports communication between agent applications. Each introduces a remote boundary with authentication, available capabilities, errors, and trust decisions. The <a href="https://adk.dev/tools-custom/mcp-tools/">ADK MCP guide</a> and <a href="https://adk.dev/a2a/">A2A introduction</a> are starting points for these optional topics. Neither protocol automatically makes a service trustworthy.</p>
 <p>Cloud deployment is outside the local baseline. Publishing requires a separate decision about authentication, billing, secrets, database access, and monitoring. A public URL should not be confused with a private development interface. Deployment changes the audience and consequences, even when the Python code is unchanged.</p>
 </section>
-<section id="exercise-an-evidence-based-extension-proposal" class="level2" data-number="12.5">
-<h2 data-number="12.5" class="anchored" data-anchor-id="exercise-an-evidence-based-extension-proposal"><span class="header-section-number">12.5</span> Exercise: an evidence-based extension proposal</h2>
+<section id="exercise-an-evidence-based-extension-proposal" class="level2" data-number="16.5">
+<h2 data-number="16.5" class="anchored" data-anchor-id="exercise-an-evidence-based-extension-proposal"><span class="header-section-number">16.5</span> Exercise: an evidence-based extension proposal</h2>
 <p>One extension is specified using a concrete failure from the evaluation chapter. The proposal defines the changed data flow, accepted inputs, stopping conditions, tests, and measurable benefit. It includes a diagram that distinguishes existing and proposed behavior in its caption or surrounding prose.</p>
 <p><strong>Expected result:</strong> a proposal that another developer can implement and evaluate without guessing the objective.</p>
 <p><strong>Success criteria:</strong> the extension addresses observed evidence, preserves the query gate and session boundaries, and identifies a simpler alternative. A feature list without a testable benefit is not an engineering argument.</p>
@@ -733,12 +763,12 @@ ul.task-list li input[type="checkbox"] {
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="../chapters/11-evaluation.html" class="pagination-link" aria-label="Evaluation: responses, actions, and evidence">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Evaluation: responses, actions, and evidence</span></span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Evaluation: responses, actions, and evidence</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
       <a href="../references.html" class="pagination-link" aria-label="Sources and migration notes">
-        <span class="nav-page-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Sources and migration notes</span></span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Sources and migration notes</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>13&nbsp; Sources and migration notes – Google ADK 2</title>
+<title>17&nbsp; Sources and migration notes – Google ADK 2</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -81,7 +81,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./references.html"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Sources and migration notes</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./references.html"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Sources and migration notes</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -123,13 +123,43 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./chapters/02-workstation.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Workstation and development tools</span></span></a>
+ <span class="menu-text">Preparation overview</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapters/accounts.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Accounts</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapters/windows-setup.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Windows</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapters/mac-setup.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">macOS</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapters/mssql-vscode.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">VS Code</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./chapters/03-project-setup.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Project, credentials, and reproducibility</span></span></a>
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Project, credentials, and reproducibility</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapters/mssql-connection.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Server Connection</span></span></a>
   </div>
 </li>
       </ul>
@@ -146,25 +176,25 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./chapters/01-agent-fundamentals.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">From business questions to agent systems</span></span></a>
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">From business questions to agent systems</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./chapters/04-first-agent.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">A first ADK agent</span></span></a>
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">A first ADK agent</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./chapters/05-tools-context.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Function tools and context engineering</span></span></a>
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Function tools and context engineering</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./chapters/06-runtime-sessions.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Runner, events, and separate sessions</span></span></a>
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Runner, events, and separate sessions</span></span></a>
   </div>
 </li>
       </ul>
@@ -181,25 +211,25 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./chapters/07-workflow-graphs.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">ADK 2 workflow graphs</span></span></a>
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">ADK 2 workflow graphs</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./chapters/08-multi-agent.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Composing agents with deterministic work</span></span></a>
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Composing agents with deterministic work</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./chapters/09-gradio.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">A Gradio interface for an agent</span></span></a>
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">A Gradio interface for an agent</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./chapters/10-bi-project.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Business intelligence with SQLite and SQL Server</span></span></a>
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Business intelligence with SQLite and SQL Server</span></span></a>
   </div>
 </li>
       </ul>
@@ -216,13 +246,13 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./chapters/11-evaluation.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Evaluation: responses, actions, and evidence</span></span></a>
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Evaluation: responses, actions, and evidence</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./chapters/12-advanced.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Optional extensions and engineering decisions</span></span></a>
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Optional extensions and engineering decisions</span></span></a>
   </div>
 </li>
       </ul>
@@ -230,7 +260,7 @@ ul.task-list li input[type="checkbox"] {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./references.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Sources and migration notes</span></span></a>
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Sources and migration notes</span></span></a>
   </div>
 </li>
     </ul>
@@ -243,10 +273,10 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#course-sources" id="toc-course-sources" class="nav-link active" data-scroll-target="#course-sources"><span class="header-section-number">13.1</span> Course sources</a></li>
-  <li><a href="#primary-technical-references" id="toc-primary-technical-references" class="nav-link" data-scroll-target="#primary-technical-references"><span class="header-section-number">13.2</span> Primary technical references</a></li>
-  <li><a href="#what-changed-from-the-previous-course" id="toc-what-changed-from-the-previous-course" class="nav-link" data-scroll-target="#what-changed-from-the-previous-course"><span class="header-section-number">13.3</span> What changed from the previous course</a></li>
-  <li><a href="#illustration-provenance" id="toc-illustration-provenance" class="nav-link" data-scroll-target="#illustration-provenance"><span class="header-section-number">13.4</span> Illustration provenance</a></li>
+  <li><a href="#course-sources" id="toc-course-sources" class="nav-link active" data-scroll-target="#course-sources"><span class="header-section-number">17.1</span> Course sources</a></li>
+  <li><a href="#primary-technical-references" id="toc-primary-technical-references" class="nav-link" data-scroll-target="#primary-technical-references"><span class="header-section-number">17.2</span> Primary technical references</a></li>
+  <li><a href="#what-changed-from-the-previous-course" id="toc-what-changed-from-the-previous-course" class="nav-link" data-scroll-target="#what-changed-from-the-previous-course"><span class="header-section-number">17.3</span> What changed from the previous course</a></li>
+  <li><a href="#illustration-provenance" id="toc-illustration-provenance" class="nav-link" data-scroll-target="#illustration-provenance"><span class="header-section-number">17.4</span> Illustration provenance</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/kirenz/google-adk-2/blob/main/references.qmd" class="toc-action"><i class="bi bi-github"></i>View source</a></li><li><a href="https://github.com/kirenz/google-adk-2/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
@@ -255,7 +285,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Sources and migration notes</span></h1>
+<h1 class="title"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Sources and migration notes</span></h1>
 </div>
 
 
@@ -272,13 +302,13 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="course-sources" class="level2" data-number="13.1">
-<h2 data-number="13.1" class="anchored" data-anchor-id="course-sources"><span class="header-section-number">13.1</span> Course sources</h2>
+<section id="course-sources" class="level2" data-number="17.1">
+<h2 data-number="17.1" class="anchored" data-anchor-id="course-sources"><span class="header-section-number">17.1</span> Course sources</h2>
 <p>This course builds on Jan Kirenz’s <a href="https://kirenz.github.io/mis-agentic-ai/">MIS Agentic AI course</a> and <a href="https://kirenz.github.io/agentic-ai-introduction/">Agentic AI Introduction</a>. The earlier book supplied the preparation-to-BI-project progression. The introduction materials supplied the agent, context, tool, runtime, and evaluation topics. Selected ideas are adapted as connected book chapters rather than copied as Reveal.js slide decks.</p>
 <p>The new course keeps its required chapters and examples together. The older course URLs are historical references, not required runtime dependencies.</p>
 </section>
-<section id="primary-technical-references" class="level2" data-number="13.2">
-<h2 data-number="13.2" class="anchored" data-anchor-id="primary-technical-references"><span class="header-section-number">13.2</span> Primary technical references</h2>
+<section id="primary-technical-references" class="level2" data-number="17.2">
+<h2 data-number="17.2" class="anchored" data-anchor-id="primary-technical-references"><span class="header-section-number">17.2</span> Primary technical references</h2>
 <ul>
 <li><a href="https://adk.dev/2.0/">ADK 2 overview and Python migration</a></li>
 <li><a href="https://github.com/google/adk-python/releases/tag/v2.10.0">ADK Python 2.10.0 release</a></li>
@@ -296,14 +326,14 @@ ul.task-list li input[type="checkbox"] {
 </ul>
 <p>Current online documentation can describe a newer version than the course. For conflicting signatures or behavior, the installed version and the pinned ADK source are the implementation reference.</p>
 </section>
-<section id="what-changed-from-the-previous-course" class="level2" data-number="13.3">
-<h2 data-number="13.3" class="anchored" data-anchor-id="what-changed-from-the-previous-course"><span class="header-section-number">13.3</span> What changed from the previous course</h2>
-<p>The main additions are explicit graph workflows, a shared local environment, independently runnable examples, per-browser Gradio session identity, structured chart configuration, and executable offline checks. SQL access is a later project step instead of a prerequisite for the first agent.</p>
+<section id="what-changed-from-the-previous-course" class="level2" data-number="17.3">
+<h2 data-number="17.3" class="anchored" data-anchor-id="what-changed-from-the-previous-course"><span class="header-section-number">17.3</span> What changed from the previous course</h2>
+<p>The main additions are explicit graph workflows, a shared local environment, independently runnable examples, per-browser Gradio session identity, structured chart configuration, and executable offline checks. The Preparation section also retains the earlier Accounts, Windows, macOS, VS Code, and Server Connection topics with updated tooling and connection settings. SQL access is optional preparation for the later BI project rather than a prerequisite for the first agent.</p>
 <p>Older <code>SequentialAgent</code>, <code>ParallelAgent</code>, and <code>LoopAgent</code> examples are explained as prior patterns; new examples use <code>Workflow</code>. The ADK 2 migration guidance also covers additional event fields, custom execution overrides, event emission, and exception handling. These matter when migrating custom applications, even when a simple <code>Agent</code> definition continues to work.</p>
 <p>MCP, cross-session memory, persistent services, human input, and deployment are extensions rather than requirements of the introductory project.</p>
 </section>
-<section id="illustration-provenance" class="level2" data-number="13.4">
-<h2 data-number="13.4" class="anchored" data-anchor-id="illustration-provenance"><span class="header-section-number">13.4</span> Illustration provenance</h2>
+<section id="illustration-provenance" class="level2" data-number="17.4">
+<h2 data-number="17.4" class="anchored" data-anchor-id="illustration-provenance"><span class="header-section-number">17.4</span> Illustration provenance</h2>
 <p>The course cover and the business-scenario illustration are generated illustrations. They provide visual context, not evidence of an actual Global Bike installation. Architecture and execution diagrams use Mermaid so their labels and connections can be reviewed and edited alongside the text. Prompts and filenames are recorded in <code>images/README.md</code>.</p>
 
 
@@ -718,7 +748,7 @@ ul.task-list li input[type="checkbox"] {
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="./chapters/12-advanced.html" class="pagination-link" aria-label="Optional extensions and engineering decisions">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Optional extensions and engineering decisions</span></span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Optional extensions and engineering decisions</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
